@@ -1,21 +1,18 @@
 //
-//  LoginView.swift
+//  SignInView.swift
 //  TinderApp (iOS)
 //
 //  Created by Le Helen on 02/09/2022.
 //
 
 import SwiftUI
-
 import Firebase
 
-
-
-struct SignUpView: View {
-    
+struct SignInView: View {
     @ObservedObject var userViewModel = UserViewModel()
-    
+
     var body: some View {
+        
         Form {
             Section(footer: Text(userViewModel.userNameError ?? "" ).foregroundColor(.red)) {
                 TextField("Username", text: $userViewModel.username)
@@ -23,27 +20,25 @@ struct SignUpView: View {
             }
             Section(footer: Text(userViewModel.passwordError ?? "" ).foregroundColor(.red)) {
                 SecureField("Password", text: $userViewModel.password)
-                SecureField("Password again", text: $userViewModel.confirmPassword)
             }
             Section {
-                Button(action: {signUp()}) {
-                    Text("Sign up")
+                Button(action: { }) {
+                    Text("Sign In")
                 }.disabled(!userViewModel.isValid)
             }
         }
     }
     
-    func signUp(){
-        Auth.auth().createUser(withEmail: userViewModel.username, password: userViewModel.password) {
-            (result,err) in
-            
+    func signIn(){
+        Auth.auth().signIn(withEmail: userViewModel.username, password: userViewModel.password) { (result, err) in
         }
     }
-    
 }
 
-struct SignUpView_Previews: PreviewProvider {
+
+
+struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignInView()
     }
 }

@@ -47,7 +47,7 @@ class UserViewModel : ObservableObject{
                    case .isEmpty:
                        return "Confirm Password must not be empty."
                    case .unmatchedPassword:
-                       return "Confirm Password doesn't match"
+                       return "Confirm Password doesn't match."
                    default:
                        return ""
             
