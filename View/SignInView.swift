@@ -42,8 +42,6 @@ struct SignInView: View {
                 print("There was an issue when trying to sign in: \(error)")
                 failureMessage = error.localizedDescription
                 displayFailureAlert = true
-                print("here")
-                print (displayFailureAlert)
                 return
             }
 
@@ -55,8 +53,6 @@ struct SignInView: View {
             userViewModel.loggedInSuccessfully = true
             failureMessage = "haha"
             displayFailureAlert = true
-            print("here")
-            print (displayFailureAlert)
         }
     }
 }
