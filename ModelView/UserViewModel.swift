@@ -156,17 +156,6 @@ class UserViewModel : ObservableObject{
            }
            .eraseToAnyPublisher()
        }
-    
-//    private var passwordStrengthPublisher: AnyPublisher<PasswordStrength, Never> {
-//       $password
-//         .debounce(for: 0.2, scheduler: RunLoop.main)
-//         .removeDuplicates()
-//         .map { input in
-//           return Navajo.strength(ofPassword: input) // (2)
-//         }
-//         .eraseToAnyPublisher()
-//     }
-     
 }
 
 extension String {
