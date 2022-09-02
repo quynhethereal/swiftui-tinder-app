@@ -13,7 +13,7 @@ import Firebase
 
 struct SignUpView: View {
     
-    @ObservedObject var userViewModel = UserSignUpViewModel()
+    @StateObject var userViewModel = UserSignUpViewModel()
     
     var body: some View {
         Form {
