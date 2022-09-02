@@ -16,7 +16,7 @@ struct ContentView: View {
         if userAuth.loggedInSuccessfully {
             HomeView()
         } else {
-            SignInView(userViewModel: userAuth)
+            SignInView().environmentObject(userAuth)
         }
     }
 }

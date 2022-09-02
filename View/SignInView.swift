@@ -11,7 +11,7 @@ import FirebaseAuthCombineSwift
 
 
 struct SignInView: View {
-    @ObservedObject var userViewModel: UserSignInViewModel
+    @EnvironmentObject var userViewModel: UserSignInViewModel
     @State var displayFailureAlert: Bool = false
     @State var failureMessage: String = "ab"
     
@@ -63,6 +63,6 @@ struct SignInView: View {
 struct SignInView_Previews: PreviewProvider {
     static let signInViewModel = UserSignInViewModel()
     static var previews: some View {
-        SignInView(userViewModel: signInViewModel)
+        SignInView().environmentObject(signInViewModel)
     }
 }
