@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 
-class UserViewModel : ObservableObject{
+class UserSignUpViewModel : ObservableObject{
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
