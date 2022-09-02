@@ -21,9 +21,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct TinderApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    let userAuth = UserSignInViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(userAuth: userAuth)
         }
     }
 }

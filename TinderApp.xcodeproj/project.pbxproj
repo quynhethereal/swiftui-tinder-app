@@ -51,6 +51,8 @@
 		76CD378628C1E915004AEE97 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 76CD378528C1E915004AEE97 /* FirebaseStorageCombine-Community */; };
 		76CD378828C1F313004AEE97 /* UserSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD378728C1F313004AEE97 /* UserSignInViewModel.swift */; };
 		76CD378928C1F313004AEE97 /* UserSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD378728C1F313004AEE97 /* UserSignInViewModel.swift */; };
+		76CD378B28C200B8004AEE97 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD378A28C200B7004AEE97 /* HomeView.swift */; };
+		76CD378C28C200B8004AEE97 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD378A28C200B7004AEE97 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,7 @@
 		76CD374B28C1E61D004AEE97 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		76CD374D28C1E7D3004AEE97 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76CD378728C1F313004AEE97 /* UserSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignInViewModel.swift; sourceTree = "<group>"; };
+		76CD378A28C200B7004AEE97 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +192,7 @@
 			children = (
 				76BEB68D28C1C3E600B0C48B /* SignUpView.swift */,
 				76CD374B28C1E61D004AEE97 /* SignInView.swift */,
+				76CD378A28C200B7004AEE97 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -330,6 +334,7 @@
 				76BEB68C28C1C23200B0C48B /* User.swift in Sources */,
 				76BEB68A28C1C1FE00B0C48B /* UserSignUpViewModel.swift in Sources */,
 				76BEB69128C1C76900B0C48B /* UsernameValidation.swift in Sources */,
+				76CD378B28C200B8004AEE97 /* HomeView.swift in Sources */,
 				76BEB67B28C1C0A300B0C48B /* ContentView.swift in Sources */,
 				76BEB68E28C1C3E600B0C48B /* SignUpView.swift in Sources */,
 				76CD374828C1D93C004AEE97 /* PasswordValidation.swift in Sources */,
@@ -343,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76BEB67C28C1C0A300B0C48B /* ContentView.swift in Sources */,
+				76CD378C28C200B8004AEE97 /* HomeView.swift in Sources */,
 				76BEB67A28C1C0A300B0C48B /* TinderApp.swift in Sources */,
 				76CD378928C1F313004AEE97 /* UserSignInViewModel.swift in Sources */,
 			);

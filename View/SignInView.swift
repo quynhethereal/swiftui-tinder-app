@@ -11,7 +11,7 @@ import FirebaseAuthCombineSwift
 
 
 struct SignInView: View {
-    @StateObject var userViewModel = UserSignInViewModel()
+    @ObservedObject var userViewModel: UserSignInViewModel
     @State var displayFailureAlert: Bool = false
     @State var failureMessage: String = "ab"
     
@@ -51,8 +51,9 @@ struct SignInView: View {
                 }
             print("Signed in as user \(user.uid), with email: \(user.email ?? "")")
             userViewModel.loggedInSuccessfully = true
-            failureMessage = "haha"
-            displayFailureAlert = true
+            // TODO: remove this
+//            failureMessage = "haha"
+//            displayFailureAlert = true
         }
     }
 }
@@ -60,7 +61,8 @@ struct SignInView: View {
 
 
 struct SignInView_Previews: PreviewProvider {
+    static let signInViewModel = UserSignInViewModel()
     static var previews: some View {
-        SignInView()
+        SignInView(userViewModel: signInViewModel)
     }
 }

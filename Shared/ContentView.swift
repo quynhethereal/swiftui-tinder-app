@@ -6,15 +6,34 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
+    @StateObject var userAuth: UserSignInViewModel
+    
     var body: some View {
-        SignInView()
+        
+        if userAuth.loggedInSuccessfully {
+            HomeView()
+        } else {
+            SignInView(userViewModel: userAuth)
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    
+    static let userAuth = UserSignInViewModel()
+    
     static var previews: some View {
-      ContentView()
+        
+//        ContentView().environmentObject({
+//            () -> UserSignInViewModel in
+//            let userAuth = UserSignInViewModel()
+//            userAuth.loggedInSuccessfully = false
+//            return userAuth
+//        }() )
+        
+        ContentView(userAuth: userAuth)
     }
 }
