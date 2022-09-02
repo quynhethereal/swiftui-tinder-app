@@ -15,7 +15,7 @@ public enum UsernameValidation {
     var errorMessage: String? {
         switch self {
         case .emptyUsername:
-            return "Please enter username"
+            return "Username is empty"
         case .inValidUsername:
             return "Invalid username"
         case .lessThanThreeCharacters:

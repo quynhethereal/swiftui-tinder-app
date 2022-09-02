@@ -15,7 +15,7 @@ public enum ConfirmPasswordValidation {
     var errorMessage: String? {
         switch self {
         case .isEmpty:
-            return "Confirm Password is Empty"
+            return "Confirm Password is empty."
         case .unmatchedPassword:
             return "The confirmation password doesn't match."
         case .validConfirmPassword:

@@ -7,7 +7,7 @@
 	<key>REVERSED_CLIENT_ID</key>
 	<string>com.googleusercontent.apps.791649226092-u1hctfienfdf1i32r3gthdjlv7v0hidv</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAEIaH04c-JDAaTBER4ZOyGkRYgazdGnMI</string>
+	<string></string>
 	<key>GCM_SENDER_ID</key>
 	<string>791649226092</string>
 	<key>PLIST_VERSION</key>
@@ -19,15 +19,15 @@
 	<key>STORAGE_BUCKET</key>
 	<string>swiftui-tinder-app.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:791649226092:ios:b5436dd10d420a986bb749</string>
 </dict>

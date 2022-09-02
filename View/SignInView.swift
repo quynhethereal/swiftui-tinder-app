@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 struct SignInView: View {
-    @ObservedObject var userViewModel = UserSignUpViewModel()
+    @ObservedObject var userViewModel = UserSignInViewModel()
 
     var body: some View {
         
