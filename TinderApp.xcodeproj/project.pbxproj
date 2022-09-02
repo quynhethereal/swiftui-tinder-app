@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		76BEB67928C1C0A300B0C48B /* TinderAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66928C1C09C00B0C48B /* TinderAppApp.swift */; };
-		76BEB67A28C1C0A300B0C48B /* TinderAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66928C1C09C00B0C48B /* TinderAppApp.swift */; };
+		76BEB67928C1C0A300B0C48B /* TinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66928C1C09C00B0C48B /* TinderApp.swift */; };
+		76BEB67A28C1C0A300B0C48B /* TinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66928C1C09C00B0C48B /* TinderApp.swift */; };
 		76BEB67B28C1C0A300B0C48B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66A28C1C09C00B0C48B /* ContentView.swift */; };
 		76BEB67C28C1C0A300B0C48B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66A28C1C09C00B0C48B /* ContentView.swift */; };
 		76BEB67D28C1C0A300B0C48B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76BEB66B28C1C0A300B0C48B /* Assets.xcassets */; };
 		76BEB67E28C1C0A300B0C48B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76BEB66B28C1C0A300B0C48B /* Assets.xcassets */; };
+		76BEB68A28C1C1FE00B0C48B /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB68928C1C1FE00B0C48B /* UserViewModel.swift */; };
+		76BEB68C28C1C23200B0C48B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB68B28C1C23200B0C48B /* User.swift */; };
+		76BEB68E28C1C3E600B0C48B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB68D28C1C3E600B0C48B /* SignUpView.swift */; };
+		76BEB69128C1C76900B0C48B /* UsernameValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB69028C1C76900B0C48B /* UsernameValidation.swift */; };
+		76CD374828C1D93C004AEE97 /* PasswordValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD374728C1D93C004AEE97 /* PasswordValidation.swift */; };
+		76CD374A28C1DA0C004AEE97 /* ConfirmPasswordValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD374928C1DA0C004AEE97 /* ConfirmPasswordValidation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		76BEB66928C1C09C00B0C48B /* TinderAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderAppApp.swift; sourceTree = "<group>"; };
+		76BEB66928C1C09C00B0C48B /* TinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderApp.swift; sourceTree = "<group>"; };
 		76BEB66A28C1C09C00B0C48B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		76BEB66B28C1C0A300B0C48B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76BEB67028C1C0A300B0C48B /* TinderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BEB67628C1C0A300B0C48B /* TinderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BEB67828C1C0A300B0C48B /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		76BEB68928C1C1FE00B0C48B /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		76BEB68B28C1C23200B0C48B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		76BEB68D28C1C3E600B0C48B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		76BEB69028C1C76900B0C48B /* UsernameValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameValidation.swift; sourceTree = "<group>"; };
+		76CD374728C1D93C004AEE97 /* PasswordValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidation.swift; sourceTree = "<group>"; };
+		76CD374928C1DA0C004AEE97 /* ConfirmPasswordValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordValidation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +57,10 @@
 		76BEB66328C1C09C00B0C48B = {
 			isa = PBXGroup;
 			children = (
+				76CD374328C1CB49004AEE97 /* View */,
+				76BEB68F28C1C75300B0C48B /* Utility */,
+				76BEB68828C1C0F100B0C48B /* Model */,
+				76BEB68728C1C0BE00B0C48B /* ModelView */,
 				76BEB66828C1C09C00B0C48B /* Shared */,
 				76BEB67728C1C0A300B0C48B /* macOS */,
 				76BEB67128C1C0A300B0C48B /* Products */,
@@ -54,7 +70,7 @@
 		76BEB66828C1C09C00B0C48B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				76BEB66928C1C09C00B0C48B /* TinderAppApp.swift */,
+				76BEB66928C1C09C00B0C48B /* TinderApp.swift */,
 				76BEB66A28C1C09C00B0C48B /* ContentView.swift */,
 				76BEB66B28C1C0A300B0C48B /* Assets.xcassets */,
 			);
@@ -78,6 +94,40 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
+		76BEB68728C1C0BE00B0C48B /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+				76BEB68928C1C1FE00B0C48B /* UserViewModel.swift */,
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
+		76BEB68828C1C0F100B0C48B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				76BEB68B28C1C23200B0C48B /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		76BEB68F28C1C75300B0C48B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				76BEB69028C1C76900B0C48B /* UsernameValidation.swift */,
+				76CD374728C1D93C004AEE97 /* PasswordValidation.swift */,
+				76CD374928C1DA0C004AEE97 /* ConfirmPasswordValidation.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		76CD374328C1CB49004AEE97 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				76BEB68D28C1C3E600B0C48B /* SignUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -94,6 +144,8 @@
 			dependencies = (
 			);
 			name = "TinderApp (iOS)";
+			packageProductDependencies = (
+			);
 			productName = "TinderApp (iOS)";
 			productReference = 76BEB67028C1C0A300B0C48B /* TinderApp.app */;
 			productType = "com.apple.product-type.application";
@@ -142,6 +194,8 @@
 				Base,
 			);
 			mainGroup = 76BEB66328C1C09C00B0C48B;
+			packageReferences = (
+			);
 			productRefGroup = 76BEB67128C1C0A300B0C48B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -176,8 +230,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76BEB68C28C1C23200B0C48B /* User.swift in Sources */,
+				76BEB68A28C1C1FE00B0C48B /* UserViewModel.swift in Sources */,
+				76BEB69128C1C76900B0C48B /* UsernameValidation.swift in Sources */,
 				76BEB67B28C1C0A300B0C48B /* ContentView.swift in Sources */,
-				76BEB67928C1C0A300B0C48B /* TinderAppApp.swift in Sources */,
+				76BEB68E28C1C3E600B0C48B /* SignUpView.swift in Sources */,
+				76CD374828C1D93C004AEE97 /* PasswordValidation.swift in Sources */,
+				76CD374A28C1DA0C004AEE97 /* ConfirmPasswordValidation.swift in Sources */,
+				76BEB67928C1C0A300B0C48B /* TinderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76BEB67C28C1C0A300B0C48B /* ContentView.swift in Sources */,
-				76BEB67A28C1C0A300B0C48B /* TinderAppApp.swift in Sources */,
+				76BEB67A28C1C0A300B0C48B /* TinderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
