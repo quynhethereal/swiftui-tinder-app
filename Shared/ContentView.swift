@@ -14,9 +14,11 @@ struct ContentView: View {
     var body: some View {
         
         if userAuth.loggedInSuccessfully {
-            HomeView()
+//            HomeView()
+            ProfileRegistrationView().environmentObject(userAuth)
         } else {
             SignInView().environmentObject(userAuth)
+           
         }
     }
 }
