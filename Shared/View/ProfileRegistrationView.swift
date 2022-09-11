@@ -12,6 +12,7 @@ struct ProfileRegistrationView: View {
     @StateObject var viewModel = ProfileRegistrationViewModel()
     @EnvironmentObject var userViewModel: UserSignInViewModel
     
+    
     var body: some View {
         Form {
             List {

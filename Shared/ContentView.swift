@@ -17,7 +17,8 @@ struct ContentView: View {
 //            HomeView()
             ProfileRegistrationView().environmentObject(userAuth)
         } else {
-            SignInView().environmentObject(userAuth)
+//            SignInView().environmentObject(userAuth)
+            AddImageView()
            
         }
     }

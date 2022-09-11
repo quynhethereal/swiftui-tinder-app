@@ -13,6 +13,7 @@ import CoreData
 
 class ProfileRegistrationViewModel : ObservableObject{
     @Published var userProfile = UserProfile()
+    @Published var countAddedImage: Int = 0
     private let db = Firestore.firestore()
     //    private let storage = Storage.storage().reference()
     private var userId: String? {

@@ -73,6 +73,15 @@
       }
     },
     {
+      "identity" : "imagepickerview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rebeloper/ImagePickerView.git",
+      "state" : {
+        "revision" : "6e74ef7dc0746dc68e217132b33f963103f10cef",
+        "version" : "0.2.0"
+      }
+    },
+    {
       "identity" : "leveldb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/leveldb.git",

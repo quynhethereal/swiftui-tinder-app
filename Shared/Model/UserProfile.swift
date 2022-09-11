@@ -16,7 +16,7 @@ struct UserProfile: Identifiable, Codable {
     var age: Int{
         return Date().years(from: birthDate)
     }
-    
+    var images: [String] = [String]()
     //    init(){
     //        self.name = ""
     //        self.birthDate =  Date(timeIntervalSinceReferenceDate: -123456789.0)
@@ -31,6 +31,7 @@ struct UserProfile: Identifiable, Codable {
         case preferredTopic
         case orientation
         case age
+//        case images
     }
     
     init() { }
@@ -42,6 +43,7 @@ struct UserProfile: Identifiable, Codable {
         birthDate = try values.decode(Date.self, forKey: .birthDate)
         preferredTopic = try values.decode(Array.self, forKey: .preferredTopic)
         orientation = try values.decode(Orientation.self, forKey: .orientation)
+//        images = try values.decode(Array.self, forKey: .images)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -51,6 +53,7 @@ struct UserProfile: Identifiable, Codable {
         try container.encode(id, forKey: .id)
         try container.encode(orientation, forKey: .orientation)
         try container.encode(preferredTopic, forKey: .preferredTopic)
+//        try container.encode(images, forKey: .images)
     }
 }
 

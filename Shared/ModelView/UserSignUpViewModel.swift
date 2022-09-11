@@ -131,7 +131,7 @@ class UserSignUpViewModel : ObservableObject{
             .map { _password in
                 if _password.isEmpty{
                     return .emptyPassword
-                } else if _password.count <= 3 {
+                } else if _password.count <= 5 {
                     return .lessThanFiveCharacters
                 }
                 else {

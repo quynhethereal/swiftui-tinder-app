@@ -16,7 +16,7 @@ public enum PasswordValidation {
         case .emptyPassword:
             return "Please enter a password"
         case .lessThanFiveCharacters:
-            return "Less than 3 characters"
+            return "Less than 5 characters"
         case .validPassword:
             return nil
         }

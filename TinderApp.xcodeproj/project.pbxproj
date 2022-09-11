@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7601171828CD9B08000D2898 /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7601171728CD9B08000D2898 /* AddImageView.swift */; };
+		7601171928CD9B09000D2898 /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7601171728CD9B08000D2898 /* AddImageView.swift */; };
+		7601171F28CDA351000D2898 /* ImagePickerView in Frameworks */ = {isa = PBXBuildFile; productRef = 7601171E28CDA351000D2898 /* ImagePickerView */; };
+		76BA710228CDBC1000142E7F /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA710128CDBC1000142E7F /* Modifiers.swift */; };
 		76BEB67928C1C0A300B0C48B /* TinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66928C1C09C00B0C48B /* TinderApp.swift */; };
 		76BEB67A28C1C0A300B0C48B /* TinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66928C1C09C00B0C48B /* TinderApp.swift */; };
 		76BEB67B28C1C0A300B0C48B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66A28C1C09C00B0C48B /* ContentView.swift */; };
@@ -62,6 +66,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7601171728CD9B08000D2898 /* AddImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageView.swift; sourceTree = "<group>"; };
+		76BA710128CDBC1000142E7F /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		76BEB66928C1C09C00B0C48B /* TinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderApp.swift; sourceTree = "<group>"; };
 		76BEB66A28C1C09C00B0C48B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		76BEB66B28C1C0A300B0C48B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 				76CD375A28C1E915004AEE97 /* FirebaseAppCheck in Frameworks */,
 				76CD375828C1E915004AEE97 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				76CD375E28C1E915004AEE97 /* FirebaseAuth in Frameworks */,
+				7601171F28CDA351000D2898 /* ImagePickerView in Frameworks */,
 				76CD376228C1E915004AEE97 /* FirebaseCrashlytics in Frameworks */,
 				76CD378228C1E915004AEE97 /* FirebaseRemoteConfigSwift in Frameworks */,
 				76CD377428C1E915004AEE97 /* FirebaseInAppMessaging-Beta in Frameworks */,
@@ -128,6 +135,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		76BA710028CDBBFC00142E7F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				76BA710128CDBC1000142E7F /* Modifiers.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		76BEB66328C1C09C00B0C48B = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +155,7 @@
 		76BEB66828C1C09C00B0C48B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				76BA710028CDBBFC00142E7F /* Helper */,
 				76CD379328C3240E004AEE97 /* Extensions */,
 				76CD374D28C1E7D3004AEE97 /* GoogleService-Info.plist */,
 				76CD374328C1CB49004AEE97 /* View */,
@@ -205,6 +221,7 @@
 				76CD374B28C1E61D004AEE97 /* SignInView.swift */,
 				76CD378A28C200B7004AEE97 /* HomeView.swift */,
 				76CD378D28C31FAC004AEE97 /* ProfileRegistrationView.swift */,
+				7601171728CD9B08000D2898 /* AddImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +278,7 @@
 				76CD378128C1E915004AEE97 /* FirebaseRemoteConfigSwift */,
 				76CD378328C1E915004AEE97 /* FirebaseStorage */,
 				76CD378528C1E915004AEE97 /* FirebaseStorageCombine-Community */,
+				7601171E28CDA351000D2898 /* ImagePickerView */,
 			);
 			productName = "TinderApp (iOS)";
 			productReference = 76BEB67028C1C0A300B0C48B /* TinderApp.app */;
@@ -312,6 +330,7 @@
 			mainGroup = 76BEB66328C1C09C00B0C48B;
 			packageReferences = (
 				76CD375028C1E915004AEE97 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7601171D28CDA351000D2898 /* XCRemoteSwiftPackageReference "ImagePickerView" */,
 			);
 			productRefGroup = 76BEB67128C1C0A300B0C48B /* Products */;
 			projectDirPath = "";
@@ -352,6 +371,7 @@
 				76CD374C28C1E61D004AEE97 /* SignInView.swift in Sources */,
 				76CD378828C1F313004AEE97 /* UserSignInViewModel.swift in Sources */,
 				76BEB68C28C1C23200B0C48B /* UserProfile.swift in Sources */,
+				7601171828CD9B08000D2898 /* AddImageView.swift in Sources */,
 				76CD378E28C31FAC004AEE97 /* ProfileRegistrationView.swift in Sources */,
 				76BEB68A28C1C1FE00B0C48B /* UserSignUpViewModel.swift in Sources */,
 				76BEB69128C1C76900B0C48B /* UsernameValidation.swift in Sources */,
@@ -360,6 +380,7 @@
 				76BEB67B28C1C0A300B0C48B /* ContentView.swift in Sources */,
 				76BEB68E28C1C3E600B0C48B /* SignUpView.swift in Sources */,
 				76CD374828C1D93C004AEE97 /* PasswordValidation.swift in Sources */,
+				76BA710228CDBC1000142E7F /* Modifiers.swift in Sources */,
 				76CD374A28C1DA0C004AEE97 /* ConfirmPasswordValidation.swift in Sources */,
 				76BEB67928C1C0A300B0C48B /* TinderApp.swift in Sources */,
 				76CD379528C32421004AEE97 /* SwiftExtensions.swift in Sources */,
@@ -374,6 +395,7 @@
 				76CD379228C3212C004AEE97 /* ProfileRegistrationViewModel.swift in Sources */,
 				76CD378F28C31FAC004AEE97 /* ProfileRegistrationView.swift in Sources */,
 				76CD378C28C200B8004AEE97 /* HomeView.swift in Sources */,
+				7601171928CD9B09000D2898 /* AddImageView.swift in Sources */,
 				76BEB67A28C1C0A300B0C48B /* TinderApp.swift in Sources */,
 				76CD378928C1F313004AEE97 /* UserSignInViewModel.swift in Sources */,
 				76CD379628C32421004AEE97 /* SwiftExtensions.swift in Sources */,
@@ -636,6 +658,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7601171D28CDA351000D2898 /* XCRemoteSwiftPackageReference "ImagePickerView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rebeloper/ImagePickerView.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.2.0;
+			};
+		};
 		76CD375028C1E915004AEE97 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -647,6 +677,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7601171E28CDA351000D2898 /* ImagePickerView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7601171D28CDA351000D2898 /* XCRemoteSwiftPackageReference "ImagePickerView" */;
+			productName = ImagePickerView;
+		};
 		76CD375128C1E915004AEE97 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 76CD375028C1E915004AEE97 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
