@@ -15,11 +15,21 @@ struct ContentView: View {
         
         if userAuth.loggedInSuccessfully {
 //            HomeView()
+<<<<<<< HEAD
 //            ProfileRegistrationView().environmentObject(userAuth)
             AddImageView()
         } else {
             SignInView().environmentObject(userAuth)
 //            AddImageView()
+=======
+            ProfileRegistrationView().environmentObject(userAuth)
+        } else {
+//            SignInView().environmentObject(userAuth)
+//            AddImageView()
+            InputBirthDay()
+            //MyFavouriteView().environmentObject(userAuth)
+            //ProfileRegistrationView().environmentObject(userAuth)
+>>>>>>> eb77f0b (birthdate)
            
         }
     }

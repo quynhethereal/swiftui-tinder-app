@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ProfileRegistrationView: View {
+    
     @State var sourceItems: [String] = ["Movies", "Sports", "Study", "Travel", "Books"]
     @StateObject var viewModel = ProfileRegistrationViewModel()
     @EnvironmentObject var userViewModel: UserSignInViewModel
-    
     
     var body: some View {
         Form {

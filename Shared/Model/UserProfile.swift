@@ -10,12 +10,15 @@ import Foundation
 struct UserProfile: Identifiable, Codable {
     var id = UUID()
     var name: String = ""
-    var birthDate: Date =  Date(timeIntervalSinceReferenceDate: -123456789.0)
+    var birthDate: Date! =  Date(timeIntervalSinceReferenceDate: -123456789.0)
+    
     var preferredTopic :[String] = [String]()
     var orientation: Orientation = Orientation.both
     var age: Int{
         return Date().years(from: birthDate)
     }
+
+    
     var images: [String] = [String]()
     //    init(){
     //        self.name = ""

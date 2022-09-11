@@ -13,6 +13,9 @@ import FirebaseStorage
 
 class ProfileRegistrationViewModel : ObservableObject{
     @Published var userProfile = UserProfile()
+    @Published var name = ""
+    @Published var gender = ""
+    @Published var favouriteArray: [String] = []
     @Published var countAddedImage: Int = 0
     private let db = Firestore.firestore()
     //    private let storage = Storage.storage().reference()
@@ -21,9 +24,21 @@ class ProfileRegistrationViewModel : ObservableObject{
         
     }
     
+    func addBithDay(date:String) {
+        var str = date
+        str.insert(contentsOf: "/", at: str.index(str.startIndex, offsetBy: 2))
+        str.insert(contentsOf: "/", at: str.index(str.startIndex, offsetBy: 5))
+        print(str)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        userProfile.birthDate = dateFormatter.date(from: str)
+        print(userProfile.birthDate!)
+    }
+    
     func addTopic(topic: String) {
         userProfile.preferredTopic.append(topic)
     }
+    
     
     
     func createNewProfile(userProfile: UserProfile, completion: @escaping (Error?) -> ()) {
