@@ -14,7 +14,7 @@ struct AddImageView: View {
     @State private var disableButton: Bool = true
     
     @State var isImagePickerViewPresented = false
-//    @State var pickedImages: [ImagePickerResult.SelectedImage]? = nil
+    //    @State var pickedImages: [ImagePickerResult.SelectedImage]? = nil
     @State var pickedImages: [UIImage]? = nil
     @State var didSelect: Bool = false
     
@@ -34,7 +34,7 @@ struct AddImageView: View {
                     ZStack {
                         Image("abc")
                             .resizable()
-//                            .modifier(ImageModifier())
+                        //                            .modifier(ImageModifier())
                             .overlay(
                                 Button {
                                     isImagePickerViewPresented = true
@@ -55,20 +55,16 @@ struct AddImageView: View {
                                             pickedImages = images
                                             
                                             if images.count >= 2{
-                                                print("here")
                                                 disableButton = false
                                             }
                                             
-                                            print("wtf")
                                             
                                         }, didFail: { (imagePickerError) in
                                             let phPickerViewController = imagePickerError.picker
                                             let error = imagePickerError.error
                                             print("Did Fail with error: \(error) in \(phPickerViewController)")
                                         }))
-                                        
                                     }
-        
                             )
                     }
                     .frame(width: 100, height: 160)
@@ -77,33 +73,7 @@ struct AddImageView: View {
                 }
                 Spacer().frame(height: 40)
                 HStack {
-                    //                            ZStack {
-                    //                                Image(viewModel.images[3])
-                    //                                    .resizable()
-                    //                                    .modifier(ImageModifier())
-                    //                                    .overlay(
-                    //                                        Button(action: {
-                    //                                            addOrDeleteImage(3, imageName: "vodka")
-                    //                                        }) {
-                    //                                            if !viewModel.images[3].contains("localimage") {
-                    //                                                LinearGradient(gradient: Gradient(colors: [Color("lightPink"), Color("lightRed")]), startPoint: .leading, endPoint: .trailing)
-                    //                                                            .mask(Image(systemName: "multiply.circle")
-                    //                                                            .resizable()
-                    //                                                            .aspectRatio(contentMode: .fit)
-                    //                                                )
-                    //                                            } else {
-                    //                                                LinearGradient(gradient: Gradient(colors: [Color("lightPink"), Color("lightRed")]), startPoint: .leading, endPoint: .trailing)
-                    //                                                            .mask(Image(systemName: "plus.circle.fill")
-                    //                                                            .resizable()
-                    //                                                            .aspectRatio(contentMode: .fit)
-                    //                                                )
-                    //                                            }
-                    //                                        }
-                    //                                        .modifier(AddImageButtonModifier()),
-                    //                                        alignment: .bottomTrailing
-                    //                                    )
-                    //                            }
-                    //                            .frame(width: 100, height: 160)
+                  
                     Spacer().frame(width: 30)
                     //                            ZStack {
                     //                                Image(viewModel.images[4])
@@ -166,7 +136,7 @@ struct AddImageView: View {
             Button {
                 
             } label: {
-                if disableButton == false {
+                if pickedImages?.count ?? 0 >= 2 {
                     Text("TIẾP TỤC")
                         .modifier(ButtonNextEnable())
                 } else {
@@ -195,7 +165,7 @@ struct AddImageView: View {
     
     
     func numberOfImages() -> Int {
-            return (pickedImages?.count ?? 0)
+        return (pickedImages?.count ?? 0)
     }
     
     
