@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ImagePickerView
+import FirebaseStorage
 
 struct AddImageView: View {
     @StateObject var viewModel = ProfileRegistrationViewModel()
@@ -73,7 +74,7 @@ struct AddImageView: View {
                 }
                 Spacer().frame(height: 40)
                 HStack {
-                  
+                    
                     Spacer().frame(width: 30)
                     //                            ZStack {
                     //                                Image(viewModel.images[4])
@@ -134,6 +135,7 @@ struct AddImageView: View {
             }
             Spacer()
             Button {
+                uploadtoFirebase()
                 
             } label: {
                 if pickedImages?.count ?? 0 >= 2 {
@@ -151,7 +153,6 @@ struct AddImageView: View {
         }
         .overlay(
             Button(action: {
-                
             }) {
                 Image("darkGrayBackButton")
                     .resizable()
@@ -168,16 +169,40 @@ struct AddImageView: View {
         return (pickedImages?.count ?? 0)
     }
     
-    
-    //            func addOrDeleteImage(_ position: Int, imageName: String) {
-    //                if viewModel.images[position].contains("localimage") {
-    //                    viewModel.images[position] = imageName
-    //                    viewModel.countAddedImage += 1
-    //                } else if !viewModel.images[position].contains("localimage") {
-    //                    viewModel.images[position] = "localimage"
-    //                    viewModel.countAddedImage -= 1
-    //                }
-    //            }
+    func uploadtoFirebase(){
+        
+        for (_,image) in pickedImages?.enumerated() ?? [].enumerated() {
+            if let data = image.jpegData(compressionQuality: 1.0) {
+                let storage = Storage.storage()
+                let storageRef = storage.reference()
+                // Create a reference to the file you want to upload
+                let directory = "uploads/"
+                
+                let filename = UUID().uuidString
+                
+                let newMetadata = StorageMetadata()
+                newMetadata.contentType = "image/jpeg"
+                
+                
+                let fileRef = storageRef.child(directory + "\(filename)")
+                
+                _ = fileRef.putData(data, metadata: newMetadata) { metadata, error in
+                    fileRef.downloadURL { (url, error) in
+                        
+                        if let error = error {
+                            
+                            print("Failed to retrieve download url: \(error)")
+                            return
+                        }
+                        
+                        viewModel.userProfile.images.append(url?.absoluteString ?? "errorURL")
+                        
+                    }
+                }
+            }
+        }
+        print(viewModel.userProfile.images)
+    }
 }
 
 struct AddImageView_Previews: PreviewProvider {

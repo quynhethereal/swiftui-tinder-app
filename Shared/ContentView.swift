@@ -15,10 +15,11 @@ struct ContentView: View {
         
         if userAuth.loggedInSuccessfully {
 //            HomeView()
-            ProfileRegistrationView().environmentObject(userAuth)
-        } else {
-//            SignInView().environmentObject(userAuth)
+//            ProfileRegistrationView().environmentObject(userAuth)
             AddImageView()
+        } else {
+            SignInView().environmentObject(userAuth)
+//            AddImageView()
            
         }
     }

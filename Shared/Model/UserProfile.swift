@@ -31,7 +31,7 @@ struct UserProfile: Identifiable, Codable {
         case preferredTopic
         case orientation
         case age
-//        case images
+        case images
     }
     
     init() { }
@@ -43,7 +43,7 @@ struct UserProfile: Identifiable, Codable {
         birthDate = try values.decode(Date.self, forKey: .birthDate)
         preferredTopic = try values.decode(Array.self, forKey: .preferredTopic)
         orientation = try values.decode(Orientation.self, forKey: .orientation)
-//        images = try values.decode(Array.self, forKey: .images)
+        images = try values.decode(Array.self, forKey: .images)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -53,7 +53,7 @@ struct UserProfile: Identifiable, Codable {
         try container.encode(id, forKey: .id)
         try container.encode(orientation, forKey: .orientation)
         try container.encode(preferredTopic, forKey: .preferredTopic)
-//        try container.encode(images, forKey: .images)
+        try container.encode(images, forKey: .images)
     }
 }
 

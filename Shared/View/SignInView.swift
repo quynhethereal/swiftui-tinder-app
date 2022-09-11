@@ -44,10 +44,13 @@ struct SignInView: View {
                                 .frame(width: 25, height: 25)
                                 .padding(.leading, 10)
                             Section {
-                                    TextField("Username", text: $userViewModel.username).frame(maxWidth: .infinity, minHeight: 55)
+                                    TextField("", text: $userViewModel.username).frame(maxWidth: .infinity, minHeight: 55)
                                     .foregroundColor(.white)
                                         .font(.system(size: 17, design: .default))
                                         .autocapitalization(.none)
+                                        .placeholder(when: userViewModel.username.isEmpty){
+                                            Text("Username").foregroundColor(.white).opacity(0.5)
+                                        }
                                 }
                             Spacer()
                         }
@@ -56,7 +59,7 @@ struct SignInView: View {
                                         .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
                         ).padding(.horizontal, 3)
                     Text(userViewModel.userNameError ?? "" )
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white)
                     Spacer().frame(height: 15)
                     
                     //MARK: - PASSWORD
@@ -69,9 +72,11 @@ struct SignInView: View {
                                 .frame(width: 25, height: 25)
                                 .padding(.leading, 10)
                             Section {
-                                    SecureField("Password", text: $userViewModel.password).frame(maxWidth: .infinity, minHeight: 55)
-                                        .tint(.white)
+                                    SecureField("", text: $userViewModel.password).frame(maxWidth: .infinity, minHeight: 55)
                                         .font(.system(size: 17, weight: .medium, design: .default))
+                                        .placeholder(when: userViewModel.password.isEmpty){
+                                            Text("Password").foregroundColor(.white).opacity(0.5)
+                                        }
 
                                 }
                             Spacer()
@@ -81,17 +86,18 @@ struct SignInView: View {
                                         .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
                         ).padding(.horizontal, 3)
                     Text(userViewModel.passwordError ?? "" )
-            .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white)
                     Spacer().frame(height: 15)
                     
                     //MARK: - SIGN IN BUTTON
                     Button(action: {signIn()},
                     label: {
                         HStack {
-                            Text("SIGN IN")
+                            Text("SIGN IN").foregroundColor(.white)
                                 .frame(maxWidth: .infinity, minHeight: 55)
                                 .tint(.white)
                                 .font(.system(size: 20, weight: .medium, design: .default))
+                                
                             Spacer()
                         }
                         .overlay(
