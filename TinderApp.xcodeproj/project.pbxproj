@@ -11,12 +11,11 @@
 		7601171928CD9B09000D2898 /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7601171728CD9B08000D2898 /* AddImageView.swift */; };
 		7601171F28CDA351000D2898 /* ImagePickerView in Frameworks */ = {isa = PBXBuildFile; productRef = 7601171E28CDA351000D2898 /* ImagePickerView */; };
 		76BA710228CDBC1000142E7F /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA710128CDBC1000142E7F /* Modifiers.swift */; };
+		76BA710428CDCFB600142E7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76BA710328CDCFB500142E7F /* Assets.xcassets */; };
 		76BEB67928C1C0A300B0C48B /* TinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66928C1C09C00B0C48B /* TinderApp.swift */; };
 		76BEB67A28C1C0A300B0C48B /* TinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66928C1C09C00B0C48B /* TinderApp.swift */; };
 		76BEB67B28C1C0A300B0C48B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66A28C1C09C00B0C48B /* ContentView.swift */; };
 		76BEB67C28C1C0A300B0C48B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66A28C1C09C00B0C48B /* ContentView.swift */; };
-		76BEB67D28C1C0A300B0C48B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76BEB66B28C1C0A300B0C48B /* Assets.xcassets */; };
-		76BEB67E28C1C0A300B0C48B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76BEB66B28C1C0A300B0C48B /* Assets.xcassets */; };
 		76BEB68A28C1C1FE00B0C48B /* UserSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB68928C1C1FE00B0C48B /* UserSignUpViewModel.swift */; };
 		76BEB68C28C1C23200B0C48B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB68B28C1C23200B0C48B /* UserProfile.swift */; };
 		76BEB68E28C1C3E600B0C48B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB68D28C1C3E600B0C48B /* SignUpView.swift */; };
@@ -68,9 +67,9 @@
 /* Begin PBXFileReference section */
 		7601171728CD9B08000D2898 /* AddImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageView.swift; sourceTree = "<group>"; };
 		76BA710128CDBC1000142E7F /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		76BA710328CDCFB500142E7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76BEB66928C1C09C00B0C48B /* TinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderApp.swift; sourceTree = "<group>"; };
 		76BEB66A28C1C09C00B0C48B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		76BEB66B28C1C0A300B0C48B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76BEB67028C1C0A300B0C48B /* TinderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BEB67628C1C0A300B0C48B /* TinderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BEB67828C1C0A300B0C48B /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
@@ -146,6 +145,7 @@
 		76BEB66328C1C09C00B0C48B = {
 			isa = PBXGroup;
 			children = (
+				76BA710328CDCFB500142E7F /* Assets.xcassets */,
 				76BEB66828C1C09C00B0C48B /* Shared */,
 				76BEB67728C1C0A300B0C48B /* macOS */,
 				76BEB67128C1C0A300B0C48B /* Products */,
@@ -164,7 +164,6 @@
 				76BEB68728C1C0BE00B0C48B /* ModelView */,
 				76BEB66928C1C09C00B0C48B /* TinderApp.swift */,
 				76BEB66A28C1C09C00B0C48B /* ContentView.swift */,
-				76BEB66B28C1C0A300B0C48B /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -347,7 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76BEB67D28C1C0A300B0C48B /* Assets.xcassets in Resources */,
+				76BA710428CDCFB600142E7F /* Assets.xcassets in Resources */,
 				76CD374E28C1E7D3004AEE97 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,7 +355,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76BEB67E28C1C0A300B0C48B /* Assets.xcassets in Resources */,
 				76CD374F28C1E7D3004AEE97 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

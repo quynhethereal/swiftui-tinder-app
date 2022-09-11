@@ -16,23 +16,113 @@ struct SignInView: View {
     @State var failureMessage: String = "ab"
     
     var body: some View {
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [Color("lightPink"), Color("lightRed")]), startPoint: .leading, endPoint: .trailing)
+                    .edgesIgnoringSafeArea(.all)
+                VStack {
+                    Spacer()
+                    //MARK: - LOGO
+                    Image("tinderLabel")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(minWidth: 150, idealWidth: 200, maxWidth: 200, alignment: .center)
+                        .padding(.vertical, 70)
+                    //MARK: - LABEL
+                    Text(userViewModel.getAttributedString("Khi nhấn Tạo Tài Khoản hoặc Đăng Nhập, bạn đồng ý với Điều Khoản của chúng tôi. Tìm hiểu về cách chúng tôi xử lý dữ liệu của bạn trong Chính sách Quyền Riêng Tư và Chính sách Cookie của chúng tôi."))
+                        .font(.system(size: 17, weight: .medium, design: .default))
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 20)
+                    
+                    //MARK: - USERNAME
+                    
+                        HStack {
+                            Spacer()
+                            Image("google")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 25, height: 25)
+                                .padding(.leading, 10)
+                            Section {
+                                    TextField("Username", text: $userViewModel.username).frame(maxWidth: .infinity, minHeight: 55)
+                                    .foregroundColor(.white)
+                                        .font(.system(size: 17, design: .default))
+                                        .autocapitalization(.none)
+                                }
+                            Spacer()
+                        }
+                        .overlay(
+                            Capsule(style: .circular)
+                                        .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
+                        ).padding(.horizontal, 3)
+                    Text(userViewModel.userNameError ?? "" )
+                        .foregroundColor(.white.opacity(0.5))
+                    Spacer().frame(height: 15)
+                    
+                    //MARK: - PASSWORD
+                    
+                        HStack {
+                            Spacer()
+                            Image("facebook")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 25, height: 25)
+                                .padding(.leading, 10)
+                            Section {
+                                    SecureField("Password", text: $userViewModel.password).frame(maxWidth: .infinity, minHeight: 55)
+                                        .tint(.white)
+                                        .font(.system(size: 17, weight: .medium, design: .default))
+
+                                }
+                            Spacer()
+                        }
+                        .overlay(
+                            Capsule(style: .circular)
+                                        .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
+                        ).padding(.horizontal, 3)
+                    Text(userViewModel.passwordError ?? "" )
+            .foregroundColor(.white.opacity(0.5))
+                    Spacer().frame(height: 15)
+                    
+                    //MARK: - SIGN IN BUTTON
+                    Button(action: {signIn()},
+                    label: {
+                        HStack {
+                            Text("SIGN IN")
+                                .frame(maxWidth: .infinity, minHeight: 55)
+                                .tint(.white)
+                                .font(.system(size: 20, weight: .medium, design: .default))
+                            Spacer()
+                        }
+                        .overlay(
+                            Capsule(style: .circular)
+                                        .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
+                        )
+                    }).disabled(!userViewModel.isValid)
+                    .padding(.horizontal, 3)
+                    
+                    
+                    
+                }.alert(isPresented: $displayFailureAlert, content: {
+                    Alert(title: Text("Message"), message: Text(failureMessage), dismissButton: .destructive(Text("Ok")))
+                })
+                .overlay(
+                    //MARK: - BUTTON BACK
+                    Button(action: {
+                        
+                    }) {
+                      Image("grayBackButton")
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    .modifier(BackButtonModifier()),
+                    alignment: .topLeading
+                )
+                .padding(20)
+            }
         
-        Form {
-            Section(footer: Text(userViewModel.userNameError ?? "" ).foregroundColor(.red)) {
-                TextField("Username", text: $userViewModel.username)
-                    .autocapitalization(.none)
-            }
-            Section(footer: Text(userViewModel.passwordError ?? "" ).foregroundColor(.red)) {
-                SecureField("Password", text: $userViewModel.password)
-            }
-            Section {
-                Button(action: {signIn()}) {
-                    Text("Sign In")
-                }.disabled(!userViewModel.isValid)
-            }
-        }.alert(isPresented: $displayFailureAlert, content: {
-            Alert(title: Text("Message"), message: Text(failureMessage), dismissButton: .destructive(Text("Ok")))
-        })
+        
+        
     }
     
     func signIn(){
