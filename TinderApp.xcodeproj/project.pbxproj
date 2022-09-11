@@ -10,7 +10,6 @@
 		7601171828CD9B08000D2898 /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7601171728CD9B08000D2898 /* AddImageView.swift */; };
 		7601171928CD9B09000D2898 /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7601171728CD9B08000D2898 /* AddImageView.swift */; };
 		7601171F28CDA351000D2898 /* ImagePickerView in Frameworks */ = {isa = PBXBuildFile; productRef = 7601171E28CDA351000D2898 /* ImagePickerView */; };
-		76BA710228CDBC1000142E7F /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA710128CDBC1000142E7F /* Modifiers.swift */; };
 		76BA710428CDCFB600142E7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76BA710328CDCFB500142E7F /* Assets.xcassets */; };
 		76BEB67928C1C0A300B0C48B /* TinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66928C1C09C00B0C48B /* TinderApp.swift */; };
 		76BEB67A28C1C0A300B0C48B /* TinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEB66928C1C09C00B0C48B /* TinderApp.swift */; };
@@ -62,6 +61,15 @@
 		76CD379228C3212C004AEE97 /* ProfileRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD379028C3212C004AEE97 /* ProfileRegistrationViewModel.swift */; };
 		76CD379528C32421004AEE97 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD379428C32421004AEE97 /* SwiftExtensions.swift */; };
 		76CD379628C32421004AEE97 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD379428C32421004AEE97 /* SwiftExtensions.swift */; };
+		E0CC6BA328CDD5EE009C76BA /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA710128CDBC1000142E7F /* Modifiers.swift */; };
+		E0CC6BAE28CDD8CB009C76BA /* InputBirthDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC6BAA28CDD8CB009C76BA /* InputBirthDay.swift */; };
+		E0CC6BAF28CDD8CB009C76BA /* InputBirthDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC6BAA28CDD8CB009C76BA /* InputBirthDay.swift */; };
+		E0CC6BB028CDD8CB009C76BA /* ChooseGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC6BAB28CDD8CB009C76BA /* ChooseGenderView.swift */; };
+		E0CC6BB128CDD8CB009C76BA /* ChooseGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC6BAB28CDD8CB009C76BA /* ChooseGenderView.swift */; };
+		E0CC6BB228CDD8CB009C76BA /* MyFavouriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC6BAC28CDD8CB009C76BA /* MyFavouriteView.swift */; };
+		E0CC6BB328CDD8CB009C76BA /* MyFavouriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC6BAC28CDD8CB009C76BA /* MyFavouriteView.swift */; };
+		E0CC6BB428CDD8CB009C76BA /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC6BAD28CDD8CB009C76BA /* InputNameView.swift */; };
+		E0CC6BB528CDD8CB009C76BA /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC6BAD28CDD8CB009C76BA /* InputNameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +94,10 @@
 		76CD378D28C31FAC004AEE97 /* ProfileRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRegistrationView.swift; sourceTree = "<group>"; };
 		76CD379028C3212C004AEE97 /* ProfileRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRegistrationViewModel.swift; sourceTree = "<group>"; };
 		76CD379428C32421004AEE97 /* SwiftExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
+		E0CC6BAA28CDD8CB009C76BA /* InputBirthDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBirthDay.swift; sourceTree = "<group>"; };
+		E0CC6BAB28CDD8CB009C76BA /* ChooseGenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseGenderView.swift; sourceTree = "<group>"; };
+		E0CC6BAC28CDD8CB009C76BA /* MyFavouriteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavouriteView.swift; sourceTree = "<group>"; };
+		E0CC6BAD28CDD8CB009C76BA /* InputNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +228,7 @@
 		76CD374328C1CB49004AEE97 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E0CC6BA928CDD8B2009C76BA /* SignUpViewGroup */,
 				76BEB68D28C1C3E600B0C48B /* SignUpView.swift */,
 				76CD374B28C1E61D004AEE97 /* SignInView.swift */,
 				76CD378A28C200B7004AEE97 /* HomeView.swift */,
@@ -231,6 +244,17 @@
 				76CD379428C32421004AEE97 /* SwiftExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E0CC6BA928CDD8B2009C76BA /* SignUpViewGroup */ = {
+			isa = PBXGroup;
+			children = (
+				E0CC6BAB28CDD8CB009C76BA /* ChooseGenderView.swift */,
+				E0CC6BAA28CDD8CB009C76BA /* InputBirthDay.swift */,
+				E0CC6BAD28CDD8CB009C76BA /* InputNameView.swift */,
+				E0CC6BAC28CDD8CB009C76BA /* MyFavouriteView.swift */,
+			);
+			path = SignUpViewGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,19 +390,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0CC6BA328CDD5EE009C76BA /* Modifiers.swift in Sources */,
 				76CD374C28C1E61D004AEE97 /* SignInView.swift in Sources */,
+				E0CC6BB428CDD8CB009C76BA /* InputNameView.swift in Sources */,
 				76CD378828C1F313004AEE97 /* UserSignInViewModel.swift in Sources */,
 				76BEB68C28C1C23200B0C48B /* UserProfile.swift in Sources */,
 				7601171828CD9B08000D2898 /* AddImageView.swift in Sources */,
 				76CD378E28C31FAC004AEE97 /* ProfileRegistrationView.swift in Sources */,
+				E0CC6BB028CDD8CB009C76BA /* ChooseGenderView.swift in Sources */,
 				76BEB68A28C1C1FE00B0C48B /* UserSignUpViewModel.swift in Sources */,
 				76BEB69128C1C76900B0C48B /* UsernameValidation.swift in Sources */,
 				76CD378B28C200B8004AEE97 /* HomeView.swift in Sources */,
+				E0CC6BB228CDD8CB009C76BA /* MyFavouriteView.swift in Sources */,
 				76CD379128C3212C004AEE97 /* ProfileRegistrationViewModel.swift in Sources */,
 				76BEB67B28C1C0A300B0C48B /* ContentView.swift in Sources */,
 				76BEB68E28C1C3E600B0C48B /* SignUpView.swift in Sources */,
 				76CD374828C1D93C004AEE97 /* PasswordValidation.swift in Sources */,
-				76BA710228CDBC1000142E7F /* Modifiers.swift in Sources */,
+				E0CC6BAE28CDD8CB009C76BA /* InputBirthDay.swift in Sources */,
 				76CD374A28C1DA0C004AEE97 /* ConfirmPasswordValidation.swift in Sources */,
 				76BEB67928C1C0A300B0C48B /* TinderApp.swift in Sources */,
 				76CD379528C32421004AEE97 /* SwiftExtensions.swift in Sources */,
@@ -390,10 +418,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				76BEB67C28C1C0A300B0C48B /* ContentView.swift in Sources */,
+				E0CC6BAF28CDD8CB009C76BA /* InputBirthDay.swift in Sources */,
 				76CD379228C3212C004AEE97 /* ProfileRegistrationViewModel.swift in Sources */,
+				E0CC6BB328CDD8CB009C76BA /* MyFavouriteView.swift in Sources */,
 				76CD378F28C31FAC004AEE97 /* ProfileRegistrationView.swift in Sources */,
 				76CD378C28C200B8004AEE97 /* HomeView.swift in Sources */,
+				E0CC6BB528CDD8CB009C76BA /* InputNameView.swift in Sources */,
 				7601171928CD9B09000D2898 /* AddImageView.swift in Sources */,
+				E0CC6BB128CDD8CB009C76BA /* ChooseGenderView.swift in Sources */,
 				76BEB67A28C1C0A300B0C48B /* TinderApp.swift in Sources */,
 				76CD378928C1F313004AEE97 /* UserSignInViewModel.swift in Sources */,
 				76CD379628C32421004AEE97 /* SwiftExtensions.swift in Sources */,
@@ -519,6 +551,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5Y8JGVT739;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -532,7 +565,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.s3791159.TinderApp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.s3791159.TinderApp.dat;
 				PRODUCT_NAME = TinderApp;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -548,6 +581,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5Y8JGVT739;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -561,7 +595,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.s3791159.TinderApp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.s3791159.TinderApp.dat;
 				PRODUCT_NAME = TinderApp;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
