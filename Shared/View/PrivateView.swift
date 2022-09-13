@@ -15,7 +15,7 @@ struct PrivateView: View {
     var body: some View {
         ZStack {
             if UserDefaults.standard.bool(forKey: "userprofile") {
-                HomeView()
+                MainView()
             } else {
                 InputNameView().environmentObject(userProfile)
             }
