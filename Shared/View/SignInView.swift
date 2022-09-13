@@ -12,9 +12,10 @@ import FirebaseAuthCombineSwift
 
 struct SignInView: View {
     @EnvironmentObject var userViewModel: UserSignInViewModel
+    @StateObject var userProfile = ProfileRegistrationViewModel()
     @State var displayFailureAlert: Bool = false
     @State var failureMessage: String = "ab"
-    
+    @Binding var isActive: Bool
     var body: some View {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [Color("lightPink"), Color("lightRed")]), startPoint: .leading, endPoint: .trailing)
@@ -90,7 +91,9 @@ struct SignInView: View {
                     Spacer().frame(height: 15)
                     
                     //MARK: - SIGN IN BUTTON
-                    Button(action: {signIn()},
+                    Button(action: {
+                        signIn()
+                    },
                     label: {
                         HStack {
                             Text("SIGN IN").foregroundColor(.white)
@@ -115,7 +118,7 @@ struct SignInView: View {
                 .overlay(
                     //MARK: - BUTTON BACK
                     Button(action: {
-                        
+                        isActive = false
                     }) {
                       Image("grayBackButton")
                             .resizable()
@@ -133,7 +136,7 @@ struct SignInView: View {
     
     func signIn(){
         Auth.auth().signIn(withEmail: userViewModel.username, password: userViewModel.password) { (result, error) in
-
+            
             if let error = error {
                 print("There was an issue when trying to sign in: \(error)")
                 failureMessage = error.localizedDescription
@@ -145,11 +148,11 @@ struct SignInView: View {
                   print("No user")
                   return
                 }
-            print("Signed in as user \(user.uid), with email: \(user.email ?? "")")
+            userProfile.fetchUserProfile()
             userViewModel.loggedInSuccessfully = true
-            // TODO: remove this
-//            failureMessage = "haha"
-//            displayFailureAlert = true
+            print("Signed in as user \(user.uid), with email: \(user.email ?? "")")
+            UserDefaults.standard.set(userViewModel.loggedInSuccessfully, forKey: "userlogin")
+            
         }
     }
 }
@@ -159,6 +162,6 @@ struct SignInView: View {
 struct SignInView_Previews: PreviewProvider {
     static let signInViewModel = UserSignInViewModel()
     static var previews: some View {
-        SignInView().environmentObject(signInViewModel)
+        SignInView(isActive: .constant(true)).environmentObject(signInViewModel)
     }
 }

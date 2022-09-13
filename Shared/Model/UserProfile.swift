@@ -11,7 +11,7 @@ struct UserProfile: Identifiable, Codable {
     var id = UUID()
     var name: String = ""
     var birthDate: Date! =  Date(timeIntervalSinceReferenceDate: -123456789.0)
-    
+
     var preferredTopic :[String] = [String]()
     var orientation: Orientation = Orientation.both
     var age: Int{
@@ -20,12 +20,12 @@ struct UserProfile: Identifiable, Codable {
 
     
     var images: [String] = [String]()
-    //    init(){
-    //        self.name = ""
-    //        self.birthDate =  Date(timeIntervalSinceReferenceDate: -123456789.0)
-    //        self.preferredTopic = [String]()
-    //        self.orientation = Orientation.both
-    //    }
+//        init(){
+//            self.name = ""
+//            self.birthDate =  Date(timeIntervalSinceReferenceDate: -123456789.0)
+//            self.preferredTopic = [String]()
+//            self.orientation = Orientation.both
+//        }
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -37,7 +37,14 @@ struct UserProfile: Identifiable, Codable {
         case images
     }
     
-    init() { }
+    var dictionary: [String: Any] {
+        let data = (try? JSONEncoder().encode(self)) ?? Data()
+        return (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]) ?? [:]
+    }
+    
+    init() {
+        
+    }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -52,12 +59,17 @@ struct UserProfile: Identifiable, Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(birthDate, forKey: .birthDate)
+        
+        try container.encode(name, forKey: .name)
+        
         try container.encode(age, forKey: .age)
         try container.encode(id, forKey: .id)
         try container.encode(orientation, forKey: .orientation)
         try container.encode(preferredTopic, forKey: .preferredTopic)
         try container.encode(images, forKey: .images)
     }
+    
+    
 }
 
 public enum Orientation: String, Codable, CaseIterable{

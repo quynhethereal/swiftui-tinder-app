@@ -13,88 +13,108 @@ struct InputBirthDay: View {
     enum FocusField: Hashable {
         case field
     }
-    
-    @StateObject var signUpVMGroup = ProfileRegistrationViewModel()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var signUpVMGroup : ProfileRegistrationViewModel
     @FocusState private var focusedField: FocusField?
     @State private var disableButton: Bool = true
     @State var birthDate = ""
-
+    @State private var selection: Int? = nil
+    
     
     let textLimit = 8
     
     var body: some View {
-        ZStack {
-            TextField("", text: $birthDate)
-                .focused($focusedField, equals: .field)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.focusedField = .field
-                    }
-                }
-                .onReceive(Just($birthDate)) {_ in limitText(textLimit) }
-                .keyboardType(.numberPad)
-            Color.white.ignoresSafeArea()
-            VStack {
-                Spacer().frame(height: 80)
-                HStack {
-                    Text("Sinh nhật\ncủa tôi là")
-                        .font(.system(size: 50, weight: .bold, design: .default))
-                        .padding(.leading, 50)
-                    Spacer()
-                }
-                Spacer().frame(height: 40)
-                HStack(spacing: 10) {
-                    ForEach(0..<8,id: \.self) { index in
-                        FormatDateTextFieldView(birthday: getElementAtIndex(index: index))
-                        if index == 1 || index == 3 {
-                            Text("/")
-                                .font(.title)
-                                .foregroundColor(Color.gray.opacity(0.5))
+        NavigationView {
+            ZStack {
+                TextField("", text: $birthDate)
+                    .focused($focusedField, equals: .field)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.focusedField = .field
                         }
                     }
-                }
-                .padding(.horizontal, 30)
-                Text("Tuổi của bạn sẽ được hiển thị công khai")
-                    .frame(width: 320)
-                    .font(.system(size: 17, weight: .bold, design: .default))
-                    .foregroundColor(Color("darkGrey"))
-                Spacer()
-                Button {
-                    signUpVMGroup.addBithDay(date: birthDate)
-                    
-                } label: {
-                    if birthDate == "" || birthDate.count < 8 {
-                        Text("TIẾP TỤC")
-                            .modifier(ButtonNextDisable())
-                    } else {
-                        Text("TIẾP TỤC")
-                            .modifier(ButtonNextEnable())
+                    .onReceive(Just($birthDate)) {_ in limitText(textLimit) }
+                    .keyboardType(.numberPad)
+                Color.white.ignoresSafeArea()
+                VStack {
+                    Spacer().frame(height: 80)
+                    HStack {
+                        Text("Sinh nhật\ncủa tôi là")
+                            .font(.system(size: 50, weight: .bold, design: .default))
+                            .padding(.leading, 50)
+                        Spacer()
                     }
+                    Spacer().frame(height: 40)
+                    HStack(spacing: 10) {
+                        ForEach(0..<8,id: \.self) { index in
+                            FormatDateTextFieldView(birthday: getElementAtIndex(index: index))
+                            if index == 1 || index == 3 {
+                                Text("/")
+                                    .font(.title)
+                                    .foregroundColor(Color.gray.opacity(0.5))
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 30)
+                    Text("Tuổi của bạn sẽ được hiển thị công khai")
+                        .frame(width: 320)
+                        .font(.system(size: 17, weight: .bold, design: .default))
+                        .foregroundColor(Color("darkGrey"))
+                    Spacer()
+                    NavigationLink(destination: ChooseGenderView(), tag: 1,selection: $selection) {
+                        Button {
+//                            if(disableButton == false) {
+//                                signUpVMGroup.addBithDay(date: birthDate)
+//                                self.selection = 1
+//                            }
+                            if(disableButton == true) {
+                                signUpVMGroup.addBithDay(date: birthDate)
+                                self.selection = 1
+                            }
+                            
+                            
+                        } label: {
+                            if birthDate == "" || birthDate.count < 8 {
+                                Text("TIẾP TỤC")
+                                    .modifier(ButtonNextDisable())
+                            } else {
+                                Text("TIẾP TỤC")
+                                    .modifier(ButtonNextEnable())
+                            }
+                            
+                        }
+                    }
+//                    .disabled(disableButton)
+//                    .padding(.horizontal, 30)
+//                    .onChange(of: self.birthDate, perform: { _ in
+//                        if !(birthDate == "" && birthDate.count == 8) {
+//                            self.disableButton = false
+//                        } else {
+//                            self.disableButton = true
+//                        }
+//                    })
+
                     
                 }
-                .disabled(disableButton)
-                .padding(.horizontal, 30)
-                .onChange(of: self.birthDate, perform: { _ in
-                    if !(birthDate == "" && birthDate.count == 8) {
-                        self.disableButton = false
-                    } else {
-                        self.disableButton = true
+                .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true)
+                .overlay(
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image("darkGrayBackButton")
+                            .resizable()
+                            .scaledToFit()
                     }
-                })
+                        .modifier(BackButtonModifier()),
+                    alignment: .topLeading
+                )
+                .padding(20)
             }
-            .overlay(
-                Button(action: {
-                    
-                }) {
-                  Image("darkGrayBackButton")
-                        .resizable()
-                        .scaledToFit()
-                }
-                .modifier(BackButtonModifier()),
-                alignment: .topLeading
-            )
-            .padding(20)
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
+        
     }
     func getElementAtIndex(index: Int) -> String {
         if birthDate.count > index {

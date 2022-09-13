@@ -7,32 +7,33 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuthCombineSwift
+
 
 struct ContentView: View {
     @StateObject var userAuth: UserSignInViewModel
+    let userProfile = ProfileRegistrationViewModel()
     
     var body: some View {
         
-        if userAuth.loggedInSuccessfully {
+        
+        if UserDefaults.standard.bool(forKey: "userlogin") {
 //            HomeView()
-<<<<<<< HEAD
 //            ProfileRegistrationView().environmentObject(userAuth)
-            AddImageView()
-        } else {
-            SignInView().environmentObject(userAuth)
 //            AddImageView()
-=======
-            ProfileRegistrationView().environmentObject(userAuth)
+            PrivateView(userProfile: userProfile)
+//                .environmentObject(userProfile)
+            
         } else {
 //            SignInView().environmentObject(userAuth)
 //            AddImageView()
-            InputBirthDay()
-            //MyFavouriteView().environmentObject(userAuth)
-            //ProfileRegistrationView().environmentObject(userAuth)
->>>>>>> eb77f0b (birthdate)
-           
+//            MyFavouriteView().environmentObject(userAuth)
+//            SignInView().environmentObject(userAuth)
+            PublicView()
+                .environmentObject(userAuth)
         }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -14,6 +14,7 @@ import Firebase
 struct SignUpView: View {
     
     @StateObject var userViewModel = UserSignUpViewModel()
+    @Binding var isActive: Bool
     
     var body: some View {
         Form {
@@ -29,6 +30,10 @@ struct SignUpView: View {
                 Button(action: {signUp()}) {
                     Text("Sign up")
                 }.disabled(!userViewModel.isValid)
+                
+                Button(action: {isActive = true}) {
+                    Text("Sign In View")
+                }
             }
         }
     }
@@ -44,6 +49,6 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignUpView(isActive: .constant(true))
     }
 }
