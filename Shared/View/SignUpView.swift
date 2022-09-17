@@ -29,7 +29,7 @@ struct SignUpView: View {
                     .frame(minWidth: 150, idealWidth: 200, maxWidth: 200, alignment: .center)
                     .padding(.vertical, 70)
 //                MARK: - LABEL
-                Text(userViewModel.getAttributedString("Khi nhấn Tạo Tài Khoản hoặc Đăng Nhập, bạn đồng ý với Điều Khoản của chúng tôi. Tìm hiểu về cách chúng tôi xử lý dữ liệu của bạn trong Chính sách Quyền Riêng Tư và Chính sách Cookie của chúng tôi."))
+                Text(userViewModel.getAttributedString("Khi nhấn SIGN UP, bạn đồng ý với Điều Khoản của chúng tôi. Tìm hiểu về cách chúng tôi xử lý dữ liệu của bạn trong Chính sách Quyền Riêng Tư và Chính sách Cookie của chúng tôi."))
                     .font(.system(size: 17, weight: .medium, design: .default))
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
@@ -127,9 +127,9 @@ struct SignUpView: View {
                     )
                 }).disabled(!userViewModel.isValid)
                 .padding(.horizontal, 3)
-                HStack{
+                VStack{
                     Text("Already have account ?").foregroundColor(.white)
-                        .frame(maxWidth: .infinity, minHeight: 55)
+                        .frame(maxWidth: .infinity, minHeight: 20)
                         .tint(.white)
                         .font(.system(size: 20, weight: .medium, design: .default))
                     Button(action: {isActive = true},
@@ -138,7 +138,7 @@ struct SignUpView: View {
                                 .tint(.white)
                                 .font(.system(size: 20, weight: .medium, design: .default))
                     })
-                }.padding(.horizontal, 40)
+                }
             }
             }
             .padding(20)

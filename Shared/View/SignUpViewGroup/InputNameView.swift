@@ -87,7 +87,7 @@ struct InputNameView: View {
                             }
                             
                         } label: {
-                            if signUpVMGroup.name.isEmpty {
+                            if name.isEmpty {
                                 Text("TIẾP TỤC")
                                     .modifier(ButtonNextDisable())
                             } else {
