@@ -27,17 +27,7 @@ class ProfileRegistrationViewModel : ObservableObject{
     }
     
     func addBithDay(date:Date) {
-//        var str = "29011997"
-////        var str = date
-//        str.insert(contentsOf: "/", at: str.index(str.startIndex, offsetBy: 2))
-//        str.insert(contentsOf: "/", at: str.index(str.startIndex, offsetBy: 5))
-//        print(str)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd/MM/yyyy"
-//        userProfile.birthDate = dateFormatter.date(from: str)
-//        print(name)
-//        print(userProfile.name)
-//        print(userProfile.birthDate!)
+
         userProfile.birthDate = date
     }
     

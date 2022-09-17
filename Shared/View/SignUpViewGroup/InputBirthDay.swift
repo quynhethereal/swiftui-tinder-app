@@ -61,7 +61,7 @@ struct InputBirthDay: View {
 //                                self.selection = 1
 //                            }
                             if(disableButton == true) {
-                                signUpVMGroup.birthDay = birthDate
+                                signUpVMGroup.addBithDay(date: birthDate)
                                 self.selection = 1
                             }
                             
