@@ -29,8 +29,6 @@ class ChatViewModel: ObservableObject {
         currentUserDocument.getDocument { (document, error) in
             
             let matches = document!.get("matches") as! [String]
-            print("vloz luon")
-            print(matches)
             
             if (matches.isEmpty){
                 return
@@ -42,13 +40,18 @@ class ChatViewModel: ObservableObject {
                     documentQuery.getDocuments{ (matchMatcherSnapshot, error) in
                         for doc in matchMatcherSnapshot!.documents {
                             var matchedMatcher = Matcher()
-                            matchedMatcher.id = doc.get("id") as! String
-                            matchedMatcher.images = doc.get("images") as! [String]
-                            matchedMatcher.name = doc.get("name") as! String
-                            matchedMatcher.gender = doc.get("orientation") as! String
-                            matchedMatcher.preferredTopic = doc.get("preferredTopic") as! [String]
-                            matchedMatcher.age = doc.get("age") as! Int
-                            self.allMatches.append(matchedMatcher)
+                            if((self.allMatches.first {$0.id == doc.get("id") as! String}) == nil) {
+                                matchedMatcher.id = doc.get("id") as! String
+                                matchedMatcher.images = doc.get("images") as! [String]
+                                matchedMatcher.name = doc.get("name") as! String
+                                matchedMatcher.gender = doc.get("orientation") as! String
+                                matchedMatcher.preferredTopic = doc.get("preferredTopic") as! [String]
+                                matchedMatcher.age = doc.get("age") as! Int
+                                self.allMatches.append(matchedMatcher)
+                            } else {
+                                continue
+                            }
+                            
                             
                         }
                     }

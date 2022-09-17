@@ -67,7 +67,7 @@ struct MainView: View {
         .onAppear() {
             mainViewModel.getAllUser()
             mainViewModel.getLoginUser()
-//            chatViewModel.getAllMatchesProfiles()
+            chatViewModel.getAllMatchesProfiles()
 
         }
         .edgesIgnoringSafeArea(.bottom)
