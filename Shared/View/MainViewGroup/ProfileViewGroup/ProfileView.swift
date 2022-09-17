@@ -33,26 +33,26 @@ struct ProfileView: View {
                         .zIndex(1.0)
                     Spacer().frame(height: 20)
 
-                    
-                    AsyncImage(url: URL(string: mainViewModel.userProfile.images[0])) { image in
-                        image
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            .clipShape(Circle())
-                            .background(
-                                Circle().fill(Color.white).scaleEffect(3)
-                            )
-                            
-                            
-                    } placeholder: {
-                        Image(systemName: "photo")
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            .clipShape(Circle())
-                            .background(
-                                Circle().fill(Color.white).scaleEffect(3)
-                            )
-                    }
+                    AsyncImage(url: URL(string: mainViewModel.userProfile.images[0]), content: view)
+//                    AsyncImage(url: URL(string: mainViewModel.userProfile.images[0])) { image in
+//                        image
+//                            .resizable()
+//                            .frame(width: 200, height: 200)
+//                            .clipShape(Circle())
+//                            .background(
+//                                Circle().fill(Color.white).scaleEffect(3)
+//                            )
+//
+//
+//                    } placeholder: {
+//                        Image(systemName: "photo")
+//                            .resizable()
+//                            .frame(width: 200, height: 200)
+//                            .clipShape(Circle())
+//                            .background(
+//                                Circle().fill(Color.white).scaleEffect(3)
+//                            )
+//                    }
 
 
                     
@@ -136,6 +136,42 @@ struct ProfileView: View {
                 }
                 Spacer()
             }
+        }
+    }
+    @ViewBuilder
+    private func view(for phase: AsyncImagePhase) -> some View {
+        switch phase {
+        case .empty:
+                HStack{
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+                .frame(width: 200, height: 200)
+                .clipShape(Circle())
+                .background(
+                    Circle().fill(Color.white).scaleEffect(3)
+                )
+            
+        case .success(let image):
+            image
+                    .frame(width: 200, height: 200)
+                    .clipShape(Circle())
+                    .background(
+                        Circle().fill(Color.white).scaleEffect(3)
+                    )
+        case .failure(let error):
+            VStack(spacing: 16) {
+                Image(systemName: "xmark.octagon.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(.red)
+                Text(error.localizedDescription)
+                    .multilineTextAlignment(.center)
+            }
+        @unknown default:
+            Text("Unknown")
+                .foregroundColor(.gray)
         }
     }
 }
@@ -238,6 +274,8 @@ struct SettingView: View {
             )
         }
     }
+    
+
 }
 
 struct ProfileViewMiddle: View {

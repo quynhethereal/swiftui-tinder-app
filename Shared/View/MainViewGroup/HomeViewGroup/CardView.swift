@@ -20,22 +20,6 @@ struct CardView: View {
             VStack {
                 Spacer()
                 AsyncImage(url: URL(string: matcher.images[0]), content: view)
-//                AsyncImage(url: URL(string: matcher.images[0])) { image in
-//                    image
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .clipped()
-//                } placeholder: {
-//                    Image(systemName: "photo")
-//                        .resizable()
-//                        .imageScale(.large)
-//                        .aspectRatio(contentMode: .fit)
-//                        .clipped()
-//
-//                }
-//                .ignoresSafeArea()
-//                .foregroundColor(Color(.black))
-                
                 Spacer()
             }
             .background(.white)
@@ -116,7 +100,12 @@ struct CardView: View {
     private func view(for phase: AsyncImagePhase) -> some View {
         switch phase {
         case .empty:
-            ProgressView()
+                HStack{
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+            
         case .success(let image):
             image
                 .resizable()
@@ -124,6 +113,8 @@ struct CardView: View {
         case .failure(let error):
             VStack(spacing: 16) {
                 Image(systemName: "xmark.octagon.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .foregroundColor(.red)
                 Text(error.localizedDescription)
                     .multilineTextAlignment(.center)
