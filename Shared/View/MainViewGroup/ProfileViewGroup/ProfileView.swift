@@ -32,16 +32,41 @@ struct ProfileView: View {
                         .padding(.top, 22)
                         .zIndex(1.0)
                     Spacer().frame(height: 20)
-                    Image("vodka")
-                        .resizable()
-                        .frame(width: 200, height: 200)
-                        .clipShape(Circle())
-                        .background(
-                            Circle().fill(Color.white).scaleEffect(3)
-                        )
+
+                    
+                    AsyncImage(url: URL(string: mainViewModel.userProfile.images[0])) { image in
+                        image
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                            .clipShape(Circle())
+                            .background(
+                                Circle().fill(Color.white).scaleEffect(3)
+                            )
+                            
+                            
+                    } placeholder: {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                            .clipShape(Circle())
+                            .background(
+                                Circle().fill(Color.white).scaleEffect(3)
+                            )
+                    }
+
+
+                    
+//                    Image("vodka")
+//                        .resizable()
+//                        .frame(width: 200, height: 200)
+//                        .clipShape(Circle())
+//                        .background(
+//                            Circle().fill(Color.white).scaleEffect(3)
+//                        )
                     HStack {
                         
-                        Text("Vodka, 26")
+                        Text("\(mainViewModel.userProfile.name), \(mainViewModel.userProfile.ageFromDB)")
+
                             .font(.title2)
                             .fontWeight(.bold)
                         Image(systemName: "checkmark.seal.fill")

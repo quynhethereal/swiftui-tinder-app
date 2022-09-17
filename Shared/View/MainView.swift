@@ -65,6 +65,8 @@ struct MainView: View {
         }
         .onAppear() {
             mainViewModel.getAllUser()
+            mainViewModel.getLoginUser()
+
         }
         .edgesIgnoringSafeArea(.bottom)
     }

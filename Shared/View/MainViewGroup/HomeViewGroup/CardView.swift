@@ -16,35 +16,31 @@ struct CardView: View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            
-//            VStack {
-//
-//                AsyncImage(url: URL(string: matcher.images[0]))
-//
-//            }
-//            .frame(width:200, height:300)
+
             VStack {
                 Spacer()
-                AsyncImage(url: URL(string: matcher.images[0])) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .clipped()
-                        
-                        
-                } placeholder: {
-                    Image(systemName: "photo")
-                        .imageScale(.large)
-                        .foregroundColor(.white)
-                }
-                .ignoresSafeArea()
+                AsyncImage(url: URL(string: matcher.images[0]), content: view)
+//                AsyncImage(url: URL(string: matcher.images[0])) { image in
+//                    image
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fit)
+//                        .clipped()
+//                } placeholder: {
+//                    Image(systemName: "photo")
+//                        .resizable()
+//                        .imageScale(.large)
+//                        .aspectRatio(contentMode: .fit)
+//                        .clipped()
+//
+//                }
+//                .ignoresSafeArea()
 //                .foregroundColor(Color(.black))
                 
                 Spacer()
             }
             .background(.white)
             
-                
+            
             
             // Linear Gradient
             LinearGradient(gradient: cardGradient, startPoint: .top, endPoint: .bottom)
@@ -55,16 +51,6 @@ struct CardView: View {
                         Text(matcher.name).font(.largeTitle).fontWeight(.bold)
                         Text(String(matcher.age)).font(.title)
                     }
-//                    HStack {
-//                        Image(systemName: "circle.fill")
-//                            .foregroundColor(.green)
-//                        Text(card.activeStatus[0]).font(.body)
-//                    }
-//                    HStack {
-//                        Image(systemName: "house")
-//                            .tint(.white)
-//                        Text(card.state).font(.body)
-//                    }
                     
                 }
                 .padding(.bottom, 100)
@@ -87,7 +73,6 @@ struct CardView: View {
             }
             
         }
-//        .foregroundColor(Color(.white))
         .cornerRadius(10)
         .offset(x: matcher.x, y: matcher.y)
         .rotationEffect(.init(degrees: matcher.degree))
@@ -104,26 +89,51 @@ struct CardView: View {
                 .onEnded { (value) in
                     withAnimation(.interpolatingSpring(mass: 1.0, stiffness: 50, damping: 8, initialVelocity: 0)) {
                         switch value.translation.width {
-                        case 0...100:
+
+                            case 0...100:
                                 matcher.x = 0; matcher.degree = 0; matcher.y = 0
                                 print("case 1")
-                        case let x where x > 100:
+                            case let x where x > 100:
                                 matcher.x = 500; matcher.degree = 12
                                 print("Có")
                                 mainViewModel.addToLikes(matcherId: matcher.id)
-                        case (-100)...(-1):
+                            case (-100)...(-1):
                                 matcher.x = 0; matcher.degree = 0; matcher.y = 0
                                 print("case 3")
-                        case let x where x < -100:
+                            case let x where x < -100:
                                 matcher.x  = -500; matcher.degree = -12
                                 print("Không")
-                        default:
+                            default:
+
                                 matcher.x = 0; matcher.y = 0
                                 print("case default")
                         }
                     }
                 })
     }
+
+    @ViewBuilder
+    private func view(for phase: AsyncImagePhase) -> some View {
+        switch phase {
+        case .empty:
+            ProgressView()
+        case .success(let image):
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        case .failure(let error):
+            VStack(spacing: 16) {
+                Image(systemName: "xmark.octagon.fill")
+                    .foregroundColor(.red)
+                Text(error.localizedDescription)
+                    .multilineTextAlignment(.center)
+            }
+        @unknown default:
+            Text("Unknown")
+                .foregroundColor(.gray)
+        }
+    }
+
 }
 
 //struct CardView_Previews: PreviewProvider {
