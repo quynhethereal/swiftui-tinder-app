@@ -208,8 +208,8 @@ struct SettingView: View {
                             
                         }
                         Button {
-                            UserDefaults.standard.set(false, forKey: "userlogin")
-                            UserDefaults.standard.set(false, forKey: "userprofile")
+                            UserDefaults.standard.removeObject(forKey: "userlogin")
+                            UserDefaults.standard.removeObject(forKey: "userprofile")
                             exit(0)
                         } label: {
                             HStack {
