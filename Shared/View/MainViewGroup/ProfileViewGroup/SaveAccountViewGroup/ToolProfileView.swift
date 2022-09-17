@@ -27,7 +27,7 @@ struct ToolProfileView: View {
                             .foregroundColor(.black)
                     }
                     Spacer().frame(width: 45)
-                    Text("Trung tâm An Toàn")
+                    Text("Safety Center")
                         .font(.system(size: 26, weight: .bold, design: .default))
                         .foregroundColor(Color.black)
                     Spacer()
@@ -41,7 +41,7 @@ struct ToolProfileView: View {
                             toolActive = false
                             rescActive = false
                         } label: {
-                            Text("Hướng dẫn")
+                            Text("Guide")
                                 .foregroundColor(.gray)
                                 .padding()
                         }
@@ -51,7 +51,7 @@ struct ToolProfileView: View {
                             toolActive = true
                             rescActive = false
                         } label: {
-                            Text("Công cụ")
+                            Text("Tool")
                                 .foregroundColor(.black)
                                 .padding()
                         }
@@ -61,7 +61,7 @@ struct ToolProfileView: View {
                             toolActive = false
                             rescActive = true
                         } label: {
-                            Text("Tài nguyên")
+                            Text("Resource")
                                 .padding()
                                 .foregroundColor(.gray)
                         }
@@ -83,12 +83,12 @@ struct ToolProfileView: View {
                                 VStack {
                                     HStack {
                                         Spacer().frame(width: 60)
-                                        Text("Cách báo cáo")
+                                        Text("How to report")
                                             .fontWeight(.bold)
                                             .padding(.leading, -60)
                                         Spacer()
                                     }
-                                    Text("Báo cáo là 1 cách an toàn để báo cho chúng tôi biết rằng một người có hành xử không phu hợp")
+                                    Text("Reporting is a safe way to let us know that someone is behaving inappropriately")
                                         .multilineTextAlignment(.leading)
                                         .font(.caption)
                                     

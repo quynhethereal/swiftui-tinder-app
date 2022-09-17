@@ -28,7 +28,7 @@ struct GuideView: View {
                             .foregroundColor(.black)
                     }
                     Spacer().frame(width: 45)
-                    Text("Trung tâm An Toàn")
+                    Text("Safety Center")
                         .font(.system(size: 26, weight: .bold, design: .default))
                         .foregroundColor(Color.black)
                     Spacer()
@@ -42,7 +42,7 @@ struct GuideView: View {
                             toolActive = false
                             rescActive = false
                         } label: {
-                            Text("Hướng dẫn")
+                            Text("Guide")
                                 .foregroundColor(.black)
                                 .padding()
                         }
@@ -52,7 +52,7 @@ struct GuideView: View {
                             toolActive = true
                             rescActive = false
                         } label: {
-                            Text("Công cụ")
+                            Text("Tool")
                                 .foregroundColor(.gray)
                                 .padding()
                         }
@@ -62,7 +62,7 @@ struct GuideView: View {
                             toolActive = false
                             rescActive = true
                         } label: {
-                            Text("Tài nguyên")
+                            Text("Resource")
                                 .padding()
                                 .foregroundColor(.gray)
                         }
@@ -74,10 +74,10 @@ struct GuideView: View {
                     VStack {
                         HStack {
                             VStack {
-                                Text("Xin chào \(mainViewModel.userProfile.name)")
+                                Text("Hello \(mainViewModel.userProfile.name)")
                                     .font(.system(size: 40, weight: .bold, design: .default))
                                     .offset(x: -20)
-                                Text("Dưới đây là tất cả những gì bạn cần biết về vấn đề an toàn")
+                                Text("Here's everything you need to know about safety")
                                     .foregroundColor(.gray)
                             }
                             Spacer()
@@ -90,7 +90,7 @@ struct GuideView: View {
                             Spacer()
                         }
                         .padding()
-                        Text("An toàn")
+                        Text("Safe")
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.leading)
@@ -104,10 +104,10 @@ struct GuideView: View {
                                     .frame(height: 110)
                                     
                                 VStack {
-                                    Text("Thông tin cơ bản")
+                                    Text("Basic Informtation")
                                         .fontWeight(.bold)
                                         .padding(.leading, -60)
-                                    Text("Những điều bạn cần biết để an toàn hơn trên Tinder và khi gặp gỡ ngoài đời - tất cả ở cùng 1 nơi")
+                                    Text("Everything you need to know to be safer on Matches and in real life - all in one place")
                                         .multilineTextAlignment(.leading)
                                         .font(.caption)
                                     
@@ -126,7 +126,7 @@ struct GuideView: View {
                         }
                         .padding(.horizontal, 15)
                         Spacer().frame(height: 50)
-                        Text("Quấy rối")
+                        Text("Trouble")
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.leading)
@@ -139,10 +139,10 @@ struct GuideView: View {
                                     .scaledToFit()
                                     .frame(height: 110)
                                 VStack {
-                                    Text("Cách xử lý")
+                                    Text("Treatment")
                                         .fontWeight(.bold)
                                         .padding(.leading, -90)
-                                    Text("Nếu bạn thấy gì đó không ổn, hãy lên tiếng")
+                                    Text("If you see something wrong, speak up")
                                         .multilineTextAlignment(.leading)
                                         .font(.caption)
                                     

@@ -16,7 +16,7 @@ struct GuideChild1: View {
                     .resizable().ignoresSafeArea()
                     .scaledToFit()
                 HStack {
-                    Text("Thông tin cơ bản")
+                    Text("Basic Information")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .padding(.top, 20)
@@ -24,7 +24,7 @@ struct GuideChild1: View {
                     Spacer()
                 }
                 HStack {
-                    Text("Những điều bạn cần biết để an toàn hơn trên Tinder và khi gặp gỡ ngoài đời - tất cả ở cùng 1 nơi")
+                    Text("Everything you need to know to be safer on Matches and in real life - all in one place")
                         .fontWeight(.regular)
                         .foregroundColor(.gray)
                         .padding(.horizontal, 30)
@@ -32,7 +32,7 @@ struct GuideChild1: View {
                     Spacer()
                 }
                 Divider()
-                Text("Gặp gỡ những người mới rất thú vị, nhưng bạn luôn cần thận trọng khi tương tác với người mà bạn không biết. Sử dụng phán đoán nhạy bén nhất của mình và đặt sự an toàn của bản thân lên hàng đầu, cho dù bạn đang trao đổi những tin nhắn ban đầu hay gặp mặt trực tiếp. Mặc dù bạn không thể kiểm soát hành động của người khác, nhưng có những điều bạn có thể làm để giúp chính bạn được an toàn trong quá trình trải nghiệm Tinder.")
+                Text("Meeting new people is fun, but you always need to be cautious when interacting with people you don't know. Use your best judgment and put your safety first, whether you're exchanging initial messages or meeting in person. While you can't control the actions of others, there are things you can do to help keep yourself safe during your Matches experience.")
                     .fontWeight(.regular)
                     .foregroundColor(.black)
                     .padding(.horizontal, 30)

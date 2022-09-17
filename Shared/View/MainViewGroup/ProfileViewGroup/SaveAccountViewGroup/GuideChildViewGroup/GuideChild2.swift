@@ -16,7 +16,7 @@ struct GuideChild2: View {
                     .resizable().ignoresSafeArea()
                     .scaledToFit()
                 HStack {
-                    Text("Cách xử lý")
+                    Text("Treatment")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .padding(.top, 20)
@@ -24,7 +24,7 @@ struct GuideChild2: View {
                     Spacer()
                 }
                 HStack {
-                    Text("Nếu bạn thấy gì đó không ổn, hãy lên tiếng")
+                    Text("If you see something wrong, speak up")
                         .fontWeight(.regular)
                         .foregroundColor(.gray)
                         .padding(.horizontal, 30)
@@ -32,7 +32,7 @@ struct GuideChild2: View {
                     Spacer()
                 }
                 Divider()
-                Text("Bạn sẽ nhận biết được khi ai đó vượt qua ranh giới và khi họ làm thế, chúng tôi muốn biết về điều đó. Chặn và báo cáo bất cứ ai vi phạm các điều khoản của chúng tôi.")
+                Text("You'll notice when someone crosses a line, and when they do, we want to know about it. Block and report anyone who violates our terms.")
                     .fontWeight(.regular)
                     .foregroundColor(.black)
                     .padding(.horizontal, 30)

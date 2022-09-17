@@ -20,7 +20,7 @@ struct EditProfileView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Text("Edit Information")
+                        Text("Edit")
                             .font(.system(size: 26, weight: .bold, design: .default))
                             .foregroundColor(Color.black)
                             .padding(.top, 25)

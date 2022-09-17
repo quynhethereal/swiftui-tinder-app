@@ -27,7 +27,7 @@ struct ResourcesProfileView: View {
                             .foregroundColor(.black)
                     }
                     Spacer().frame(width: 45)
-                    Text("Trung tâm An Toàn")
+                    Text("Safety Center")
                         .font(.system(size: 26, weight: .bold, design: .default))
                         .foregroundColor(Color.black)
                     Spacer()
@@ -41,7 +41,7 @@ struct ResourcesProfileView: View {
                             toolActive = false
                             rescActive = false
                         } label: {
-                            Text("Hướng dẫn")
+                            Text("Guide")
                                 .foregroundColor(.gray)
                                 .padding()
                         }
@@ -51,7 +51,7 @@ struct ResourcesProfileView: View {
                             toolActive = true
                             rescActive = false
                         } label: {
-                            Text("Công cụ")
+                            Text("Tool")
                                 .foregroundColor(.gray)
                                 .padding()
                         }
@@ -61,7 +61,7 @@ struct ResourcesProfileView: View {
                             toolActive = false
                             rescActive = true
                         } label: {
-                            Text("Tài nguyên")
+                            Text("Resource")
                                 .padding()
                                 .foregroundColor(.black)
                         }
@@ -70,7 +70,7 @@ struct ResourcesProfileView: View {
                 }
                 Divider()
                 HStack {
-                    Text("Nguồn tham khảo")
+                    Text("Reference source")
                         .fontWeight(.bold)
                         .padding(.top, 5)
                         .padding(.leading, 50)
@@ -82,7 +82,7 @@ struct ResourcesProfileView: View {
                                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
                     } label: {
-                        Text("Truy cập trang web")
+                        Text("Visit website")
                             .foregroundColor(.black)
                             .modifier(ButtonOfFavoriteDisable())
                     }

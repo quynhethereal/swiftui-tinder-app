@@ -16,7 +16,7 @@ struct ToolChild: View {
                     .resizable().ignoresSafeArea()
                     .scaledToFit()
                 HStack {
-                    Text("Cách báo cáo")
+                    Text("How to Report")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .padding(.top, 20)
@@ -24,7 +24,7 @@ struct ToolChild: View {
                     Spacer()
                 }
                 HStack {
-                    Text("Có nhiều cách để báo cáo ai đó trong ứng dụng")
+                    Text("There are many ways to report someone in the app")
                         .fontWeight(.regular)
                         .foregroundColor(.gray)
                         .padding(.horizontal, 30)
@@ -32,7 +32,7 @@ struct ToolChild: View {
                     Spacer()
                 }
                 Divider()
-                Text("Bạn sẽ nhận biết được khi ai đó vượt qua ranh giới và khi họ làm thế, chúng tôi muốn biết về điều đó. Chặn và báo cáo bất cứ ai vi phạm các điều khoản của chúng tôi.")
+                Text("You'll notice when someone crosses a line, and when they do, we want to know about it. Block and report anyone who violates our terms.")
                     .fontWeight(.regular)
                     .foregroundColor(.black)
                     .padding(.horizontal, 30)
