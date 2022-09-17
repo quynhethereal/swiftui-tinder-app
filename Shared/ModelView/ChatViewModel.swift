@@ -19,12 +19,18 @@ class ChatViewModel: ObservableObject {
     
     var NO_MATCHES = [Matcher]()
     
+//    func allImage() -> [String] {
+//        
+//    }
+    
     func getAllMatchesProfiles() {
         let currentUserDocument = db.collection("user_profiles").document(userId!)
         
         currentUserDocument.getDocument { (document, error) in
             
             let matches = document!.get("matches") as! [String]
+            print("vloz luon")
+            print(matches)
             
             if (matches.isEmpty){
                 return
@@ -43,8 +49,10 @@ class ChatViewModel: ObservableObject {
                             matchedMatcher.preferredTopic = doc.get("preferredTopic") as! [String]
                             matchedMatcher.age = doc.get("age") as! Int
                             self.allMatches.append(matchedMatcher)
+                            
                         }
                     }
+                    
                 }
             }
         }

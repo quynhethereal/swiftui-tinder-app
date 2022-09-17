@@ -11,6 +11,7 @@ struct PrivateView: View {
     //@EnvironmentObject var userAuth: UserSignInViewModel
     @StateObject var userProfile = ProfileRegistrationViewModel()
     @StateObject var mainViewModel = MainViewModel()
+    @StateObject var chatViewModel = ChatViewModel()
     
     var body: some View {
         ZStack {
@@ -19,7 +20,9 @@ struct PrivateView: View {
                 ProgressView()
             } else {
                 if UserDefaults.standard.bool(forKey: "userprofile") == true {
-                    MainView().environmentObject(mainViewModel)
+                    MainView()
+                        .environmentObject(mainViewModel)
+                        .environmentObject(chatViewModel)
                 } else {
                     InputNameView().environmentObject(userProfile)
                 }

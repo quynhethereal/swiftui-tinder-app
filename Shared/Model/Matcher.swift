@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Matcher: Identifiable, Codable {
+struct Matcher: Identifiable, Codable, Hashable {
     var id: String = ""
     var name: String = ""
 //    var birthDate: Date! =  Date(timeIntervalSinceReferenceDate: -123456789.0)

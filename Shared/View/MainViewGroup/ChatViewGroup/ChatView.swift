@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChatView: View {
+    @EnvironmentObject var chatViewModel : ChatViewModel
     let demoImageArray = ["rum", "vodka", "chianti", "gin", "tequila"]
     let listOfCurrentMess: [[String]] = [
         ["rum", "Rum", "I love you...", "false"],
@@ -27,6 +28,7 @@ struct ChatView: View {
                         .offset(x: 25)
                         .padding(.top, 18)
                     Spacer()
+                    
                     Button {
                         self.showingSaveProfileView = true
                     } label: {
@@ -49,13 +51,15 @@ struct ChatView: View {
                 }
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
-                        ForEach(demoImageArray, id: \.self) { img in
+                        //Image match
+                        ForEach(chatViewModel.allMatches, id: \.self) { matcher in
                             NavigationLink {
                                 
                             } label: {
                                 VStack {
-                                    Image(img)
-                                        .resizable()
+//                                    Image(matcher.images)
+//                                        .resizable()
+                                    AsyncImage(url: URL(string: matcher.images[0]), content: view)
                                 }
                                 .frame(width: 100,height: 150)
                             }
@@ -63,6 +67,7 @@ struct ChatView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
 
                         }
+                        //Image match
                     }
                     .padding(.horizontal)
                 }
@@ -105,6 +110,42 @@ struct ChatView: View {
             .sheet(isPresented: $showingSaveProfileView) {
 //                SaveAccountCenterView()
             }
+        }
+        .onAppear() {
+            chatViewModel.getAllMatchesProfiles()
+        }
+    }
+        
+        
+    
+    @ViewBuilder
+    private func view(for phase: AsyncImagePhase) -> some View {
+        switch phase {
+        case .empty:
+                HStack{
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+            
+        case .success(let image):
+            image
+                .resizable()
+                .frame(width: 100,height: 150)
+                
+        case .failure(let error):
+            VStack(spacing: 16) {
+                Image(systemName: "xmark.octagon.fill")
+                    .resizable()
+                    
+                    
+                Text(error.localizedDescription)
+                    .multilineTextAlignment(.center)
+            }
+            .frame(width: 100,height: 150)
+        @unknown default:
+            Text("Unknown")
+                .foregroundColor(.gray)
         }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @State var selectedTab: Int = 0
     @EnvironmentObject var mainViewModel : MainViewModel
+    @EnvironmentObject var chatViewModel : ChatViewModel
     var body: some View {
         TabView(selection: $selectedTab) {
             
@@ -43,7 +44,7 @@ struct MainView: View {
                 }
                 .tag(2)
             
-            ChatView()
+            ChatView().environmentObject(chatViewModel)
                 .tabItem {
                     if selectedTab == 3 {
                         Image("chatEnable")
@@ -66,6 +67,7 @@ struct MainView: View {
         .onAppear() {
             mainViewModel.getAllUser()
             mainViewModel.getLoginUser()
+//            chatViewModel.getAllMatchesProfiles()
 
         }
         .edgesIgnoringSafeArea(.bottom)
