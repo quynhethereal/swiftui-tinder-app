@@ -70,6 +70,7 @@ struct MainView: View {
 
         }
         .task{
+            // do not change the order as they are supposed to be synchronous
             await mainViewModel.getLoginUser()
             await mainViewModel.getAllUser()
         }

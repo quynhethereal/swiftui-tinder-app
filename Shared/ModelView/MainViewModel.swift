@@ -76,24 +76,21 @@ class MainViewModel: ObservableObject {
     
     func getAllUser() async {
         
-        
+      
             
         getAllInteractedUsers {
             // callback
             
+            // filter by gender
             let genderFilterCondition = self.getOppositeGender(gender: self.userProfile.orientation.rawValue)
             
             var collectionReference = self.db.collection("user_profiles").whereField("orientation", isEqualTo: genderFilterCondition)
             
             if (genderFilterCondition == "both" ){
                 collectionReference =  self.db.collection("user_profiles")
-                
-                print("o day")
-                print(collectionReference)
-                print(genderFilterCondition)
-                print(self.userProfile.orientation)
             }
             
+                        
             collectionReference.getDocuments() { (querySnapshot, err) in
                 
                 if let err = err {
