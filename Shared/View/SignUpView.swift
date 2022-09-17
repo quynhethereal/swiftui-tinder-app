@@ -29,7 +29,7 @@ struct SignUpView: View {
                     .frame(minWidth: 150, idealWidth: 200, maxWidth: 200, alignment: .center)
                     .padding(.vertical, 70)
 //                MARK: - LABEL
-                Text(userViewModel.getAttributedString("Khi nhấn SIGN UP, bạn đồng ý với Điều Khoản của chúng tôi. Tìm hiểu về cách chúng tôi xử lý dữ liệu của bạn trong Chính sách Quyền Riêng Tư và Chính sách Cookie của chúng tôi."))
+                Text(userViewModel.getAttributedString("By clicking SIGN UP, you agree to our Terms. Learn about how we handle your data in our Privacy Policy and Cookie Policy."))
                     .font(.system(size: 17, weight: .medium, design: .default))
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)

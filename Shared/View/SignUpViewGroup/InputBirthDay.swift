@@ -33,7 +33,7 @@ struct InputBirthDay: View {
                 VStack {
                     Spacer().frame(height: 80)
                     HStack {
-                        Text("Sinh nhật\ncủa tôi là")
+                        Text("My Birthday\nis")
                             .font(.system(size: 50, weight: .bold, design: .default))
                             .padding(.leading, 50)
                         Spacer()
@@ -41,7 +41,7 @@ struct InputBirthDay: View {
                     Spacer().frame(height: 40)
                     HStack {
                         Spacer()
-                        DatePicker("Choose Your BirthDate", selection: $birthDate, in: startingDate...endingDate, displayedComponents: [.date])
+                        DatePicker("Choose Your Birth Date", selection: $birthDate, in: startingDate...endingDate, displayedComponents: [.date])
                             .accentColor(Color("lightRed"))
                             .datePickerStyle(
                                 GraphicalDatePickerStyle()
@@ -49,7 +49,7 @@ struct InputBirthDay: View {
                         Spacer()
                     }
                     .labelsHidden()
-                    Text("Tuổi của bạn sẽ được hiển thị công khai")
+                    Text("Your age will be publicly displayed")
                         .frame(width: 320)
                         .font(.system(size: 17, weight: .bold, design: .default))
                         .foregroundColor(Color("darkGrey"))
@@ -69,7 +69,7 @@ struct InputBirthDay: View {
                         }
                     label: {
                             
-                                Text("TIẾP TỤC")
+                                Text("NEXT")
                                     .modifier(ButtonNextEnable())
                             
                             

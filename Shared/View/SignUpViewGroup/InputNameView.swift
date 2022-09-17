@@ -29,13 +29,13 @@ struct InputNameView: View {
                 VStack {
                     Spacer().frame(height: 80)
                     HStack {
-                        Text("Tên tôi\n là")
+                        Text("My name\nis")
                             .font(.system(size: 50, weight: .bold, design: .default))
                             .padding(.leading, 50)
                         Spacer()
                     }
                     Spacer().frame(height: 30)
-                    TextField("Tên", text: $name)
+                    TextField("Name", text: $name)
                         .focused($focusedField, equals: .field)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -47,7 +47,7 @@ struct InputNameView: View {
                         .foregroundColor(.black)
                         .underlineTextField()
                         .keyboardType(.default)
-                    Text("Đây là cách tên bạn hiển thị trên tinder và bạn sẽ không thể thay đổi về sau")
+                    Text("This is how your name appears on matches and you won't be able to change it later")
                         .frame(width: 255)
                         .font(.system(size: 17, weight: .bold, design: .default))
                         .foregroundColor(Color("darkGrey"))
@@ -88,10 +88,10 @@ struct InputNameView: View {
                             
                         } label: {
                             if name.isEmpty {
-                                Text("TIẾP TỤC")
+                                Text("NEXT")
                                     .modifier(ButtonNextDisable())
                             } else {
-                                Text("TIẾP TỤC")
+                                Text("NEXT")
                                     .modifier(ButtonNextEnable())
                             }
                             
@@ -146,10 +146,10 @@ struct CustomAlertView: View {
         ZStack {
             VStack {
                 Spacer()
-                Text("Bạn có chắc không?")
+                Text("Are you leaving?")
                     .font(.system(size: 20, weight: .bold, design: .default))
                     .padding(.top, 20)
-                Text("Bạn sẽ rời khỏi trang đăng ký này và tẩt cả thông tin của bạn sẽ bị xoá")
+                Text("You will leave this registration page and all your information will be deleted")
                     .font(.system(size: 17, weight: .medium, design: .default))
                     .padding(.horizontal, 20)
                     .foregroundColor(.gray)
@@ -165,7 +165,7 @@ struct CustomAlertView: View {
                     } label: {
                         HStack {
                             Spacer()
-                            Text("KHÔNG")
+                            Text("NO")
                                 .font(.system(size: 20, weight: .heavy, design: .default))
                                 .foregroundColor(.gray)
                                 
@@ -182,7 +182,7 @@ struct CustomAlertView: View {
                     } label: {
                         HStack {
                             Spacer()
-                            Text("CÓ")
+                            Text("YES")
                                 .font(.system(size: 20, weight: .heavy, design: .default))
                                 .foregroundColor(.red)
                                 

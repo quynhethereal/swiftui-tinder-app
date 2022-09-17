@@ -19,12 +19,12 @@ struct MyFavouriteView: View {
                 VStack {
                     Spacer().frame(height: 50)
                     HStack {
-                        Text("Sở Thích")
+                        Text("Favorite")
                             .font(.system(size: 55, weight: .bold, design: .default))
                             .padding(.leading, 40)
                         Spacer()
                     }
-                    Text("Hãy cho mọi ngươi biết bạn thích những gì bằng cách thêm sở thích vào hồ sơ")
+                    Text("Let everyone know what you like by adding interests to your profile")
                         .frame(width: 300)
                         .font(.system(size: 17, weight: .regular, design: .default))
                         .foregroundColor(Color("darkGrey"))
@@ -367,10 +367,10 @@ struct MyFavouriteView: View {
                             self.selection = 1
                         } label: {
                             if signUpVMGroup.userProfile.preferredTopic.count < 5 {
-                                Text("TIẾP TỤC  \(signUpVMGroup.userProfile.preferredTopic.count)/5")
+                                Text("NEXT  \(signUpVMGroup.userProfile.preferredTopic.count)/5")
                                     .modifier(ButtonNextDisable())
                             } else if signUpVMGroup.userProfile.preferredTopic.count == 5 {
-                                Text("TIẾP TỤC  5/5")
+                                Text("NEXT  5/5")
                                     .modifier(ButtonNextEnable())
                             }
                         }

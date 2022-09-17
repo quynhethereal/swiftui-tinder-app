@@ -23,32 +23,32 @@ class UserSignInViewModel : ObservableObject{
     private var cancellableSet: Set<AnyCancellable> = []
 
     
-     //Return Attributed String and Hyperlink
+    //Return Attributed String and Hyperlink
     func getAttributedString(_ string: String) -> AttributedString {
         var attributedString = AttributedString(string)
         //Apllying bold and underline to hyperlink
-        if let range = attributedString.range(of: "Điều Khoản") {
+        if let range = attributedString.range(of: "Terms") {
             
             attributedString[range].underlineStyle = .single
             attributedString[range].underlineColor = .white
             attributedString[range].font = .system(size: 17, weight: .bold)
-            attributedString[range].link = .init(string: "https://policies.tinder.com/terms/intl/vi")
+            attributedString[range].link = .init(string: "https://policies.tinder.com/terms/intl/en")
             attributedString[range].foregroundColor = .white
         }
-        if let range = attributedString.range(of: "Chính sách Quyền Riêng Tư") {
+        if let range = attributedString.range(of: "Privacy Policy") {
             
             attributedString[range].underlineStyle = .single
             attributedString[range].underlineColor = .white
             attributedString[range].font = .system(size: 17, weight: .bold)
-            attributedString[range].link = .init(string: "https://policies.tinder.com/privacy/intl/vi")
+            attributedString[range].link = .init(string: "https://policies.tinder.com/privacy/intl/en")
             attributedString[range].foregroundColor = .white
         }
-        if let range = attributedString.range(of: "Chính sách Cookie") {
+        if let range = attributedString.range(of: "Cookie Policy") {
             
             attributedString[range].underlineStyle = .single
             attributedString[range].underlineColor = .white
             attributedString[range].font = .system(size: 17, weight: .bold)
-            attributedString[range].link = .init(string: "https://policies.tinder.com/cookie-policy/intl/vi")
+            attributedString[range].link = .init(string: "https://policies.tinder.com/cookie-policy/intl/en")
             attributedString[range].foregroundColor = .white
         }
         return attributedString

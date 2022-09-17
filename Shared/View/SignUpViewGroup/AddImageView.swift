@@ -126,10 +126,10 @@ struct AddImageView: View {
                     
                 } label: {
                     if pickedImages?.count ?? 0 >= 1 {
-                        Text("TIẾP TỤC")
+                        Text("NEXT")
                             .modifier(ButtonNextEnable())
                     } else {
-                        Text("TIẾP TỤC")
+                        Text("NEXT")
                             .modifier(ButtonNextDisable())
                     }
                     

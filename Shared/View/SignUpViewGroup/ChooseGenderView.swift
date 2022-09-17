@@ -20,7 +20,7 @@ struct ChooseGenderView: View {
             ZStack {
                 VStack {
                     HStack {
-                        Text("Tôi là")
+                        Text("I am")
                             .font(.system(size: 50, weight: .bold, design: .default))
                             .padding(.leading, 50)
                         Spacer()
@@ -36,14 +36,14 @@ struct ChooseGenderView: View {
                         if isChooseFeMale == true {
                             HStack {
                                 Spacer()
-                                Text("NỮ")
+                                Text("FEMALE")
                                 Spacer()
                             }
                             .modifier(OutlineButtonEnable())
                         } else {
                             HStack {
                                 Spacer()
-                                Text("NỮ")
+                                Text("FEMALE")
                                     .frame(maxWidth: .infinity, minHeight: 55)
                                     .foregroundColor(.gray)
                                     .font(.system(size: 25, weight: .bold, design: .default))
@@ -67,14 +67,14 @@ struct ChooseGenderView: View {
                         if isChooseMale == true {
                             HStack {
                                 Spacer()
-                                Text("NAM")
+                                Text("MALE")
                                 Spacer()
                             }
                             .modifier(OutlineButtonEnable())
                         } else {
                             HStack {
                                 Spacer()
-                                Text("NAM")
+                                Text("MALE")
                                 Spacer()
                             }
                             .modifier(OutlineButtonDisable())
@@ -122,7 +122,7 @@ struct ChooseGenderView: View {
                             self.selection = 1
                             print(userRegisterVM.userProfile.orientation)
                         } label: {
-                            Text("TIẾP TỤC")
+                            Text("NEXT")
                                 .modifier(ButtonNextEnable())
                         }
                     }
