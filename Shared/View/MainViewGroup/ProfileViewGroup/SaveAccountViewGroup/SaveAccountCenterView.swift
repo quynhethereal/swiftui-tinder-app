@@ -11,11 +11,12 @@ struct SaveAccountCenterView: View {
     @State var isGoToGuideView: Bool = true
     @State var isGoToToolView: Bool = false
     @State var isGoToResourceView: Bool = false
+    @EnvironmentObject var mainViewModel : MainViewModel
     var body: some View {
         ZStack {
             if isGoToGuideView == true {
                 
-                GuideView(guideActive: $isGoToGuideView, toolActive: $isGoToToolView, rescActive: $isGoToResourceView)
+                GuideView(guideActive: $isGoToGuideView, toolActive: $isGoToToolView, rescActive: $isGoToResourceView).environmentObject(mainViewModel)
                 
             } else if isGoToToolView == true {
                 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GuideView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var mainViewModel : MainViewModel
     @Binding var guideActive: Bool
     @Binding var toolActive: Bool
     @Binding var rescActive: Bool
@@ -73,18 +74,19 @@ struct GuideView: View {
                     VStack {
                         HStack {
                             VStack {
-                                Text("Xin chào Vodka")
+                                Text("Xin chào \(mainViewModel.userProfile.name)")
                                     .font(.system(size: 40, weight: .bold, design: .default))
                                     .offset(x: -20)
                                 Text("Dưới đây là tất cả những gì bạn cần biết về vấn đề an toàn")
                                     .foregroundColor(.gray)
                             }
                             Spacer()
-                            Image("vodka")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 40, height: 40)
-                                .clipShape(Circle())
+                            AsyncImage(url: URL(string: mainViewModel.userProfile.images[0]), content: view)
+//                            Image("vodka")
+//                                .resizable()
+//                                .scaledToFill()
+//                                .frame(width: 40, height: 40)
+//                                .clipShape(Circle())
                             Spacer()
                         }
                         .padding()
@@ -167,6 +169,42 @@ struct GuideView: View {
                 }
                 Spacer()
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func view(for phase: AsyncImagePhase) -> some View {
+        switch phase {
+        case .empty:
+                HStack{
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+                .scaledToFill()
+                .frame(width: 40, height: 40)
+                .clipShape(Circle())
+            
+        case .success(let image):
+            image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
+        case .failure(let error):
+            VStack(spacing: 16) {
+                Image(systemName: "xmark.octagon.fill")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
+                    .foregroundColor(.red)
+                Text(error.localizedDescription)
+                    .multilineTextAlignment(.center)
+            }
+        @unknown default:
+            Text("Unknown")
+                .foregroundColor(.gray)
         }
     }
 }
