@@ -169,8 +169,10 @@ struct SignInView: View {
                   return
                 }
             userProfile.fetchUserProfile()
-            userViewModel.loggedInSuccessfully = true
+            
             print("Signed in as user \(user.uid), with email: \(user.email ?? "")")
+            
+            userViewModel.loggedInSuccessfully = true
             UserDefaults.standard.set(userViewModel.loggedInSuccessfully, forKey: "userlogin")
             
         }

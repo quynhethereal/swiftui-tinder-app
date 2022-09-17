@@ -19,6 +19,14 @@ class MainViewModel: ObservableObject {
         Auth.auth().currentUser?.uid
     }
     
+    var userEmail:String? {
+        Auth.auth().currentUser?.email
+    }
+    
+    func getEmail() -> String {
+        return userEmail!
+    }
+    
     func getLoginUser() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"

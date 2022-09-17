@@ -12,6 +12,7 @@ struct PublicView: View {
     @State var isActive: Bool = true
     var body: some View {
         ZStack {
+            
             if isActive {
                 SignInView(isActive: $isActive).environmentObject(userAuth)
             } else {

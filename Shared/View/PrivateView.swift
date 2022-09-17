@@ -14,15 +14,24 @@ struct PrivateView: View {
     
     var body: some View {
         ZStack {
-            if UserDefaults.standard.bool(forKey: "userprofile") {
-                MainView().environmentObject(mainViewModel)
+            
+            if isKeyPresentInUserDefaults(key: "userprofile") {
+                ProgressView()
             } else {
-                InputNameView().environmentObject(userProfile)
+                if UserDefaults.standard.bool(forKey: "userprofile") == true {
+                    MainView().environmentObject(mainViewModel)
+                } else {
+                    InputNameView().environmentObject(userProfile)
+                }
             }
         }
         .onAppear() {
             userProfile.fetchUserProfile()
         }
+    }
+    
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) == nil
     }
 }
 

@@ -179,7 +179,7 @@ struct ProfileView: View {
 
 struct SettingView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var signUpVMGroup = ProfileRegistrationViewModel()
+    @EnvironmentObject var mainViewModel : MainViewModel
     @State private var phonenumber = "02345678"
     @State private var email = "emailclone01@gmail.com"
     @State private var account = ""
@@ -199,29 +199,22 @@ struct SettingView: View {
                 }
                 NavigationView {
                     Form {
-                        Section(header: Text("CÀI ĐẶT TÀI KHOẢN").font(.system(size: 15, weight: .regular))) {
-                            Picker("Số Điện Thoại", selection: $phonenumber) {
-                                ForEach(phonenumbers, id: \.self) { number in
-                                    Text(number)
-                                        .foregroundColor(.gray)
-                                }
+                        Section(header: Text("TÀI KHOẢN").font(.system(size: 15, weight: .regular))) {
+                            HStack {
+                                Text("Email")
+                                Spacer()
+                                Text("\(mainViewModel.getEmail())")
                             }
-                            Picker("Tài khoản đã kết nối", selection: $account) {
-                                
-                            }
-                            Picker("Email", selection: $email) {
-                                ForEach(emails, id: \.self) { number in
-                                    Text(number)
-                                        .foregroundColor(.pink)
-                                }
-                            }
+                            
                         }
                         Button {
-                            
+                            UserDefaults.standard.set(false, forKey: "userlogin")
+                            UserDefaults.standard.set(false, forKey: "userprofile")
+                            exit(0)
                         } label: {
                             HStack {
                                 Spacer()
-                                Text("Đăng xuất")
+                                Text("Đăng xuất & Thoát")
                                     .foregroundColor(.black)
                                 Spacer()
                             }
@@ -239,16 +232,6 @@ struct SettingView: View {
                                         .padding(.bottom, 10)
                                     Text("Phiên bản 1.1.0").font(.system(size: 17, weight: .regular, design: .default))
                                 }
-                                Spacer()
-                            }
-                        }
-                        Button {
-                            
-                        } label: {
-                            HStack {
-                                Spacer()
-                                Text("Xoá Tài khoản")
-                                    .foregroundColor(.black)
                                 Spacer()
                             }
                         }

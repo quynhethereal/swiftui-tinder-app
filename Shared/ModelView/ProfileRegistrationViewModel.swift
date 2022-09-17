@@ -19,7 +19,8 @@ class ProfileRegistrationViewModel : ObservableObject{
     @Published var birthDay: Date = Date()
     @Published var favouriteArray: [String] = []
     @Published var countAddedImage: Int = 0
-    @Published var userExist = Bool()
+    @Published var isFetching = Bool()
+    @Published var isfetching = true
     @Published var imageArray: [String] = ["localimage","localimage","localimage","localimage","localimage","localimage"]
     private let db = Firestore.firestore()
     var userId: String? {
@@ -71,19 +72,21 @@ class ProfileRegistrationViewModel : ObservableObject{
         }
           
     }
-    @MainActor
-    func fetchUserProfile() {
+
+    func fetchUserProfile(){
         let docRef = db.collection("user_profiles").document(userId!)
         docRef.getDocument { (document, error) in
             if document!.exists {
                 print("User existed in user table")
-                self.userExist = true
+                
                 UserDefaults.standard.set(true, forKey: "userprofile")
+                self.isfetching = false
             } else {
                 print("no exist")
-                self.userExist = false
-                UserDefaults.standard.set(false, forKey: "userprofile")
                 
+                UserDefaults.standard.set(false, forKey: "userprofile")
+                self.isfetching = false
+                                
             }
         }
         
