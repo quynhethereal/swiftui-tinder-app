@@ -10,31 +10,25 @@ import Combine
 
 struct InputBirthDay: View {
     
-    enum FocusField: Hashable {
-        case field
-    }
+//    enum FocusField: Hashable {
+//        case field
+//    }
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var signUpVMGroup : ProfileRegistrationViewModel
-    @FocusState private var focusedField: FocusField?
-    @State private var disableButton: Bool = true
-    @State var birthDate = ""
+//    @FocusState private var focusedField: FocusField?
+//    @State private var disableButton: Bool = true
+    @State var birthDate: Date = Date()
     @State private var selection: Int? = nil
+    @State private var disableButton: Bool = true
     
+    let startingDate: Date = Calendar.current.date(from: DateComponents(year: 1970)) ?? Date()
+    let endingDate: Date = Date()
     
     let textLimit = 8
     
     var body: some View {
         NavigationView {
             ZStack {
-                TextField("", text: $birthDate)
-                    .focused($focusedField, equals: .field)
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            self.focusedField = .field
-                        }
-                    }
-                    .onReceive(Just($birthDate)) {_ in limitText(textLimit) }
-                    .keyboardType(.numberPad)
                 Color.white.ignoresSafeArea()
                 VStack {
                     Spacer().frame(height: 80)
@@ -45,17 +39,16 @@ struct InputBirthDay: View {
                         Spacer()
                     }
                     Spacer().frame(height: 40)
-                    HStack(spacing: 10) {
-                        ForEach(0..<8,id: \.self) { index in
-                            FormatDateTextFieldView(birthday: getElementAtIndex(index: index))
-                            if index == 1 || index == 3 {
-                                Text("/")
-                                    .font(.title)
-                                    .foregroundColor(Color.gray.opacity(0.5))
-                            }
-                        }
+                    HStack {
+                        Spacer()
+                        DatePicker("Choose Your BirthDate", selection: $birthDate, in: startingDate...endingDate, displayedComponents: [.date])
+                            .accentColor(Color("lightRed"))
+                            .datePickerStyle(
+                                GraphicalDatePickerStyle()
+                            )
+                        Spacer()
                     }
-                    .padding(.horizontal, 30)
+                    .labelsHidden()
                     Text("Tuổi của bạn sẽ được hiển thị công khai")
                         .frame(width: 320)
                         .font(.system(size: 17, weight: .bold, design: .default))
@@ -68,31 +61,20 @@ struct InputBirthDay: View {
 //                                self.selection = 1
 //                            }
                             if(disableButton == true) {
-                                signUpVMGroup.addBithDay(date: birthDate)
+                                signUpVMGroup.birthDay = birthDate
                                 self.selection = 1
                             }
                             
                             
-                        } label: {
-                            if birthDate == "" || birthDate.count < 8 {
-                                Text("TIẾP TỤC")
-                                    .modifier(ButtonNextDisable())
-                            } else {
+                        }
+                    label: {
+                            
                                 Text("TIẾP TỤC")
                                     .modifier(ButtonNextEnable())
-                            }
+                            
                             
                         }
                     }
-//                    .disabled(disableButton)
-//                    .padding(.horizontal, 30)
-//                    .onChange(of: self.birthDate, perform: { _ in
-//                        if !(birthDate == "" && birthDate.count == 8) {
-//                            self.disableButton = false
-//                        } else {
-//                            self.disableButton = true
-//                        }
-//                    })
 
                     
                 }
@@ -116,42 +98,9 @@ struct InputBirthDay: View {
         .navigationBarHidden(true)
         
     }
-    func getElementAtIndex(index: Int) -> String {
-        if birthDate.count > index {
-            let start = birthDate.startIndex
-            let current = birthDate.index(start, offsetBy: index)
-            
-            return String(birthDate[current])
-        }
-        return ""
-    }
-    //Function to keep text length in limits
-    func limitText(_ limit: Int) {
-        if birthDate.count > limit {
-            birthDate = String(birthDate.prefix(limit))
-        }
-    }
+
 }
 
-struct FormatDateTextFieldView: View {
-    var birthday: String
-    
-    var body: some View {
-        VStack {
-            Text(birthday)
-                .foregroundColor(.black)
-                .fontWeight(.light)
-                .font(.title)
-                .frame(height: 45)
-            
-            Capsule()
-                .fill(Color.gray.opacity(0.5))
-                .frame(height: 4)
-            
-            
-        }
-    }
-}
 
 
 struct InputBirthDay_Previews: PreviewProvider {

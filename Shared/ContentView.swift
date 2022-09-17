@@ -12,7 +12,7 @@ import FirebaseAuthCombineSwift
 
 struct ContentView: View {
     @StateObject var userAuth: UserSignInViewModel
-    let userProfile = ProfileRegistrationViewModel()
+    @StateObject var userProfile = ProfileRegistrationViewModel()
     
     var body: some View {
         
@@ -29,8 +29,8 @@ struct ContentView: View {
 //            AddImageView()
 //            MyFavouriteView().environmentObject(userAuth)
 //            SignInView().environmentObject(userAuth)
-            PublicView()
-                .environmentObject(userAuth)
+//            PublicView().environmentObject(userAuth)
+            RootView().environmentObject(userAuth)
         }
     }
     

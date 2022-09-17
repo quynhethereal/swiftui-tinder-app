@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var mainViewModel : MainViewModel
     var body: some View {
         ZStack {
             VStack {
@@ -17,8 +18,8 @@ struct HomeView: View {
                     .frame(width: 100)
                     .padding(.top, 25)
                 ZStack {
-                    CardsSection()
-                    ButtonSection()
+                    CardsSection().environmentObject(mainViewModel)
+                    ButtonSection().environmentObject(mainViewModel)
                 }
                 Spacer()
             }

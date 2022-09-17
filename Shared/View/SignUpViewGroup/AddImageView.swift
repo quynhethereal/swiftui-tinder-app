@@ -25,16 +25,18 @@ struct AddImageView: View {
         NavigationView {
             VStack {
                 Spacer().frame(height: 50)
-                Text("Thêm ảnh")
+                Text("Add Photo")
                     .font(.system(size: 45, weight: .medium, design: .default))
                     .padding(.leading, -10)
 //                    .opacity(disableButton ? 1 : 0)
+                
 
-                Text("Thêm ít nhất 2 ảnh để tiếp tục.")
+                Text("Add at least one photo to continue. Maximum 2 photos.")
                     .font(.system(size: 15, weight: .medium, design: .default))
                     .foregroundColor(.gray)
                     .padding(.bottom, 50)
                     .opacity(disableButton ? 1 : 0)
+                    .multilineTextAlignment(.center)
 
                 
                 Group {
@@ -52,10 +54,11 @@ struct AddImageView: View {
                                 }
                                 
                             }
+                            .padding(.leading, CGFloat(20))
                             .sheet(isPresented: $isImagePickerViewPresented) {
                                 ImagePickerView(filter:
                                         .any(of: [.images, .livePhotos]),
-                                                selectionLimit: 0,
+                                                selectionLimit: 2,
                                                 delegate: ImagePickerView.Delegate(
                                                     isPresented: $isImagePickerViewPresented,
                                                     didCancel: { (phPickerViewController) in
@@ -171,7 +174,7 @@ struct AddImageView: View {
     func uploadtoFirebase(){
         disableButton = true
         for (_,image) in pickedImages?.enumerated() ?? [].enumerated() {
-            if let data = image.jpegData(compressionQuality: 1.0) {
+            if let data = image.jpegData(compressionQuality: 0.1) {
                 let storage = Storage.storage()
                 let storageRef = storage.reference()
                 // Create a reference to the file you want to upload

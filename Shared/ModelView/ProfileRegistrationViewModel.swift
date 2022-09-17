@@ -16,15 +16,14 @@ class ProfileRegistrationViewModel : ObservableObject{
     @Published var userProfile = UserProfile()
     @Published var name = ""
     @Published var gender = ""
-    @Published var birthDay = ""
+    @Published var birthDay: Date = Date()
     @Published var favouriteArray: [String] = []
     @Published var countAddedImage: Int = 0
     @Published var userExist = Bool()
+    @Published var imageArray: [String] = ["localimage","localimage","localimage","localimage","localimage","localimage"]
     private let db = Firestore.firestore()
-    //    private let storage = Storage.storage().reference()
     var userId: String? {
         Auth.auth().currentUser?.uid
-        
     }
     
     func addBithDay(date:String) {

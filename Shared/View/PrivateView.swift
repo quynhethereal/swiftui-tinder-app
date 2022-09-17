@@ -10,12 +10,12 @@ import SwiftUI
 struct PrivateView: View {
     //@EnvironmentObject var userAuth: UserSignInViewModel
     @StateObject var userProfile = ProfileRegistrationViewModel()
-
+    @StateObject var mainViewModel = MainViewModel()
     
     var body: some View {
         ZStack {
             if UserDefaults.standard.bool(forKey: "userprofile") {
-                MainView()
+                MainView().environmentObject(mainViewModel)
             } else {
                 InputNameView().environmentObject(userProfile)
             }

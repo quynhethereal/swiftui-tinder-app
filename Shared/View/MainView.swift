@@ -1,15 +1,72 @@
 //
-//  MainView.swift
-//  TinderApp (iOS)
+//  HomeView.swift
+//  TinderApp
 //
-//  Created by Dat Duong on 13/09/2022.
+//  Created by Le Helen on 02/09/2022.
 //
 
 import SwiftUI
 
 struct MainView: View {
+    @State var selectedTab: Int = 0
+    @EnvironmentObject var mainViewModel : MainViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView(selection: $selectedTab) {
+            
+            HomeView().environmentObject(mainViewModel)
+                .tabItem {
+                    if selectedTab == 0 {
+                        Image("homeEnable")
+                    } else {
+                        Image("homeDisable")
+                    }
+                }
+                .tag(0)
+            
+            DiscoverView()
+                .tabItem {
+                    if selectedTab == 1 {
+                        Image("discoverEnable")
+                    } else {
+                        Image("discoverDisable")
+                    }
+                }
+                .tag(1)
+            
+            SeeWhoLikesYouView()
+                .tabItem {
+                    if selectedTab == 2 {
+                        Image("tinderGoldEnable")
+                    } else {
+                        Image("tinderGoldDisable")
+                    }
+                }
+                .tag(2)
+            
+            ChatView()
+                .tabItem {
+                    if selectedTab == 3 {
+                        Image("chatEnable")
+                    } else {
+                        Image("chatDisable")
+                    }
+                }
+                .tag(3)
+            
+            ProfileView().environmentObject(mainViewModel)
+                .tabItem {
+                    if selectedTab == 4 {
+                        Image("profileEnable")
+                    } else {
+                        Image("profileDisable")
+                    }
+                }
+                .tag(4)
+        }
+        .onAppear() {
+            mainViewModel.getAllUser()
+        }
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

@@ -12,35 +12,147 @@ import Firebase
 
 
 struct SignUpView: View {
-    
+    @EnvironmentObject var userAuth: UserSignInViewModel
     @StateObject var userViewModel = UserSignUpViewModel()
     @Binding var isActive: Bool
     
     var body: some View {
-        Form {
-            Section(footer: Text(userViewModel.userNameError ?? "" ).foregroundColor(.red)) {
-                TextField("Username", text: $userViewModel.username)
-                    .autocapitalization(.none)
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [Color("lightPink"), Color("lightRed")]), startPoint: .leading, endPoint: .trailing)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Spacer()
+//                MARK: - LOGO
+                Image("tinderLabel")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(minWidth: 150, idealWidth: 200, maxWidth: 200, alignment: .center)
+                    .padding(.vertical, 70)
+//                MARK: - LABEL
+                Text(userViewModel.getAttributedString("Khi nhấn Tạo Tài Khoản hoặc Đăng Nhập, bạn đồng ý với Điều Khoản của chúng tôi. Tìm hiểu về cách chúng tôi xử lý dữ liệu của bạn trong Chính sách Quyền Riêng Tư và Chính sách Cookie của chúng tôi."))
+                    .font(.system(size: 17, weight: .medium, design: .default))
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 20)
+                Group {
+                //MARK: - USERNAME
+
+                    HStack {
+                        Spacer()
+                        Image("person")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 25, height: 25)
+                            .padding(.leading, 10)
+                        Section {
+                                TextField("", text: $userViewModel.username).frame(maxWidth: .infinity, minHeight: 55)
+                                .foregroundColor(.white)
+                                    .font(.system(size: 17, design: .default))
+                                    .autocapitalization(.none)
+                                    .placeholder(when: userViewModel.username.isEmpty){
+                                        Text("Username").foregroundColor(.white).opacity(0.5)
+                                    }
+                            }
+                        Spacer()
+                    }
+                    .overlay(
+                        Capsule(style: .circular)
+                                    .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
+                    ).padding(.horizontal, 3)
+                Text(userViewModel.userNameError ?? "" )
+                    .foregroundColor(.white)
+
+                //MARK: - PASSWORD
+
+                    HStack {
+                        Spacer()
+                        Image("lock")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 25, height: 25)
+                            .padding(.leading, 10)
+                        Section {
+                                SecureField("", text: $userViewModel.password).frame(maxWidth: .infinity, minHeight: 55)
+                                    .font(.system(size: 17, weight: .medium, design: .default))
+                                    .placeholder(when: userViewModel.password.isEmpty){
+                                        Text("Password").foregroundColor(.white).opacity(0.5)
+                                    }
+
+                            }
+                        Spacer()
+                    }
+                    .overlay(
+                        Capsule(style: .circular)
+                                    .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
+                    ).padding(.horizontal, 3)
+
+                Spacer().frame(height: 15)
+                HStack {
+                    Spacer()
+                    Image("lock")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25, height: 25)
+                        .padding(.leading, 10)
+                    Section {
+                            SecureField("", text: $userViewModel.confirmPassword).frame(maxWidth: .infinity, minHeight: 55)
+                                .font(.system(size: 17, weight: .medium, design: .default))
+                                .placeholder(when: userViewModel.confirmPassword.isEmpty){
+                                    Text("Password Confirm").foregroundColor(.white).opacity(0.5)
+                                }
+
+                        }
+                    Spacer()
+                }.overlay(
+                    Capsule(style: .circular)
+                                .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
+                ).padding(.horizontal, 3)
+                Text(userViewModel.passwordError ?? "" )
+                    .foregroundColor(.white)
+                Spacer().frame(height: 15)
+                //MARK: - SIGN UP BUTTON
+                Button(action: {
+                    signUp()
+                },
+                label: {
+                    HStack {
+                        Text("SIGN UP").foregroundColor(.white)
+                            .frame(maxWidth: .infinity, minHeight: 55)
+                            .tint(.white)
+                            .font(.system(size: 20, weight: .medium, design: .default))
+                    }
+                    .overlay(
+                        Capsule(style: .circular)
+                                    .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
+                    )
+                }).disabled(!userViewModel.isValid)
+                .padding(.horizontal, 3)
+                HStack{
+                    Text("Already have account ?").foregroundColor(.white)
+                        .frame(maxWidth: .infinity, minHeight: 55)
+                        .tint(.white)
+                        .font(.system(size: 20, weight: .medium, design: .default))
+                    Button(action: {isActive = true},
+                           label: {
+                            Text("SIGN IN").foregroundColor(.white)
+                                .tint(.white)
+                                .font(.system(size: 20, weight: .medium, design: .default))
+                    })
+                }.padding(.horizontal, 40)
             }
-            Section(footer: Text(userViewModel.passwordError ?? "" ).foregroundColor(.red)) {
-                SecureField("Password", text: $userViewModel.password)
-                SecureField("Password again", text: $userViewModel.confirmPassword)
             }
-            Section {
-                Button(action: {signUp()}) {
-                    Text("Sign up")
-                }.disabled(!userViewModel.isValid)
-                
-                Button(action: {isActive = true}) {
-                    Text("Sign In View")
-                }
-            }
+            .padding(20)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
         }
     }
     
     func signUp(){
         Auth.auth().createUser(withEmail: userViewModel.username, password: userViewModel.password) {
             (result,err) in
+            if result != nil {
+                self.isActive = true
+            }
             
         }
     }

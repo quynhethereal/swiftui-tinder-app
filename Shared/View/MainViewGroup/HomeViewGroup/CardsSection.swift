@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct CardsSection: View {
+    @EnvironmentObject var mainViewModel : MainViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            ForEach(mainViewModel.allUsers) { matcher in
+                CardView(matcher: matcher)
+            }
+        }
+        .padding(10)
+        .zIndex(1.0)
     }
 }
 

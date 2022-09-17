@@ -34,100 +34,120 @@ struct SignInView: View {
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 20)
-                    
-                    //MARK: - USERNAME
-                    
+                    Group{
+                        //MARK: - USERNAME
+                        
                         HStack {
                             Spacer()
-                            Image("google")
+                            Image("person")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 25, height: 25)
                                 .padding(.leading, 10)
                             Section {
-                                    TextField("", text: $userViewModel.username).frame(maxWidth: .infinity, minHeight: 55)
+                                TextField("", text: $userViewModel.username).frame(maxWidth: .infinity, minHeight: 55)
                                     .foregroundColor(.white)
-                                        .font(.system(size: 17, design: .default))
-                                        .autocapitalization(.none)
-                                        .placeholder(when: userViewModel.username.isEmpty){
-                                            Text("Username").foregroundColor(.white).opacity(0.5)
-                                        }
-                                }
+                                    .font(.system(size: 17, design: .default))
+                                    .autocapitalization(.none)
+                                    .placeholder(when: userViewModel.username.isEmpty){
+                                        Text("Username").foregroundColor(.white).opacity(0.5)
+                                    }
+                            }
                             Spacer()
                         }
                         .overlay(
                             Capsule(style: .circular)
-                                        .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
+                                .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
                         ).padding(.horizontal, 3)
-                    Text(userViewModel.userNameError ?? "" )
-                        .foregroundColor(.white)
-                    Spacer().frame(height: 15)
-                    
-                    //MARK: - PASSWORD
-                    
+                        Text(userViewModel.userNameError ?? "" )
+                            .foregroundColor(.white)
+                        Spacer().frame(height: 15)
+                        
+                        //MARK: - PASSWORD
+                        
                         HStack {
                             Spacer()
-                            Image("facebook")
+                            Image("lock")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 25, height: 25)
                                 .padding(.leading, 10)
                             Section {
-                                    SecureField("", text: $userViewModel.password).frame(maxWidth: .infinity, minHeight: 55)
-                                        .font(.system(size: 17, weight: .medium, design: .default))
-                                        .placeholder(when: userViewModel.password.isEmpty){
-                                            Text("Password").foregroundColor(.white).opacity(0.5)
-                                        }
-
-                                }
+                                SecureField("", text: $userViewModel.password).frame(maxWidth: .infinity, minHeight: 55)
+                                    .font(.system(size: 17, weight: .medium, design: .default))
+                                    .placeholder(when: userViewModel.password.isEmpty){
+                                        Text("Password").foregroundColor(.white).opacity(0.5)
+                                    }
+                                
+                            }
                             Spacer()
                         }
                         .overlay(
                             Capsule(style: .circular)
-                                        .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
+                                .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
                         ).padding(.horizontal, 3)
-                    Text(userViewModel.passwordError ?? "" )
-                        .foregroundColor(.white)
-                    Spacer().frame(height: 15)
-                    
-                    //MARK: - SIGN IN BUTTON
-                    Button(action: {
-                        signIn()
-                    },
-                    label: {
-                        HStack {
-                            Text("SIGN IN").foregroundColor(.white)
+                        Text(userViewModel.passwordError ?? "" )
+                            .foregroundColor(.white)
+                        Spacer()
+                            .frame(height: 15)
+                        
+                        //MARK: - SIGN IN BUTTON
+                        Button(action: {
+                            signIn()
+                        },
+                               label: {
+                            HStack {
+                                Text("SIGN IN").foregroundColor(.white)
+                                    .frame(maxWidth: .infinity, minHeight: 55)
+                                    .tint(.white)
+                                    .font(.system(size: 20, weight: .medium, design: .default))
+                                
+                                Spacer()
+                            }
+                            .overlay(
+                                Capsule(style: .circular)
+                                    .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
+                            )
+                        }).disabled(!userViewModel.isValid)
+                            .padding(.horizontal, 3)
+                        HStack{
+                            Text("Don't have account ?").foregroundColor(.white)
                                 .frame(maxWidth: .infinity, minHeight: 55)
                                 .tint(.white)
                                 .font(.system(size: 20, weight: .medium, design: .default))
+                            Button(action: {isActive = false},
+                                   label: {
+                                Text("SIGN UP").foregroundColor(.white)
+                                    .tint(.white)
+                                    .font(.system(size: 20, weight: .medium, design: .default))
                                 
-                            Spacer()
-                        }
-                        .overlay(
-                            Capsule(style: .circular)
-                                        .stroke(Color.white, style: StrokeStyle(lineWidth: 3))
-                        )
-                    }).disabled(!userViewModel.isValid)
-                    .padding(.horizontal, 3)
-                    
-                    
-                    
-                }.alert(isPresented: $displayFailureAlert, content: {
-                    Alert(title: Text("Message"), message: Text(failureMessage), dismissButton: .destructive(Text("Ok")))
-                })
-                .overlay(
-                    //MARK: - BUTTON BACK
-                    Button(action: {
-                        isActive = false
-                    }) {
-                      Image("grayBackButton")
-                            .resizable()
-                            .scaledToFit()
-                    }
-                    .modifier(BackButtonModifier()),
-                    alignment: .topLeading
-                )
-                .padding(20)
+                                
+                                
+                                
+                            })
+                        }.padding(.horizontal, 40)
+                        
+                        
+                    }.alert(isPresented: $displayFailureAlert, content: {
+                        Alert(title: Text("Message"), message: Text(failureMessage), dismissButton: .destructive(Text("Ok")))
+                    })
+                }
+//                    .overlay(
+//                        //MARK: - BUTTON BACK
+//                        Button(action: {
+//                            isActive = false
+//                        }) {
+//                            Image("grayBackButton")
+//                                .resizable()
+//                                .scaledToFit()
+//                        }
+//                            .modifier(BackButtonModifier()),
+//                        alignment: .topLeading
+//                    )
+                    .padding(20)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationBarHidden(true)
+                
             }
         
         
