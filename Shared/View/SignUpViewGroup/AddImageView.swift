@@ -71,7 +71,7 @@ struct AddImageView: View {
                                                         
                                                         pickedImages = images
                                                         
-                                                        if images.count >= 2{
+                                                        if images.count >= 1{
                                                             disableButton = false
                                                         }
                                                         
@@ -125,7 +125,7 @@ struct AddImageView: View {
                     
                     
                 } label: {
-                    if pickedImages?.count ?? 0 >= 2 {
+                    if pickedImages?.count ?? 0 >= 1 {
                         Text("TIẾP TỤC")
                             .modifier(ButtonNextEnable())
                     } else {
@@ -137,9 +137,9 @@ struct AddImageView: View {
                 .disabled(disableButton)
                 .padding(.horizontal, 30)
                 .onChange(of: pickedImages?.count, perform: {newValue in
-                    if newValue! >= 2 {
+                    if newValue! >= 1 {
                         self.disableButton = false
-                    } else if newValue! < 2 {
+                    } else if newValue! < 1 {
                         self.disableButton = true
                     }
                 })
