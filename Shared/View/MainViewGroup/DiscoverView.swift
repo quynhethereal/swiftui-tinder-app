@@ -23,7 +23,7 @@ struct DiscoverView: View {
                     } label: {
                         VStack {
                             HStack {
-                                Text("Ảnh\nĐã xác minh")
+                                Text("Verified\nImage")
                                     .fontWeight(.semibold)
                                     .multilineTextAlignment(.leading)
                                     .font(.title)
@@ -65,7 +65,7 @@ struct DiscoverView: View {
                     Spacer().frame(height: 30)
                     
                     HStack {
-                        Text("Chào mừng đến với thẻ khám phá")
+                        Text("Welcome to Discovery")
                             .fontWeight(.semibold)
                         Spacer()
                     }

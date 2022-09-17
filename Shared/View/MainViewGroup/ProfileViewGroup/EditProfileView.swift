@@ -20,14 +20,14 @@ struct EditProfileView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Text("Sửa thông tin")
+                        Text("Edit Information")
                             .font(.system(size: 26, weight: .bold, design: .default))
                             .foregroundColor(Color.black)
                             .padding(.top, 25)
                         Button {
                             self.presentationMode.wrappedValue.dismiss()
                         } label: {
-                            Text("Xong")
+                            Text("Done")
                                 .font(.system(size: 26, weight: .bold, design: .default))
                                 .foregroundColor(Color("lightRed"))
                                 .modifier(ClosePresentViewButton())
@@ -40,7 +40,7 @@ struct EditProfileView: View {
                         Button {
                             self.active = true
                         } label: {
-                            Text("Chỉnh sửa")
+                            Text("Edit")
                                 .font(.system(size: 25, weight: .heavy, design: .default))
                                 .foregroundColor(Color("lightPink"))
                         }
@@ -50,7 +50,7 @@ struct EditProfileView: View {
                         Button {
                             self.active = false
                         } label: {
-                            Text("Xem trước")
+                            Text("Preview")
                                 .font(.system(size: 25, weight: .heavy, design: .default))
                                 .foregroundColor(.gray)
                         }
@@ -240,23 +240,23 @@ struct EditProfileView: View {
                                 }
                                 .padding()
                             } footer: {
-                                Text("Thêm video, ảnh hoặc loop để hoàn thành thêm 4% hồ sơ của bạn, cùng cơ hội nhận được nhiều lượt Thích hơn.")
+                                Text("Add a video, photo or loop to complete 4% more of your profile, with a chance to get more Likes.")
                                     .padding(.horizontal)
                                     .padding()
                                     .foregroundColor(.gray)
                             }
 
                             Section {
-                                Toggle("Ảnh Thông Minh", isOn: $toggleTest)
+                                Toggle("Smart Photo", isOn: $toggleTest)
                                     .toggleStyle(SwitchToggleStyle(
                                         tint: Color("lightRed")
                                     ))
                             } header: {
-                                Text("TUỲ CHỌN HÌNH ẢNH")
+                                Text("OPTIONAL IMAGE SELECTION")
                                     .font(.system(size: 20, weight: .bold))
                                     .foregroundColor(.black)
                             } footer: {
-                                Text("Tính năng Ảnh Thông Minh liên tục xem xét toàn bộ ảnh hồ sơ của bạn và chọn ra ảnh đẹp nhất hiển thị trước")
+                                Text("The Smart Photo feature continuously reviews your entire profile picture and picks the best one to show up first.")
                             }
                             
                             Section {
@@ -273,7 +273,7 @@ struct EditProfileView: View {
                                     
                                 }
                             } header: {
-                                Text("SỞ THÍCH")
+                                Text("FAVORITE")
                                     .font(.system(size: 20, weight: .bold))
                                     .foregroundColor(.black)
                             }

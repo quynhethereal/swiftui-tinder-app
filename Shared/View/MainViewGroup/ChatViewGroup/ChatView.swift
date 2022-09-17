@@ -41,7 +41,7 @@ struct ChatView: View {
                 }
                 .padding(.bottom, 30)
                 HStack {
-                    Text("Tương hợp mới")
+                    Text("New Match")
                         .fontWeight(.bold)
                         .foregroundColor(Color("lightRed"))
                         .padding()
@@ -83,7 +83,7 @@ struct ChatView: View {
 
                 Spacer()
                 HStack {
-                    Text("Tin nhắn")
+                    Text("Message")
                         .fontWeight(.bold)
                         .foregroundColor(Color("lightRed"))
                         .padding()

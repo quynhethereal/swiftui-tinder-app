@@ -54,7 +54,7 @@ struct ProfilePreviewView: View {
                         Button {
                             self.active = true
                         } label: {
-                            Text("Chỉnh sửa")
+                            Text("Edit")
                                 .font(.system(size: 25, weight: .heavy, design: .default))
                                 .foregroundColor(.gray)
                         }
@@ -64,7 +64,7 @@ struct ProfilePreviewView: View {
                         Button {
                             self.active = false
                         } label: {
-                            Text("Xem trước")
+                            Text("Preview")
                                 .font(.system(size: 25, weight: .heavy, design: .default))
                                 .foregroundColor(Color("lightPink"))
                         }

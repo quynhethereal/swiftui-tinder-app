@@ -85,13 +85,13 @@ struct MyFavouriteView: View {
                             }
                             HStack {
                                 Button {
-                                    self.checkAndAddFavourite("Chăm sóc bản thân")
+                                    self.checkAndAddFavourite("Self Care")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Chăm sóc bản thân") {
-                                        Text("Chăm sóc bản thân")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Self Care") {
+                                        Text("Self Care")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Chăm sóc bản thân") {
-                                        Text("Chăm sóc bản thân")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Self Care") {
+                                        Text("Self Care")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
@@ -111,13 +111,13 @@ struct MyFavouriteView: View {
                             }
                             HStack {
                                 Button {
-                                    self.checkAndAddFavourite("Tiệc gia đình")
+                                    self.checkAndAddFavourite("Family Party")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Tiệc gia đình") {
-                                        Text("Tiệc gia đình")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Family Party") {
+                                        Text("Family Party")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Tiệc gia đình") {
-                                        Text("Tiệc gia đình")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Family Party") {
+                                        Text("Family Party")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
@@ -137,13 +137,13 @@ struct MyFavouriteView: View {
                             }
                             HStack {
                                 Button {
-                                    self.checkAndAddFavourite("Thể dục dụng cụ")
+                                    self.checkAndAddFavourite("Gymnastics")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Thể dục dụng cụ") {
-                                        Text("Thể dục dụng cụ")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Gymnastics") {
+                                        Text("Gymnastics")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Thể dục dụng cụ") {
-                                        Text("Thể dục dụng cụ")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Gymnastics") {
+                                        Text("Gymnastics")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
@@ -161,13 +161,13 @@ struct MyFavouriteView: View {
                                 }
                                 
                                 Button {
-                                    self.checkAndAddFavourite("Thiền")
+                                    self.checkAndAddFavourite("Meditation")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Thiền") {
-                                        Text("Thiền")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Meditation") {
+                                        Text("Meditation")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Thiền") {
-                                        Text("Thiền")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Meditation") {
+                                        Text("Meditation")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
@@ -214,25 +214,25 @@ struct MyFavouriteView: View {
                             }
                             HStack {
                                 Button {
-                                    self.checkAndAddFavourite("Bóng rổ")
+                                    self.checkAndAddFavourite("Basketball")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Bóng rổ") {
-                                        Text("Bóng rổ")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Basketball") {
+                                        Text("Basketball")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Bóng rổ") {
-                                        Text("Bóng rổ")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Basketball") {
+                                        Text("Basketball")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
                                 
                                 Button {
-                                    self.checkAndAddFavourite("Cuộc thi về thơ")
+                                    self.checkAndAddFavourite("Poetry Contest")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Cuộc thi về thơ") {
-                                        Text("Cuộc thi về thơ")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Poetry Contest") {
+                                        Text("Poetry Contest")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Cuộc thi về thơ") {
-                                        Text("Cuộc thi về thơ")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Poetry Contest") {
+                                        Text("Poetry Contest")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
@@ -240,25 +240,25 @@ struct MyFavouriteView: View {
                             }
                             HStack {
                                 Button {
-                                    self.checkAndAddFavourite("Tập luyện tại nhà")
+                                    self.checkAndAddFavourite("Workout at home")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Tập luyện tại nhà") {
-                                        Text("Tập luyện tại nhà")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Workout at home") {
+                                        Text("Workout at home")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Tập luyện tại nhà") {
-                                        Text("Tập luyện tại nhà")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Workout at home") {
+                                        Text("Workout at home")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
                                 
                                 Button {
-                                    self.checkAndAddFavourite("Nhà hát")
+                                    self.checkAndAddFavourite("Theatre")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Nhà hát") {
-                                        Text("Nhà hát")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Theatre") {
+                                        Text("Theatre")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Nhà hát") {
-                                        Text("Nhà hát")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Theatre") {
+                                        Text("Theatre")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
@@ -266,25 +266,25 @@ struct MyFavouriteView: View {
                             }
                             HStack {
                                 Button {
-                                    self.checkAndAddFavourite("Dạo quán cà phê")
+                                    self.checkAndAddFavourite("The coffee shop")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Dạo quán cà phê") {
-                                        Text("Dạo quán cà phê")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("The coffee shop") {
+                                        Text("The coffee shop")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Dạo quán cà phê") {
-                                        Text("Dạo quán cà phê")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("The coffee shop") {
+                                        Text("The coffee shop")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
 
                                 Button {
-                                    self.checkAndAddFavourite("Bể cá")
+                                    self.checkAndAddFavourite("Aquarium")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Bể cá") {
-                                        Text("Bể cá")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Aquarium") {
+                                        Text("Aquarium")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Bể cá") {
-                                        Text("Bể cá")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Aquarium") {
+                                        Text("Aquarium")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
@@ -292,13 +292,13 @@ struct MyFavouriteView: View {
                             }
                             HStack {
                                 Button {
-                                    self.checkAndAddFavourite("Giày Sneaker")
+                                    self.checkAndAddFavourite("Sneaker")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Giày Sneaker") {
-                                        Text("Giày Sneaker")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Sneaker") {
+                                        Text("Sneaker")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Giày Sneaker") {
-                                        Text("Giày Sneaker")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Sneaker") {
+                                        Text("Sneaker")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
@@ -321,37 +321,37 @@ struct MyFavouriteView: View {
                         Group {
                             HStack {
                                 Button {
-                                    self.checkAndAddFavourite("Suối nước nóng")
+                                    self.checkAndAddFavourite("Hot springs")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Suối nước nóng") {
-                                        Text("Suối nước nóng")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Hot springs") {
+                                        Text("Hot springs")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Suối nước nóng") {
-                                        Text("Suối nước nóng")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Hot springs") {
+                                        Text("Hot springs")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
 
                                 Button {
-                                    self.checkAndAddFavourite("Đi dạo")
+                                    self.checkAndAddFavourite("Walking")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Đi dạo") {
-                                        Text("Đi dạo")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Walking") {
+                                        Text("Walking")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Đi dạo") {
-                                        Text("Đi dạo")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Walking") {
+                                        Text("Walking")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
                                 
                                 Button {
-                                    self.checkAndAddFavourite("Chạy")
+                                    self.checkAndAddFavourite("Running")
                                 } label: {
-                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Chạy") {
-                                        Text("Chạy")
+                                    if !signUpVMGroup.userProfile.preferredTopic.contains("Running") {
+                                        Text("Running")
                                             .modifier(ButtonOfFavoriteDisable())
-                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Chạy") {
-                                        Text("Chạy")
+                                    } else if signUpVMGroup.userProfile.preferredTopic.contains("Running") {
+                                        Text("Running")
                                             .modifier(ButtonOfFavoriteEnable())
                                     }
                                 }
@@ -370,7 +370,7 @@ struct MyFavouriteView: View {
                                 Text("NEXT  \(signUpVMGroup.userProfile.preferredTopic.count)/5")
                                     .modifier(ButtonNextDisable())
                             } else if signUpVMGroup.userProfile.preferredTopic.count == 5 {
-                                Text("NEXT  5/5")
+                                Text("NEXT 5/5")
                                     .modifier(ButtonNextEnable())
                             }
                         }

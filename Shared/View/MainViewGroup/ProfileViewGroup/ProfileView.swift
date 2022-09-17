@@ -191,7 +191,7 @@ struct SettingView: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("Cài đặt")
+                    Text("Settings")
                         .font(.system(size: 26, weight: .bold, design: .default))
                         .foregroundColor(Color.black)
                         .padding(.top, 15)
@@ -199,7 +199,7 @@ struct SettingView: View {
                 }
                 NavigationView {
                     Form {
-                        Section(header: Text("TÀI KHOẢN").font(.system(size: 15, weight: .regular))) {
+                        Section(header: Text("ACCOUNT").font(.system(size: 15, weight: .regular))) {
                             HStack {
                                 Text("Email")
                                 Spacer()
@@ -214,7 +214,7 @@ struct SettingView: View {
                         } label: {
                             HStack {
                                 Spacer()
-                                Text("Đăng xuất & Thoát")
+                                Text("Sign Out & Leave")
                                     .foregroundColor(.black)
                                 Spacer()
                             }
@@ -248,7 +248,7 @@ struct SettingView: View {
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    Text("Xong")
+                    Text("Done")
                         .font(.system(size: 26, weight: .bold, design: .default))
                         .foregroundColor(Color("lightRed"))
                         .padding(.top, 34)

@@ -41,7 +41,7 @@ struct WhoLikeYou: View {
                     Button {
                         self.active = true
                     } label: {
-                        Text("\(whoLikeYou.count) Lượt thích")
+                        Text("\(whoLikeYou.count) Likes")
                             .font(.system(size: 20, weight: .heavy, design: .default))
                             .foregroundColor(.black)
                     }
@@ -52,7 +52,7 @@ struct WhoLikeYou: View {
                     Button {
                         self.active = false
                     } label: {
-                        Text("Top tuyển chọn")
+                        Text("Top Collection")
                             .font(.system(size: 20, weight: .heavy, design: .default))
                             .foregroundColor(.gray)
                     }
@@ -147,7 +147,7 @@ struct TopLikeView: View {
                     Button {
                         self.active = true
                     } label: {
-                        Text("Lượt thích")
+                        Text("Likes")
                             .font(.system(size: 20, weight: .heavy, design: .default))
                             .foregroundColor(.gray)
                     }
@@ -158,7 +158,7 @@ struct TopLikeView: View {
                     Button {
                         self.active = false
                     } label: {
-                        Text("Top tuyển chọn")
+                        Text("Top Collection")
                             .font(.system(size: 20, weight: .heavy, design: .default))
                             .foregroundColor(.black)
                     }
