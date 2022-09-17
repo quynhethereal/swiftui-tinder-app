@@ -67,7 +67,8 @@ class MainViewModel: ObservableObject {
     
     func addToLikes(matcherId:String){
         let currentUserDocument = db.collection("user_profiles").document(userId!)
-        let matcherDocument = db.collection("user_profiles").document(matcherId)
+        let matcherDocument = db.collection("user_profiles").whereField("id", isEqualTo: "\(matcherId)")
+            
         
         currentUserDocument.getDocument { (document, error) in
             
@@ -78,20 +79,31 @@ class MainViewModel: ObservableObject {
                     "likes": FieldValue.arrayUnion([matcherId])
                 ])
                 
-                
                 // check if there is a match
-                matcherDocument.getDocument{ (matcherDoc, error) in
-                    if matcherDoc!.exists{
-                        let matcherLikes = [String](matcherDoc!["likes"] as! [String])
-                        // there is a match
-                        if matcherLikes.contains(self.userId!){
+                matcherDocument.getDocuments{ (snapshot, error) in
+                    let currentUserID = document?.get("id")
+                    if let error = error {
+                        print("error in matching....")
+                        print(error)
+                    }else {
+                        
+                        for matcherDoc in snapshot!.documents {
                             
-                            matcherDocument.updateData([
-                                "matches": FieldValue.arrayUnion([self.userId!])
-                            ]);
-                            currentUserDocument.updateData([
-                                "matches": FieldValue.arrayUnion([matcherId])
-                            ])
+                            
+                            let matcherLikes = matcherDoc.get("likes") as! [String]
+                            
+                            // there is a match
+                            if matcherLikes.contains(currentUserID as! String){
+                                
+                                let ref = matcherDoc.reference
+            
+                                ref.updateData([
+                                    "matches": FieldValue.arrayUnion([currentUserID])
+                                ]);
+                                currentUserDocument.updateData([
+                                    "matches": FieldValue.arrayUnion([matcherId])
+                                ])
+                            }
                         }
                     }
                 }
