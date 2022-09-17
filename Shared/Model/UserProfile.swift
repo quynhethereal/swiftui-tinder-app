@@ -21,6 +21,7 @@ struct UserProfile: Identifiable, Codable {
     var ageFromDB: Int = 20
     var likes:[String] = [String]()
     var matches:[String] = [String]()
+    var dislikes:[String] = [String]()
 
     
     var images: [String] = [String]()
@@ -41,6 +42,7 @@ struct UserProfile: Identifiable, Codable {
         case images
         case likes
         case matches
+        case dislikes
     }
     
     var dictionary: [String: Any] {
@@ -62,6 +64,7 @@ struct UserProfile: Identifiable, Codable {
         images = try values.decode(Array.self, forKey: .images)
         likes = try values.decode(Array.self, forKey: .likes)
         matches = try values.decode(Array.self, forKey: .matches)
+        dislikes = try values.decode(Array.self, forKey: .dislikes)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -75,6 +78,7 @@ struct UserProfile: Identifiable, Codable {
         try container.encode(images, forKey: .images)
         try container.encode(likes, forKey: .likes)
         try container.encode(matches, forKey: .matches)
+        try container.encode(dislikes, forKey: .dislikes)
     }
     
     

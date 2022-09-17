@@ -65,10 +65,12 @@ struct MainView: View {
                 .tag(4)
         }
         .onAppear() {
-            mainViewModel.getAllUser()
             mainViewModel.getLoginUser()
             chatViewModel.getAllMatchesProfiles()
 
+        }
+        .task{
+            await mainViewModel.getAllUser()
         }
         .edgesIgnoringSafeArea(.bottom)
     }

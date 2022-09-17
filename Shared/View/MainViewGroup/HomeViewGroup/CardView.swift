@@ -87,6 +87,7 @@ struct CardView: View {
                             case let x where x < -100:
                                 matcher.x  = -500; matcher.degree = -12
                                 print("Không")
+                                mainViewModel.addToDislikes(matcherId: matcher.id)
                             default:
 
                                 matcher.x = 0; matcher.y = 0
