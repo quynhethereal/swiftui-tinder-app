@@ -29,7 +29,7 @@ class MainViewModel: ObservableObject {
         return userEmail!
     }
     
-    func getLoginUser() {
+    func getLoginUser() async {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let docRef = db.collection("user_profiles").document(userId!)
@@ -42,6 +42,7 @@ class MainViewModel: ObservableObject {
                 userProfile.preferredTopic = [String](document?["preferredTopic"] as! [String])
                 userProfile.ageFromDB = Int(document?["age"] as! Int)
             } else {
+                print("Document for user doesn't exist")
                 return
                 
             }
@@ -74,10 +75,26 @@ class MainViewModel: ObservableObject {
     }
     
     func getAllUser() async {
+        
+        
             
         getAllInteractedUsers {
             // callback
-            self.db.collection("user_profiles").getDocuments() { (querySnapshot, err) in
+            
+            let genderFilterCondition = self.getOppositeGender(gender: self.userProfile.orientation.rawValue)
+            
+            var collectionReference = self.db.collection("user_profiles").whereField("orientation", isEqualTo: genderFilterCondition)
+            
+            if (genderFilterCondition == "both" ){
+                collectionReference =  self.db.collection("user_profiles")
+                
+                print("o day")
+                print(collectionReference)
+                print(genderFilterCondition)
+                print(self.userProfile.orientation)
+            }
+            
+            collectionReference.getDocuments() { (querySnapshot, err) in
                 
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -93,14 +110,9 @@ class MainViewModel: ObservableObject {
                         if (!self.interactedUsers.isEmpty){
                             
                             if (self.interactedUsers.contains(id)){
-                                print("skipped??/")
                                 continue
-                            } else {
-                                print("doesn't skip")
-                                print(self.interactedUsers)
                             }
                         }
-                        
                         
                         var potentialMatcher = Matcher()
                         potentialMatcher.id = String(document["id"] as! String)
@@ -116,13 +128,24 @@ class MainViewModel: ObservableObject {
         }
             
     }
+    
+    func getOppositeGender(gender:String) -> String{
+        switch gender {
+        case "men":
+            return "women"
+        case "women":
+            return "men"
+        case "both":
+            return "both"
+        default:
+            return "both"
+        }
+    }
 
     
     func addToDislikes(matcherId:String){
         
         let currentUserDocument = db.collection("user_profiles").document(userId!)
-//        var matcherDocument = db.collection("user_profiles").whereField("id", isEqualTo: "\(matcherId)")
-        
         
         currentUserDocument.getDocument { (document, error) in
             if document!.exists {
