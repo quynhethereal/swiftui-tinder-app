@@ -93,7 +93,7 @@ class MainViewModel: ObservableObject {
                     if let error = error {
                         print("error in matching....")
                         print(error)
-                    }else {
+                    } else {
                         
                         for matcherDoc in snapshot!.documents {
                             
