@@ -98,7 +98,7 @@ class MainViewModel: ObservableObject {
                                 let ref = matcherDoc.reference
             
                                 ref.updateData([
-                                    "matches": FieldValue.arrayUnion([currentUserID])
+                                    "matches": FieldValue.arrayUnion([currentUserID as! String])
                                 ]);
                                 currentUserDocument.updateData([
                                     "matches": FieldValue.arrayUnion([matcherId])
