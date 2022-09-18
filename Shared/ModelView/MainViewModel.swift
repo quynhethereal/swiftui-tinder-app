@@ -224,7 +224,9 @@ class MainViewModel: ObservableObject {
                                 
                                 self.db.collection("conversations").document(self.userId!).setData([
                                     "participants":  FieldValue.arrayUnion([currentUserID as! String, matcherId])
-                                ]) { (error) in }
+                                ]) { (error) in
+                                    print("Cannot create conversations")
+                                }
 
                                 
                                 let ref = matcherDoc.reference
