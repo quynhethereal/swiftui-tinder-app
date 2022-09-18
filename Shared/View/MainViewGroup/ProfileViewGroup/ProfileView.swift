@@ -225,7 +225,7 @@ struct SettingView: View {
                             HStack {
                                 Spacer()
                                 VStack {
-                                    Image("tinderLogo")
+                                    Image("TinderIconColorful")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 40)
