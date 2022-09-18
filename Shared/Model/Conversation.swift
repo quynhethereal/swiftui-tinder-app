@@ -10,10 +10,8 @@ import Firebase
 class Conversation: Codable, Identifiable{
     var id: String
     var participants : [String] = [String]()
-    var conversationCode: String
     
-    init(id: String, conversationCode: String){
+    init(id: String){
         self.id = id
-        self.conversationCode = conversationCode
     }
 }

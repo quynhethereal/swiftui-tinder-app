@@ -24,8 +24,7 @@ class ConversationViewModel: ObservableObject {
                 self.conversations = documents.map({ docSnapshot -> Conversation  in
                     let data = docSnapshot.data()
                     let docId = docSnapshot.documentID
-//                    let conversationCode = data["conversationCode"] as? String ?? ""
-                    return Conversation(id: docId, conversationCode: conversationCode)
+                    return Conversation(id: docId)
                 })
             })
         }
