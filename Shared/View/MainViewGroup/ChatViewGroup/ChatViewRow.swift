@@ -59,8 +59,8 @@ struct ChatViewRow: View {
                     }
                     .offset(x: -20)
                     Spacer()
-                }
-            }
+//                }
+//            }
 
         }
         .frame(height: 60)
