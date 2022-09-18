@@ -84,7 +84,7 @@ class MainViewModel: ObservableObject {
             // filter by gender
             let genderFilterCondition = self.getOppositeGender(gender: self.userProfile.orientation.rawValue)
             
-            var collectionReference = self.db.collection("user_profiles").whereField("orientation", isEqualTo: genderFilterCondition)
+            var collectionReference = self.db.collection("user_profiles").whereField("orientation", isNotEqualTo: self.userProfile.orientation.rawValue)
             
             if (genderFilterCondition == "both" ){
                 collectionReference =  self.db.collection("user_profiles")
@@ -158,7 +158,6 @@ class MainViewModel: ObservableObject {
 //                }
 //            }
         }
-            
     }
     
     func getOppositeGender(gender:String) -> String{
@@ -196,7 +195,7 @@ class MainViewModel: ObservableObject {
     func addToLikes(matcherId:String){
         let currentUserDocument = db.collection("user_profiles").document(userId!)
         let matcherDocument = db.collection("user_profiles").whereField("id", isEqualTo: "\(matcherId)")
-            
+//        let conversations = db.collection("conversations")
         
         currentUserDocument.getDocument { (document, error) in
             
@@ -219,8 +218,15 @@ class MainViewModel: ObservableObject {
                             
                             let matcherLikes = matcherDoc.get("likes") as! [String]
                             
+                            
                             // there is a match
                             if matcherLikes.contains(currentUserID as! String){
+                                
+                                self.db.collection("conversations").document(self.userId!).setData([
+                                    "conversationCode": currentUserID as! String + matcherId,
+                                    "participants":  FieldValue.arrayUnion([currentUserID as! String, matcherId])
+                                ]) { (error) in }
+
                                 
                                 let ref = matcherDoc.reference
             
