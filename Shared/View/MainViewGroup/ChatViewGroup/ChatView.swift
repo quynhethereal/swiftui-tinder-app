@@ -95,29 +95,29 @@ struct ChatView: View {
                         .padding()
                     Spacer()
                 }
-                ScrollView {
-                    
-                    ForEach(conversationViewModel.conversations, id: \.self) { con in
-                        ForEach(chatViewModel.allMatches, id:\.self) { user in
-                            
-                            if con.participants[0] == user.id {
-                                NavigationLink {
-                                    //ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
-                                } label: {
-                                    ChatViewRow(matcher: user)
-                                }
-                            } else if con.participants[1] == user.id {
-                                NavigationLink {
-                                    //ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
-                                } label: {
-                                    ChatViewRow(matcher: user)
-                                }
-                            }
-                        }
-
-
-                    }
-                }
+//                ScrollView {
+//                    
+//                    ForEach(conversationViewModel.conversations, id: \.self) { con in
+//                        ForEach(chatViewModel.allMatches, id:\.self) { user in
+//                            
+//                            if con.participants[0] == user.id {
+//                                NavigationLink {
+//                                    //ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
+//                                } label: {
+//                                    ChatViewRow(matcher: user)
+//                                }
+//                            } else if con.participants[1] == user.id {
+//                                NavigationLink {
+//                                    //ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
+//                                } label: {
+//                                    ChatViewRow(matcher: user)
+//                                }
+//                            }
+//                        }
+//
+//
+//                    }
+//                }
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
