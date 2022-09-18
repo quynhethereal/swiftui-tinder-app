@@ -14,7 +14,7 @@ struct SignInView: View {
     @EnvironmentObject var userViewModel: UserSignInViewModel
     @StateObject var userProfile = ProfileRegistrationViewModel()
     @State var displayFailureAlert: Bool = false
-    @State var failureMessage: String = "ab"
+    @State var failureMessage: String = ""
     @Binding var isActive: Bool
     var body: some View {
             ZStack {

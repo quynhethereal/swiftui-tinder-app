@@ -90,73 +90,73 @@ class MainViewModel: ObservableObject {
                 collectionReference =  self.db.collection("user_profiles")
             }
             
-            collectionReference.addSnapshotListener { querySnapshot, error in
-                guard let documents = querySnapshot?.documents else {
-                            print("Error fetching documents: \(error!)")
-                            return
-                }
-                
-                
-                for (_,document) in documents.enumerated() {
-                    
-                    if(document.documentID == self.userId) {
-                        continue
-                    }
-                    
-                    let id = document.get("id") as! String
-                    
-                    if (!self.interactedUsers.isEmpty){
-                        
-                        if (self.interactedUsers.contains(id)){
-                            continue
-                        }
-                    }
-                    
-                    
-                    var potentialMatcher = Matcher()
-                    potentialMatcher.id = String(document["id"] as! String)
-                    potentialMatcher.images = [String](document["images"] as! [String])
-                    potentialMatcher.name = String(document["name"] as! String)
-                    potentialMatcher.gender = String(document["orientation"] as! String)
-                    potentialMatcher.preferredTopic = [String](document["preferredTopic"] as! [String])
-                    potentialMatcher.age = Int(document["age"] as! Int)
-                    self.allUsers.append(potentialMatcher)
-                    
-                }
-            }
-            
-                        
-//            collectionReference.getDocuments() { (querySnapshot, err) in
+//            collectionReference.addSnapshotListener { querySnapshot, error in
+//                guard let documents = querySnapshot?.documents else {
+//                            print("Error fetching documents: \(error!)")
+//                            return
+//                }
 //
-//                if let err = err {
-//                    print("Error getting documents: \(err)")
-//                } else {
 //
-//                    for (_,document) in querySnapshot!.documents.enumerated() {
-//                        if(document.documentID == self.userId) {
+//                for (_,document) in documents.enumerated() {
+//
+//                    if(document.documentID == self.userId) {
+//                        continue
+//                    }
+//
+//                    let id = document.get("id") as! String
+//
+//                    if (!self.interactedUsers.isEmpty){
+//
+//                        if (self.interactedUsers.contains(id)){
 //                            continue
 //                        }
-//
-//                        let id = document.get("id") as! String
-//
-//                        if (!self.interactedUsers.isEmpty){
-//
-//                            if (self.interactedUsers.contains(id)){
-//                                continue
-//                            }
-//                        }
-//
-//                        var potentialMatcher = Matcher()
-//                        potentialMatcher.id = String(document["id"] as! String)
-//                        potentialMatcher.images = [String](document["images"] as! [String])
-//                        potentialMatcher.name = String(document["name"] as! String)
-//                        potentialMatcher.gender = String(document["orientation"] as! String)
-//                        potentialMatcher.preferredTopic = [String](document["preferredTopic"] as! [String])
-//                        potentialMatcher.age = Int(document["age"] as! Int)
-//                        self.allUsers.append(potentialMatcher)
 //                    }
+//
+//
+//                    var potentialMatcher = Matcher()
+//                    potentialMatcher.id = String(document["id"] as! String)
+//                    potentialMatcher.images = [String](document["images"] as! [String])
+//                    potentialMatcher.name = String(document["name"] as! String)
+//                    potentialMatcher.gender = String(document["orientation"] as! String)
+//                    potentialMatcher.preferredTopic = [String](document["preferredTopic"] as! [String])
+//                    potentialMatcher.age = Int(document["age"] as! Int)
+//                    self.allUsers.append(potentialMatcher)
+//
 //                }
 //            }
+            
+                        
+            collectionReference.getDocuments() { (querySnapshot, err) in
+
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+
+                    for (_,document) in querySnapshot!.documents.enumerated() {
+                        if(document.documentID == self.userId) {
+                            continue
+                        }
+
+                        let id = document.get("id") as! String
+
+                        if (!self.interactedUsers.isEmpty){
+
+                            if (self.interactedUsers.contains(id)){
+                                continue
+                            }
+                        }
+
+                        var potentialMatcher = Matcher()
+                        potentialMatcher.id = String(document["id"] as! String)
+                        potentialMatcher.images = [String](document["images"] as! [String])
+                        potentialMatcher.name = String(document["name"] as! String)
+                        potentialMatcher.gender = String(document["orientation"] as! String)
+                        potentialMatcher.preferredTopic = [String](document["preferredTopic"] as! [String])
+                        potentialMatcher.age = Int(document["age"] as! Int)
+                        self.allUsers.append(potentialMatcher)
+                    }
+                }
+            }
         }
     }
     

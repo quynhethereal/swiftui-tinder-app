@@ -15,6 +15,8 @@ struct SignUpView: View {
     @EnvironmentObject var userAuth: UserSignInViewModel
     @StateObject var userViewModel = UserSignUpViewModel()
     @Binding var isActive: Bool
+    @State var displayFailureAlert: Bool = false
+    @State var failureMessage: String = ""
     
     var body: some View {
         ZStack {
@@ -139,7 +141,9 @@ struct SignUpView: View {
                                 .font(.system(size: 20, weight: .medium, design: .default))
                     })
                 }
-            }
+                }.alert(isPresented: $displayFailureAlert, content: {
+                    Alert(title: Text("Message"), message: Text(failureMessage), dismissButton: .destructive(Text("Ok")))
+                })
             }
             .padding(20)
             .navigationBarBackButtonHidden(true)
@@ -150,10 +154,16 @@ struct SignUpView: View {
     func signUp(){
         Auth.auth().createUser(withEmail: userViewModel.username, password: userViewModel.password) {
             (result,err) in
+            if let err = err {
+                print("There was an issue when trying to sign up: \(err)")
+                failureMessage = err.localizedDescription
+                displayFailureAlert = true
+                return
+            }
+            
             if result != nil {
                 self.isActive = true
             }
-            
         }
     }
     
