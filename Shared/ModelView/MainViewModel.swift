@@ -235,8 +235,12 @@ class MainViewModel: ObservableObject {
                                 let matcherRef = self.db.document(self.db.collection("user_profiles").document(matcherDoc.documentID).path)
 
 
-                                self.db.collection("conversations").document(self.userId!).setData([
-                                    "participants": FieldValue.arrayUnion([currentUserRef,matcherRef])
+                                self.db.collection("conversations").addDocument(data: [
+                                    "participantsDocumentRef": FieldValue.arrayUnion([currentUserRef,matcherRef]),
+                                    "participants": [
+                                        "\(currentUserID as! String)": true,
+                                        matcherId: true
+                                    ]
                                 ]) { (error) in
                                     print("Cannot create conversations")
                                 }

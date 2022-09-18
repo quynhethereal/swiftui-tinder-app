@@ -84,7 +84,7 @@ struct MainView: View {
             // do not change the order as they are supposed to be synchronous
             await mainViewModel.getLoginUser()
             await mainViewModel.getAllUser()
-//            await conversationViewModel.fetchData()
+            await conversationViewModel.fetchData()
             
         }
         .edgesIgnoringSafeArea(.bottom)

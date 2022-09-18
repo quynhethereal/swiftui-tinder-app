@@ -17,7 +17,7 @@ import SwiftUI
 
 struct ChatView: View {
     @EnvironmentObject var chatViewModel : ChatViewModel
-    @EnvironmentObject var conversationViewModel : ConversationViewModel
+//    @EnvironmentObject var conversationViewModel : ConversationViewModel
     let demoImageArray = ["rum", "vodka", "chianti", "gin", "tequila"]
     let listOfCurrentMess: [[String]] = [
         ["rum", "Rum", "I love you...", "false"],
@@ -103,39 +103,16 @@ struct ChatView: View {
                         .padding()
                     Spacer()
                 }
-//                ScrollView {
-//                    
-//                    ForEach(conversationViewModel.conversations, id: \.self) { con in
-//                        ForEach(chatViewModel.allMatches, id:\.self) { user in
-//                            
-//                            if con.participants[0] == user.id {
-//                                NavigationLink {
-//                                    //ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
-//                                } label: {
-//                                    ChatViewRow(matcher: user)
-//                                }
-//                            } else if con.participants[1] == user.id {
-//                                NavigationLink {
-//                                    //ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
-//                                } label: {
-//                                    ChatViewRow(matcher: user)
-//                                }
-//                            }
-//                        }
-//
-//
-//                    }
-//                }
-                ScrollView{
-                    ForEach(listOfCurrentMess, id: \.self) { user in
-                                            NavigationLink {
-                                                ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
-                                            } label: {
-                                                ChatViewRow(imgName: user[0], name: user[1], lastMessage: user[2], online: user[3])
-                                            }
+                ScrollView {
 
-                                        }
-                                
+                    ForEach(chatViewModel.allMatches, id: \.self) { matcher in
+                        NavigationLink {
+                            ChatViewScreen(matcher: matcher)
+                                //.environmentObject(conversationViewModel)
+                        } label: {
+                            ChatViewRow(matcher: matcher)
+                        }
+                    }
                 }
             }
             .navigationBarBackButtonHidden(true)
@@ -146,7 +123,6 @@ struct ChatView: View {
         }
         .onAppear() {
             chatViewModel.getAllMatchesProfiles()
-//            conversationViewModel.fetchData()
         }
 //        .task {
 //            await conversationViewModel.fetchData()

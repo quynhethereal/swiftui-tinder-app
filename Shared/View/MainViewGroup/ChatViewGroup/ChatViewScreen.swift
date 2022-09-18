@@ -17,10 +17,12 @@ import SwiftUI
 
 struct ChatViewScreen: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var imgName: String
-    var name: String
-    var online: String
+    @StateObject var conversationViewModel = ConversationViewModel()
     @State var demotextfield = ""
+    @State var online = true
+    @State var matcher: Matcher
+    
+    
     var body: some View {
         VStack {
             HStack {
@@ -34,23 +36,20 @@ struct ChatViewScreen: View {
                         .offset(x: 20)
                 }
                 Spacer()
-                Image(imgName)
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    .clipShape(Circle())
-                    .offset(x: 5)
-                if online == "true" {
+                AsyncImage(url: URL(string: matcher.images[0]), content: view)
+
+                if online == true {
                     Image(systemName: "circle.fill")
                         .offset(x: -20, y: 20)
                         .foregroundColor(.green)
-                } else if online == "false" {
+                } else if online == false {
                     Image(systemName: "circle.fill")
                         .offset(x: -20, y: 20)
                         .foregroundColor(.gray)
                 }
                 Spacer()
             }
-            Text(name)
+            Text(matcher.name)
             ScrollView {
                 
             }
@@ -87,11 +86,48 @@ struct ChatViewScreen: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
+        .task {
+            await conversationViewModel.getConversationId(matcherID: matcher.id)
+        }
     }
 }
 
-struct ChatViewScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatViewScreen(imgName: "gin", name: "Gin", online: "true")
+
+@ViewBuilder
+private func view(for phase: AsyncImagePhase) -> some View {
+    switch phase {
+        case .empty:
+            HStack{
+                Spacer()
+                ProgressView()
+                Spacer()
+            }
+            
+        case .success(let image):
+            image
+                .resizable()
+                .frame(width: 60, height: 60)
+                .clipShape(Circle())
+                .offset(x: 5)
+            
+        case .failure(let error):
+            VStack(spacing: 16) {
+                Image(systemName: "xmark.octagon.fill")
+                    .resizable()
+                
+                
+                Text(error.localizedDescription)
+                    .multilineTextAlignment(.center)
+            }
+            .frame(width: 100,height: 150)
+        @unknown default:
+            Text("Unknown")
+                .foregroundColor(.gray)
     }
 }
+
+//struct ChatViewScreen_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatViewScreen(imgName: "gin", name: "Gin", online: "true")
+//    }
+//}

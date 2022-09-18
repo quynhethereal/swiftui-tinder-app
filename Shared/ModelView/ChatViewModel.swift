@@ -30,12 +30,12 @@ class ChatViewModel: ObservableObject {
         
         currentUserDocument.getDocument { (document, error) in
             
-            let matches = document!.get("matches") as! [String]
+            let matches = document!.get("matches") as? [String] ?? nil
             
-            if (matches.isEmpty){
+            if (matches == nil){
                 return
             } else {
-                for match in matches {
+                for match in matches! as [String] {
                     
                     let documentQuery = self.db.collection("user_profiles").whereField("id", isEqualTo: match).limit(to:1)
                     
