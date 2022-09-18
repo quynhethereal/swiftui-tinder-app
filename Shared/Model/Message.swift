@@ -15,7 +15,7 @@
 
 import Foundation
 
-class Message: Codable, Identifiable{
+class Message: Codable, Identifiable, Hashable{
     var id: String = ""
     var content: String = ""
     var timestamp: String = ""
@@ -27,6 +27,15 @@ class Message: Codable, Identifiable{
         self.sender = sender
         self.timestamp = timestamp
     }
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+    
+    public static func == (lhs: Message, rhs: Message) -> Bool {
+        return lhs.id == rhs.id
+    }
+
 }
 
 

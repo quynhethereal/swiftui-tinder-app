@@ -1,22 +1,23 @@
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 3
-  Author: Error Team
-     Duong Tuan Dat - s3636739
-     Le Trung Kim - s3634824
-     Le Dinh Ngoc Quynh - s3791159
-     Thuan Nguyen - s3517236
-  Created  date: 27/08/2022
-  Last modified: 18/09/2022
-  Acknowledgement: Acknowledge the resources that you use here.
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 3
+ Author: Error Team
+ Duong Tuan Dat - s3636739
+ Le Trung Kim - s3634824
+ Le Dinh Ngoc Quynh - s3791159
+ Thuan Nguyen - s3517236
+ Created  date: 27/08/2022
+ Last modified: 18/09/2022
+ Acknowledgement: Acknowledge the resources that you use here.
+ */
 
 import SwiftUI
 
 struct ChatViewScreen: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @StateObject var conversationViewModel = ConversationViewModel()
     @State var demotextfield = ""
     @State var online = true
@@ -37,7 +38,7 @@ struct ChatViewScreen: View {
                 }
                 Spacer()
                 AsyncImage(url: URL(string: matcher.images[0]), content: view)
-
+                
                 if online == true {
                     Image(systemName: "circle.fill")
                         .offset(x: -20, y: 20)
@@ -50,7 +51,37 @@ struct ChatViewScreen: View {
                 Spacer()
             }
             Text(matcher.name)
+            
             ScrollView {
+                ForEach(conversationViewModel.messages, id: \.self) { message in
+                    // If the message contains [USER], that means it's us
+                    HStack {
+                        Spacer()
+                        Text(message.content)
+                            .padding()
+                            .font(.system(size: 14))
+                            .foregroundColor(Color.white)
+                            .background(Color("lightRed"))
+                            .clipShape(Capsule())
+                            .padding(.horizontal, 15)
+                            .padding(.vertical)
+                    }
+//                    HStack {
+//                        Text(message)
+//                            .padding()
+//                            .font(.system(size: 14))
+//                            .background(Color.white)
+//                            .foregroundColor(Color("lightRed"))
+//                            .clipShape(RoundedRectangle(cornerRadius: 25))
+//                            .padding(.horizontal, 16)
+//                            .padding(.bottom, 10)
+//                        Spacer()
+//                    }
+                    
+                }
+//                .rotationEffect(.degrees(180))
+                
+                
                 
             }
             Spacer()
@@ -71,7 +102,9 @@ struct ChatViewScreen: View {
                     .background(.gray.opacity(0.3))
                     .clipShape(Capsule())
                 Button {
-                    
+                    //Send message
+                    conversationViewModel.sendMessage(messageContent: demotextfield, sender: conversationViewModel.currentChatUserID)
+                    demotextfield = ""
                 } label: {
                     Image(systemName: "paperplane.fill")
                         .resizable()
@@ -87,7 +120,9 @@ struct ChatViewScreen: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
         .task {
+            
             await conversationViewModel.getConversationId(matcherID: matcher.id)
+//            await conversationViewModel.fetchMessagesInAChatRoom()
         }
     }
 }

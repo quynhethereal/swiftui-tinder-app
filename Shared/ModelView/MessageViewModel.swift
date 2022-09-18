@@ -22,15 +22,7 @@ class MessageViewModel: ObservableObject{
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser
     
-    func sendMessage(messageContent: String, docId: String){
-        if (user != nil ){
-            db.collection("conversations").document(docId).collection("messages").addDocument(data: [
-                "sentAt": Date(),
-                "content": messageContent,
-                "sender": user!.uid
-            ])
-        }
-    }
+
     
     func fetchMessagesInAChatRoom(docId: String){
         if (user != nil){
