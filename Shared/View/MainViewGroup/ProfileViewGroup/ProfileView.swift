@@ -215,7 +215,7 @@ struct SettingView: View {
                             HStack {
                                 Spacer()
                                 Text("Sign Out & Leave")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.red)
                                 Spacer()
                             }
                         }

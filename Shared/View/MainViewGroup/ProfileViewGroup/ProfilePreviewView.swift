@@ -33,7 +33,7 @@ struct ProfilePreviewView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Text("Xem trước")
+                        Text("Preview")
                             .font(.system(size: 26, weight: .bold, design: .default))
                             .foregroundColor(Color.black)
                             .padding(.top, 25)
@@ -41,7 +41,7 @@ struct ProfilePreviewView: View {
                         Button {
                             self.presentationMode.wrappedValue.dismiss()
                         } label: {
-                            Text("Xong")
+                            Text("Done")
                                 .font(.system(size: 26, weight: .bold, design: .default))
                                 .foregroundColor(Color("lightRed"))
                                 .modifier(ClosePresentViewButton())

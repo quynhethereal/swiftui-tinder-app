@@ -263,7 +263,7 @@ struct EditProfileView: View {
                                 TextEditor(text: $testText)
                                     .frame(height: 70)
                             } header: {
-                                Text("GIỚI THIỆU BẢN THÂN")
+                                Text("INTRODUCE YOURSELF")
                                     .font(.system(size: 20, weight: .bold))
                                     .foregroundColor(.black)
                             }
@@ -305,7 +305,7 @@ struct EditProfileView: View {
                                     .frame(width: .infinity, height: 50)
                                     .textFieldStyle(.plain)
                             } header: {
-                                Text("CÔNG TY")
+                                Text("COMPANY")
                                     .font(.system(size: 20, weight: .bold))
                                     .foregroundColor(.black)
                             }
@@ -314,7 +314,7 @@ struct EditProfileView: View {
                                 Picker("RMIT University VietNam", selection: $testPicker) {
                                 }
                             } header: {
-                                Text("TRƯỜNG")
+                                Text("SCHOOL")
                                     .font(.system(size: 20, weight: .bold))
                                     .foregroundColor(.black)
                             }
@@ -322,7 +322,7 @@ struct EditProfileView: View {
                                 Picker("Thêm thành phố", selection: $testPicker) {
                                 }
                             } header: {
-                                Text("ĐANG SỐNG TẠI")
+                                Text("LIVE AT")
                                     .font(.system(size: 20, weight: .bold))
                                     .foregroundColor(.black)
                             }
