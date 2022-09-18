@@ -223,17 +223,21 @@ class MainViewModel: ObservableObject {
                     } else {
                         
                         for matcherDoc in snapshot!.documents {
-                            
+                                                        
                             let matcherLikes = matcherDoc.get("likes") as! [String]
                             
                             
                             // there is a match
                             if matcherLikes.contains(currentUserID as! String){
                                 
+                                let currentUserRef = self.db.document(currentUserDocument.path)
+
+                                let matcherRef = self.db.document(self.db.collection("user_profiles").document(matcherDoc.documentID).path)
+
+
                                 self.db.collection("conversations").document(self.userId!).setData([
-                                    "participants":  FieldValue.arrayUnion([currentUserID as! String, matcherId])
+                                    "participants": FieldValue.arrayUnion([currentUserRef,matcherRef])
                                 ]) { (error) in
-                                    print(error)
                                     print("Cannot create conversations")
                                 }
 

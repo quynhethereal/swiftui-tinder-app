@@ -43,8 +43,14 @@ class ConversationViewModel: ObservableObject {
         }
     }
     
-    func getUser(id: String) {
+    func getParticipantInAConversation(conversationId: String) {
+        let currentUserDocumentRef = db.collection("user_profiles").document(userId!).path
         
+        db.collection("conversations").whereField("participants", arrayContains: currentUserDocumentRef).getDocuments  { (document, error) in
+            
+            
+            
+        }
     }
     
 }

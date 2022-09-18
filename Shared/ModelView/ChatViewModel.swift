@@ -24,10 +24,6 @@ class ChatViewModel: ObservableObject {
     var userId: String? {
         Auth.auth().currentUser?.uid
     }
-        
-//    func allImage() -> [String] {
-//        
-//    }
     
     func getAllMatchesProfiles() {
         let currentUserDocument = db.collection("user_profiles").document(userId!)
