@@ -15,6 +15,7 @@
 
 import SwiftUI
 
+// Chatbot Screen
 struct ChatBotViewScreen: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var imgName: String

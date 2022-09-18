@@ -15,8 +15,8 @@
 
 import Foundation
 
+// simple if-else hehe
 func getBotResponse(message: String) -> String {
-    //MARK: MẢNG CHỨA CÁC CÂU HỎI CỦA USER CÓ THỂ XẢY RA
     
     let tempMessage = message.lowercased()
     

@@ -14,6 +14,8 @@
 */
 
 import SwiftUI
+
+// View to display dumb quotes
 struct ProfileView: View {
     @State private var showingSettingView = false
     @State private var showingEditProfileView = false
@@ -63,7 +65,7 @@ struct ProfileView: View {
                             
                         case .failure:
                             
-                            //Call the AsynchImage 2nd time - when there is a failure. (I think you can also check NSURLErrorCancelled = -999)
+                            //Call the AsynchImage 2nd time - when there is a failure.
                             AsyncImage(url: URL(string: mainViewModel.userProfile.images[0])) { phase in
                                 if let image = phase.image {
                                     image
