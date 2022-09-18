@@ -10,6 +10,7 @@ import SwiftUI
 struct CardView: View {
     @EnvironmentObject var mainViewModel : MainViewModel
     @State var matcher: Matcher
+    @State private var currentIndex = 0
     
     // MARK: - Drawing Constant
     let cardGradient = Gradient(colors: [Color.black.opacity(0.2), Color.black.opacity(0.2)])
@@ -17,18 +18,41 @@ struct CardView: View {
     var body: some View {
         ZStack(alignment: .topLeading) {
 
-            VStack {
-                Spacer()
-                AsyncImage(url: URL(string: matcher.images[0]), content: view)
-                Spacer()
-
+            TabView(selection: $currentIndex) {
+                ForEach(0..<matcher.images.count, id: \.self) { index in
+                    AsyncImage(url: URL(string: matcher.images[index]), content: view)
+                        .tag(index)
+                }
             }
-            .background(.white)
-            
-            
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .tabViewStyle(PageTabViewStyle())
+            .background(Color.white)
             
             // Linear Gradient
             LinearGradient(gradient: cardGradient, startPoint: .top, endPoint: .bottom)
+            HStack {
+                Button {
+                    previous()
+                } label: {
+                    Image("localimage")
+                        .resizable()
+                        .frame(width: 100 ,height: 470)
+                        .hidden()
+                    
+                }
+                Spacer()
+                Button {
+                    next()
+                } label: {
+                    Image("localimage")
+                        .resizable()
+                        .frame(width: 100 ,height: 470)
+                        .hidden()
+                        
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .offset(y: 70)
             VStack {
                 Spacer()
                 VStack(alignment: .leading){
@@ -36,23 +60,46 @@ struct CardView: View {
                         Text(matcher.name).font(.largeTitle).fontWeight(.bold)
                         Text(String(matcher.age)).font(.title)
                     }
-
-                    HStack {
-                        ForEach(matcher.preferredTopic, id: \.self) { topic in
-
-                            Text(topic)
-                                .font(.system(size: 12))
-                                
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .modifier(TopicDesign())
+                    if matcher.preferredTopic.count <= 3 {
+                        HStack {
+                            ForEach(matcher.preferredTopic.indices, id: \.self) { index in
+                                Text(matcher.preferredTopic[index])
+                                    .font(.system(size: 13))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal)
+                                    .modifier(TopicDesign())
+                               
+                            }
                             
                         }
+                        .multilineTextAlignment(.leading)
+                    } else {
+                        HStack {
+                            ForEach(matcher.preferredTopic.indices, id: \.self) { index in
+                                if index == 0 || index == 1 || index == 2 {
+                                    Text(matcher.preferredTopic[index])
+                                        .font(.system(size: 13))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal)
+                                        .modifier(TopicDesign())
+                                }
+                            }
+                        }
+                        HStack {
+                            ForEach(matcher.preferredTopic.indices, id: \.self) { index in
+                                if index != 0 && index != 1 && index != 2 {
+                                    Text(matcher.preferredTopic[index])
+                                        .font(.system(size: 13))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal)
+                                        .modifier(TopicDesign())
+                                }
+                            }
+                        }
                     }
-                    
-                    .multilineTextAlignment(.leading)
-                    
-                    
                 }
                 .padding(.bottom, 100)
             }
@@ -113,7 +160,19 @@ struct CardView: View {
                     }
                 })
     }
-
+    
+    func previous() {
+        withAnimation {
+            currentIndex = currentIndex > 0 ? currentIndex - 1 : matcher.images.count - 1
+        }
+    }
+    
+    func next() {
+        withAnimation {
+            currentIndex = currentIndex < matcher.images.count ? currentIndex + 1 : 0
+        }
+    }
+    
     @ViewBuilder
     private func view(for phase: AsyncImagePhase) -> some View {
         switch phase {
@@ -129,7 +188,7 @@ struct CardView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             
-            case .failure:
+        case .failure(let error):
             VStack(spacing: 16) {
                 Image(systemName: "xmark.octagon.fill")
                     .resizable()
@@ -152,4 +211,3 @@ struct CardView: View {
 //            .previewLayout(.sizeThatFits)
 //    }
 //}
-
