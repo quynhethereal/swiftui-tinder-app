@@ -16,44 +16,44 @@
 import SwiftUI
 
 struct ChatViewRow: View {
-//    var imgName: String
-//    var name: String
-//    var lastMessage: String
-//    var online: String
-    @State var matcher: Matcher
+    var imgName: String
+    var name: String
+    var lastMessage: String
+    var online: String
+//    @State var matcher: Matcher
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: matcher.images[0]), content: view)
+//            AsyncImage(url: URL(string: matcher.images[0]), content: view)
                     
-        //            Image(imgName)
-        //                .resizable()
-        //                .frame(width: 60, height: 60)
-        //                .scaledToFit()
-        //                .clipShape(Circle())
-        //                .padding(.leading)
-        //            if online == "true" {
-        //                Image(systemName: "circle.fill")
-        //                    .offset(x: -20)
-        //                    .foregroundColor(.green)
-        //            } else if online == "false" {
-        //                Image(systemName: "circle.fill")
-        //                    .offset(x: -20)
-        //                    .foregroundColor(Color("darkGrey"))
-        //            }
+                    Image(imgName)
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .padding(.leading)
+                    if online == "true" {
+                        Image(systemName: "circle.fill")
+                            .offset(x: -20)
+                            .foregroundColor(.green)
+                    } else if online == "false" {
+                        Image(systemName: "circle.fill")
+                            .offset(x: -20)
+                            .foregroundColor(Color("darkGrey"))
+                    }
                     
                     VStack {
                         HStack {
-        //                    Text(name)
-        //                        .fontWeight(.bold)
-        //                        .padding(.top)
-        //                        .foregroundColor(.black)
-        //                    Spacer()
+                            Text(name)
+                                .fontWeight(.bold)
+                                .padding(.top)
+                                .foregroundColor(.black)
+                            Spacer()
                             
                         }
                         HStack{
-        //                    Text(lastMessage)
-        //                        .foregroundColor(.black)
-        //                    Spacer()
+                            Text(lastMessage)
+                                .foregroundColor(.black)
+                            Spacer()
                         }
                         Spacer()
                     }

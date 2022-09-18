@@ -22,10 +22,18 @@ struct ChatBotViewScreen: View {
     var online: String
     @State private var animatingPickerAppear = false
     @State private var messageText = ""
-    @State var messages: [String] = ["Hé nhô, bạn cần phủ thuỳ tình iuu đây tư vấn gì vậy, bạn có thể tìm kiếm những câu hỏi thông dụng mà mọi người hay hỏi mình bằng cách nhấn nút ≡ bên dưới"]
+    @State var messages: [String] = ["Hello, What advice do you need from Love Witcher, you can find common questions that people ask you by pressing the ≡ button below"]
     @State private var templateQuesion: [String] = [
-        "Bí quyết an toàn khi hẹn hò",
-        "Những lưu ý khi gặp gỡ trực tiếp",
+        "Safety tips when dating",
+        "Notes when meeting face-to-face",
+        "If your 15 year old self could see you today, what would they think?",
+        "What would it take for someone to take you off this app?",
+        "Tea, coffee or tequila?",
+        "What’s something you would never tell anyone but a total stranger you’ll never meet again?",
+        "What’s your idea of a perfect date?",
+        "How much time do you think a couple should spend apart?",
+        "What was the worst date you ever went on?",
+        "What’s your idea of a perfect day?"
     ]
     var body: some View {
         VStack {
@@ -131,7 +139,7 @@ struct ChatBotViewScreen: View {
                 .padding(.horizontal)
                 .padding(.vertical)
                 if animatingPickerAppear {
-                    Picker("Chọn", selection: $messageText) {
+                    Picker("Select", selection: $messageText) {
                         ForEach(templateQuesion, id: \.self) { question in
                             Text(question)
                         }
@@ -154,6 +162,7 @@ struct ChatBotViewScreen: View {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     withAnimation {
+                        print(message)
                         messages.append(getBotResponse(message: message))
                     }
                 }
@@ -166,6 +175,6 @@ struct ChatBotViewScreen: View {
 
 struct ChatBotViewScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ChatBotViewScreen(imgName: "tinderBot", name: "Phù thuỷ tình iuu", online: "true")
+        ChatBotViewScreen(imgName: "tinderBot", name: "Love Witcher", online: "true")
     }
 }

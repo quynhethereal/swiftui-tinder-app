@@ -82,18 +82,18 @@ struct ChatView: View {
                 }
                 Spacer().frame(height: 15)
                 HStack {
-                    Text("Trợ lý")
+                    Text("Assistant")
                         .fontWeight(.bold)
                         .foregroundColor(Color("lightRed"))
                         .padding()
                     Spacer()
                 }
                 .offset(y: 15)
-//                NavigationLink {
-//                    ChatBotViewScreen(imgName: "tinderBot", name: "Phù thuỷ tình iu", online: "true")
-//                } label: {
-//                    ChatViewRow(imgName: "tinderBot", name: "Phù thuỷ tình iu", lastMessage: "Tui là phù thuỷ tình yêu đây", online: "true")
-//                }
+                NavigationLink {
+                    ChatBotViewScreen(imgName: "tinderBot", name: "Love Witcher", online: "true")
+                } label: {
+                    ChatViewRow(imgName: "tinderBot", name: "Love Witcher", lastMessage: "Tui là phù thuỷ tình yêu đây", online: "true")
+                }
 
                 Spacer()
                 HStack {
@@ -126,6 +126,17 @@ struct ChatView: View {
 //
 //                    }
 //                }
+                ScrollView{
+                    ForEach(listOfCurrentMess, id: \.self) { user in
+                                            NavigationLink {
+                                                ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
+                                            } label: {
+                                                ChatViewRow(imgName: user[0], name: user[1], lastMessage: user[2], online: user[3])
+                                            }
+
+                                        }
+                                
+                }
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
@@ -135,7 +146,7 @@ struct ChatView: View {
         }
         .onAppear() {
             chatViewModel.getAllMatchesProfiles()
-            conversationViewModel.fetchData()
+//            conversationViewModel.fetchData()
         }
 //        .task {
 //            await conversationViewModel.fetchData()
