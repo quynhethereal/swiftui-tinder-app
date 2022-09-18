@@ -3,32 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>791649226092-u1hctfienfdf1i32r3gthdjlv7v0hidv.apps.googleusercontent.com</string>
+	<string>766476188844-a1q4fmiaq85kp248nmohhkh304i4mpj4.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.791649226092-u1hctfienfdf1i32r3gthdjlv7v0hidv</string>
+	<string>com.googleusercontent.apps.766476188844-a1q4fmiaq85kp248nmohhkh304i4mpj4</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAEIaH04c-JDAaTBER4ZOyGkRYgazdGnMI</string>
+	<string>AIzaSyA9308q103Cqiz4hVIFAh2EORpWp5137KM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>791649226092</string>
+	<string>766476188844</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.s3791159.TinderApp</string>
+	<string>org.s3791159.TinderApp.dat</string>
 	<key>PROJECT_ID</key>
-	<string>swiftui-tinder-app</string>
+	<string>swift-tinder-app-staging</string>
 	<key>STORAGE_BUCKET</key>
-	<string>swiftui-tinder-app.appspot.com</string>
+	<string>swift-tinder-app-staging.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:791649226092:ios:b5436dd10d420a986bb749</string>
+	<string>1:766476188844:ios:8e4cdbe7e47ab89de2b309</string>
 </dict>
 </plist>
