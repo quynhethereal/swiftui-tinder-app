@@ -230,7 +230,7 @@ struct SettingView: View {
                                         .scaledToFit()
                                         .frame(width: 40)
                                         .padding(.bottom, 10)
-                                    Text("Phiên bản 1.1.0").font(.system(size: 17, weight: .regular, design: .default))
+                                    Text("Version 1.1.0").font(.system(size: 17, weight: .regular, design: .default))
                                 }
                                 Spacer()
                             }
