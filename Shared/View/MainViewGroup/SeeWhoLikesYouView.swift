@@ -1,17 +1,17 @@
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 3
-  Author: Error Team
-     Duong Tuan Dat - s3636739
-     Le Trung Kim - s3634824
-     Le Dinh Ngoc Quynh - s3791159
-     Thuan Nguyen - s3517236
-  Created  date: 27/08/2022
-  Last modified: 18/09/2022
-  Acknowledgement: Acknowledge the resources that you use here.
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 3
+ Author: Error Team
+ Duong Tuan Dat - s3636739
+ Le Trung Kim - s3634824
+ Le Dinh Ngoc Quynh - s3791159
+ Thuan Nguyen - s3517236
+ Created  date: 27/08/2022
+ Last modified: 18/09/2022
+ Acknowledgement: Acknowledge the resources that you use here.
+ */
 
 import SwiftUI
 
@@ -74,7 +74,7 @@ struct WhoLikeYou: View {
                             HStack {
                                 
                                 NavigationLink {
-
+                                    
                                 } label: {
                                     VStack {
                                         Spacer()
@@ -97,7 +97,7 @@ struct WhoLikeYou: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 Spacer()
                                 NavigationLink {
-
+                                    
                                 } label: {
                                     VStack {
                                         Spacer()
@@ -180,7 +180,7 @@ struct TopLikeView: View {
                             HStack {
                                 
                                 NavigationLink {
-
+                                    
                                 } label: {
                                     VStack {
                                         Spacer()
@@ -203,16 +203,16 @@ struct TopLikeView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 Spacer()
                                 NavigationLink {
-
+                                    
                                 } label: {
                                     VStack {
                                         Spacer()
-                                        Text("Khiến tim loạn nhịp từ cái nhìn đầu tiên")
+                                        Text("Make your heart beat hard")
                                             .multilineTextAlignment(.leading)
                                             .foregroundColor(.white)
                                             .padding(.leading, 5)
                                         HStack {
-                                            Text("Tìm hiểu thêm")
+                                            Text("See more")
                                                 .foregroundColor(.gray)
                                             Spacer()
                                         }

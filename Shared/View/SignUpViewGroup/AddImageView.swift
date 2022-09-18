@@ -1,17 +1,17 @@
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 3
-  Author: Error Team
-     Duong Tuan Dat - s3636739
-     Le Trung Kim - s3634824
-     Le Dinh Ngoc Quynh - s3791159
-     Thuan Nguyen - s3517236
-  Created  date: 27/08/2022
-  Last modified: 18/09/2022
-  Acknowledgement: Acknowledge the resources that you use here.
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 3
+ Author: Error Team
+ Duong Tuan Dat - s3636739
+ Le Trung Kim - s3634824
+ Le Dinh Ngoc Quynh - s3791159
+ Thuan Nguyen - s3517236
+ Created  date: 27/08/2022
+ Last modified: 18/09/2022
+ Acknowledgement: Acknowledge the resources that you use here.
+ */
 
 import SwiftUI
 import ImagePickerView
@@ -35,17 +35,15 @@ struct AddImageView: View {
                 Spacer().frame(height: 50)
                 Text("Add Photo")
                     .font(.system(size: 45, weight: .medium, design: .default))
-                    .padding(.leading, -10)
-//                    .opacity(disableButton ? 1 : 0)
+                    .padding(.leading, -10)                
                 
-
                 Text("Add at least one photo to continue. Maximum 2 photos.")
                     .font(.system(size: 15, weight: .medium, design: .default))
                     .foregroundColor(.gray)
                     .padding(.bottom, 50)
                     .opacity(disableButton ? 1 : 0)
                     .multilineTextAlignment(.center)
-
+                
                 
                 Group {
                     HStack {
@@ -91,7 +89,6 @@ struct AddImageView: View {
                                                     }))
                             }
                             .opacity(disableButton ? 1 : 0)
-//                            .disabled(disableButton == false)
                             
                             VStack {
                                 if !(pickedImages == nil) {
@@ -116,16 +113,8 @@ struct AddImageView: View {
                             
                         }
                         .frame(width: 400, height: 200)
-//                        Spacer().frame(width: 30)
                         
                     }
-//                    Spacer().frame(height: 40)
-//                    HStack {
-//
-//                        Spacer().frame(width: 30)
-//
-//                        Spacer().frame(width: 30)
-//                    }
                 }
                 Spacer()
                 Button {

@@ -1,30 +1,25 @@
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 3
-  Author: Error Team
-     Duong Tuan Dat - s3636739
-     Le Trung Kim - s3634824
-     Le Dinh Ngoc Quynh - s3791159
-     Thuan Nguyen - s3517236
-  Created  date: 27/08/2022
-  Last modified: 18/09/2022
-  Acknowledgement: Acknowledge the resources that you use here.
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 3
+ Author: Error Team
+ Duong Tuan Dat - s3636739
+ Le Trung Kim - s3634824
+ Le Dinh Ngoc Quynh - s3791159
+ Thuan Nguyen - s3517236
+ Created  date: 27/08/2022
+ Last modified: 18/09/2022
+ Acknowledgement: Acknowledge the resources that you use here.
+ */
 
 import SwiftUI
 import Combine
 
 struct InputBirthDay: View {
     
-//    enum FocusField: Hashable {
-//        case field
-//    }
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var signUpVMGroup : ProfileRegistrationViewModel
-//    @FocusState private var focusedField: FocusField?
-//    @State private var disableButton: Bool = true
     @State var birthDate: Date = Date()
     @State private var selection: Int? = nil
     @State private var disableButton: Bool = true
@@ -64,27 +59,19 @@ struct InputBirthDay: View {
                     Spacer()
                     NavigationLink(destination: ChooseGenderView(), tag: 1,selection: $selection) {
                         Button {
-//                            if(disableButton == false) {
-//                                signUpVMGroup.addBithDay(date: birthDate)
-//                                self.selection = 1
-//                            }
+                            
                             if(disableButton == true) {
                                 signUpVMGroup.addBithDay(date: birthDate)
                                 self.selection = 1
                             }
-                            
-                            
                         }
                     label: {
-                            
-                                Text("NEXT")
-                                    .modifier(ButtonNextEnable())
-                            
-                            
-                        }
+                        
+                        Text("NEXT")
+                            .modifier(ButtonNextEnable())
+                        
                     }
-
-                    
+                    }
                 }
                 .navigationBarBackButtonHidden(true)
                 .navigationBarHidden(true)
@@ -106,7 +93,7 @@ struct InputBirthDay: View {
         .navigationBarHidden(true)
         
     }
-
+    
 }
 
 

@@ -1,17 +1,17 @@
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 3
-  Author: Error Team
-     Duong Tuan Dat - s3636739
-     Le Trung Kim - s3634824
-     Le Dinh Ngoc Quynh - s3791159
-     Thuan Nguyen - s3517236
-  Created  date: 27/08/2022
-  Last modified: 18/09/2022
-  Acknowledgement: Acknowledge the resources that you use here.
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 3
+ Author: Error Team
+ Duong Tuan Dat - s3636739
+ Le Trung Kim - s3634824
+ Le Dinh Ngoc Quynh - s3791159
+ Thuan Nguyen - s3517236
+ Created  date: 27/08/2022
+ Last modified: 18/09/2022
+ Acknowledgement: Acknowledge the resources that you use here.
+ */
 
 import Foundation
 import Combine
@@ -60,88 +60,88 @@ class UserSignUpViewModel : ObservableObject{
     }
     private var cancellableSet: Set<AnyCancellable> = []
     
-       init() {
-           
-           isValidUserNamePublisher
-                 .receive(on: RunLoop.main)
-                 .map { usernameCheck in
-                   switch usernameCheck {
-                   case .emptyUsername:
-                     return "Username must not be empty."
-                   case .inValidUsername:
+    init() {
+        
+        isValidUserNamePublisher
+            .receive(on: RunLoop.main)
+            .map { usernameCheck in
+                switch usernameCheck {
+                case .emptyUsername:
+                    return "Username must not be empty."
+                case .inValidUsername:
                     return "Username must be an email. Example: john@gmail.com."
-                   case .lessThanThreeCharacters:
+                case .lessThanThreeCharacters:
                     return "Username cannot be less than 3 characters."
-                   default:
-                     return ""
-                   }
-                 }
-                 .assign(to: \.userNameError, on: self)
-                 .store(in: &cancellableSet)
-           
-           isValidConfirmPasswordPublisher
-               .receive(on: RunLoop.main)
-               .map { confirmPasswordCheck in
-                   switch confirmPasswordCheck {
-                   case .isEmpty:
-                       return "Confirm Password must not be empty."
-                   case .unmatchedPassword:
-                       return "Confirm Password doesn't match."
-                   default:
-                       return ""
-            
-                   }
-               }
-               .assign(to: \.passwordError, on: self)
-               .store(in: &cancellableSet)
-           
-           isValidPasswordPublisher
-               .receive(on: RunLoop.main)
-               .map { passwordCheck in
-                   switch passwordCheck {
-                   case .emptyPassword:
-                       return "Password must not be empty."
-                   case .lessThanFiveCharacters:
-                       return "Password cannot be less than 5 characters."
-                   default:
-                       return ""
-            
-                   }
-               }
-               .assign(to: \.passwordError, on: self)
-               .store(in: &cancellableSet)
-           
-           Publishers.CombineLatest3(self.isValidUserNamePublisher, self.isValidConfirmPasswordPublisher, self.isValidPasswordPublisher)
-               .dropFirst()
-               .sink { _usernameValidator,_confirmPaswordValidator, _passwordValidator in
-                   
-                   self.isValid = _usernameValidator.errorMessage == nil &&
-                   _confirmPaswordValidator.errorMessage == nil && _passwordValidator.errorMessage == nil
-           }
-           .store(in: &cancellableSet)
-           
-           isValidUserNamePublisher
-           .dropFirst()
-               .sink { (_usernameValidator) in
-                   self.userNameError = _usernameValidator.errorMessage
-               }
-           .store(in: &cancellableSet)
-           
-           isValidConfirmPasswordPublisher
-                   .dropFirst()
-                      .sink { (_confirmPaswordValidator) in
-                          self.passwordError = _confirmPaswordValidator.errorMessage
-                      }
-                      .store(in: &cancellableSet)
-           
-           isValidPasswordPublisher
-                   .dropFirst()
-                      .sink { (_paswordValidator) in
-                          self.passwordError = _paswordValidator.errorMessage
-                      }
-                      .store(in: &cancellableSet)
-           
-       }
+                default:
+                    return ""
+                }
+            }
+            .assign(to: \.userNameError, on: self)
+            .store(in: &cancellableSet)
+        
+        isValidConfirmPasswordPublisher
+            .receive(on: RunLoop.main)
+            .map { confirmPasswordCheck in
+                switch confirmPasswordCheck {
+                case .isEmpty:
+                    return "Confirm Password must not be empty."
+                case .unmatchedPassword:
+                    return "Confirm Password doesn't match."
+                default:
+                    return ""
+                    
+                }
+            }
+            .assign(to: \.passwordError, on: self)
+            .store(in: &cancellableSet)
+        
+        isValidPasswordPublisher
+            .receive(on: RunLoop.main)
+            .map { passwordCheck in
+                switch passwordCheck {
+                case .emptyPassword:
+                    return "Password must not be empty."
+                case .lessThanFiveCharacters:
+                    return "Password cannot be less than 5 characters."
+                default:
+                    return ""
+                    
+                }
+            }
+            .assign(to: \.passwordError, on: self)
+            .store(in: &cancellableSet)
+        
+        Publishers.CombineLatest3(self.isValidUserNamePublisher, self.isValidConfirmPasswordPublisher, self.isValidPasswordPublisher)
+            .dropFirst()
+            .sink { _usernameValidator,_confirmPaswordValidator, _passwordValidator in
+                
+                self.isValid = _usernameValidator.errorMessage == nil &&
+                _confirmPaswordValidator.errorMessage == nil && _passwordValidator.errorMessage == nil
+            }
+            .store(in: &cancellableSet)
+        
+        isValidUserNamePublisher
+            .dropFirst()
+            .sink { (_usernameValidator) in
+                self.userNameError = _usernameValidator.errorMessage
+            }
+            .store(in: &cancellableSet)
+        
+        isValidConfirmPasswordPublisher
+            .dropFirst()
+            .sink { (_confirmPaswordValidator) in
+                self.passwordError = _confirmPaswordValidator.errorMessage
+            }
+            .store(in: &cancellableSet)
+        
+        isValidPasswordPublisher
+            .dropFirst()
+            .sink { (_paswordValidator) in
+                self.passwordError = _paswordValidator.errorMessage
+            }
+            .store(in: &cancellableSet)
+        
+    }
     
     
     private var isValidUserNamePublisher: AnyPublisher<UsernameValidation, Never> {
@@ -182,19 +182,19 @@ class UserSignUpViewModel : ObservableObject{
     
     
     private var isValidConfirmPasswordPublisher: AnyPublisher<ConfirmPasswordValidation, Never> {
-           $confirmPassword
-               .debounce(for: 0.0, scheduler: RunLoop.main)
-               .map { confirmPassword in
-                   if confirmPassword.isEmpty {
-                       return .isEmpty
-                   } else if self.password != confirmPassword {
-                       return .unmatchedPassword
-                   } else {
-                       return .validConfirmPassword
-                   }
-           }
-           .eraseToAnyPublisher()
-       }
+        $confirmPassword
+            .debounce(for: 0.0, scheduler: RunLoop.main)
+            .map { confirmPassword in
+                if confirmPassword.isEmpty {
+                    return .isEmpty
+                } else if self.password != confirmPassword {
+                    return .unmatchedPassword
+                } else {
+                    return .validConfirmPassword
+                }
+            }
+            .eraseToAnyPublisher()
+    }
 }
 
 extension String {

@@ -194,7 +194,6 @@ struct CardView: View {
                     
                     let checkingStatus = (translationX > 0 ? translationX : -translationX)
                     
-                    //MARK: KHI KÉO HẾT HƠN 1 NỬA ĐỘ RỘNG MÀN HÌNH -> THÌ CARD SẼ ĐC REMOVE QUA TRÁI OR PHẢI
                     withAnimation(.default.speed(0.5)) {
                         if checkingStatus > (width / 2) {
                             
@@ -296,8 +295,6 @@ struct CardView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(.red)
-                //                Text(error.localizedDescription)
-                //                    .multilineTextAlignment(.center)
             }
         @unknown default:
             Text("NO USERS")
@@ -306,10 +303,3 @@ struct CardView: View {
     }
     
 }
-//struct CardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CardView(matcher: Card.data[0])
-//            .previewLayout(.sizeThatFits)
-//    }
-//}
-

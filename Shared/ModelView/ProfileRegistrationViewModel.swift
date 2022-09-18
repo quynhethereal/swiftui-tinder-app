@@ -1,17 +1,17 @@
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 3
-  Author: Error Team
-     Duong Tuan Dat - s3636739
-     Le Trung Kim - s3634824
-     Le Dinh Ngoc Quynh - s3791159
-     Thuan Nguyen - s3517236
-  Created  date: 27/08/2022
-  Last modified: 18/09/2022
-  Acknowledgement: Acknowledge the resources that you use here.
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 3
+ Author: Error Team
+ Duong Tuan Dat - s3636739
+ Le Trung Kim - s3634824
+ Le Dinh Ngoc Quynh - s3791159
+ Thuan Nguyen - s3517236
+ Created  date: 27/08/2022
+ Last modified: 18/09/2022
+ Acknowledgement: Acknowledge the resources that you use here.
+ */
 
 import Foundation
 import Firebase
@@ -78,7 +78,7 @@ class ProfileRegistrationViewModel : ObservableObject{
             completion(error)
             return
         }
-          
+        
     }
     
     // check if the user has set their profile. If already set their profile, redirect to home page screen.
@@ -96,37 +96,37 @@ class ProfileRegistrationViewModel : ObservableObject{
                 
                 UserDefaults.standard.set(false, forKey: "userprofile")
                 self.isfetching = false
-                                
+                
             }
         }
         
     }
     
-
     
-//    func uploadMedia(completion: @escaping (_ url: String?) -> Void) {
-//        
-//        let storageRef = Storage.storage().reference().child("\(Auth.auth().currentUser?.uid ?? "").png")
-//
-//        if let uploadData = self.imgUploadView.image?.jpegData(compressionQuality: 0.5) {
-//                storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
-//                    if error != nil {
-//                        print("error")
-//                        completion(nil)
-//                    } else {
-//
-//                        storageRef.downloadURL(completion: { (url, error) in
-//
-//                            print(url?.absoluteString)
-//                            completion(url?.absoluteString)
-//                        })
-//
-//                      //  completion((metadata?.downloadURL()?.absoluteString)!))
-//                        // your uploaded photo url.
-//
-//
-//                    }
-//                }
-//            }
-//    }
+    
+    //    func uploadMedia(completion: @escaping (_ url: String?) -> Void) {
+    //        
+    //        let storageRef = Storage.storage().reference().child("\(Auth.auth().currentUser?.uid ?? "").png")
+    //
+    //        if let uploadData = self.imgUploadView.image?.jpegData(compressionQuality: 0.5) {
+    //                storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+    //                    if error != nil {
+    //                        print("error")
+    //                        completion(nil)
+    //                    } else {
+    //
+    //                        storageRef.downloadURL(completion: { (url, error) in
+    //
+    //                            print(url?.absoluteString)
+    //                            completion(url?.absoluteString)
+    //                        })
+    //
+    //                      //  completion((metadata?.downloadURL()?.absoluteString)!))
+    //                        // your uploaded photo url.
+    //
+    //
+    //                    }
+    //                }
+    //            }
+    //    }
 }
