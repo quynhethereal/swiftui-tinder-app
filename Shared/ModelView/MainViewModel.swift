@@ -224,7 +224,7 @@ class MainViewModel: ObservableObject {
                         
                         for matcherDoc in snapshot!.documents {
                                                         
-                            let matcherLikes = matcherDoc.get("likes") as! [String]
+                            let matcherLikes = matcherDoc.get("likes") as? [String] ?? ["error"]
                             
                             
                             // there is a match
