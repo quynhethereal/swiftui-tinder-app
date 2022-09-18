@@ -13,8 +13,9 @@
   Acknowledgement: Acknowledge the resources that you use here.
 */
 
-import SwiftUI
 
+import SwiftUI
+ 
 struct CardsSection: View {
     @EnvironmentObject var mainViewModel : MainViewModel
     var body: some View {
@@ -23,17 +24,17 @@ struct CardsSection: View {
                 Text("No Matching User")
                     .multilineTextAlignment(.center)
             } else {
-                ForEach(mainViewModel.allUsers) { matcher in
+                ForEach(mainViewModel.allUsers.reversed()) { matcher in
                     CardView(matcher: matcher)
+                        .environmentObject(mainViewModel)
                 }
             }
-            
         }
         .padding(10)
         .zIndex(1.0)
     }
 }
-
+ 
 struct CardsSection_Previews: PreviewProvider {
     static var previews: some View {
         CardsSection()
