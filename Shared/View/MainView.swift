@@ -11,6 +11,7 @@ struct MainView: View {
     @State var selectedTab: Int = 0
     @EnvironmentObject var mainViewModel : MainViewModel
     @EnvironmentObject var chatViewModel : ChatViewModel
+    @EnvironmentObject var conversationViewModel : ConversationViewModel
     var body: some View {
         TabView(selection: $selectedTab) {
             
@@ -44,7 +45,9 @@ struct MainView: View {
                 }
                 .tag(2)
             
-            ChatView().environmentObject(chatViewModel)
+            ChatView()
+                .environmentObject(chatViewModel)
+                .environmentObject(conversationViewModel)
                 .tabItem {
                     if selectedTab == 3 {
                         Image("chatEnable")
@@ -73,6 +76,8 @@ struct MainView: View {
             // do not change the order as they are supposed to be synchronous
             await mainViewModel.getLoginUser()
             await mainViewModel.getAllUser()
+//            await conversationViewModel.fetchData()
+            
         }
         .edgesIgnoringSafeArea(.bottom)
     }

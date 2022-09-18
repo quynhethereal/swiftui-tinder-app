@@ -38,9 +38,9 @@ struct CardView: View {
                     }
 
                     HStack {
-                        ForEach(matcher.preferredTopic.indices, id: \.self) { index in
+                        ForEach(matcher.preferredTopic, id: \.self) { topic in
 
-                            Text(matcher.preferredTopic[index])
+                            Text(topic)
                                 .font(.system(size: 12))
                                 
                                 .fontWeight(.semibold)
@@ -129,7 +129,7 @@ struct CardView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             
-        case .failure(let error):
+            case .failure:
             VStack(spacing: 16) {
                 Image(systemName: "xmark.octagon.fill")
                     .resizable()

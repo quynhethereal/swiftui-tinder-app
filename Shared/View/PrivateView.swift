@@ -12,6 +12,7 @@ struct PrivateView: View {
     @StateObject var userProfile = ProfileRegistrationViewModel()
     @StateObject var mainViewModel = MainViewModel()
     @StateObject var chatViewModel = ChatViewModel()
+    @StateObject var conversationViewModel = ConversationViewModel()
     
     var body: some View {
         ZStack {
@@ -23,6 +24,7 @@ struct PrivateView: View {
                     MainView()
                         .environmentObject(mainViewModel)
                         .environmentObject(chatViewModel)
+                        .environmentObject(conversationViewModel)
                 } else {
                     InputNameView().environmentObject(userProfile)
                 }

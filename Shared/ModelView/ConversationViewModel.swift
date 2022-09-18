@@ -13,8 +13,13 @@ class ConversationViewModel: ObservableObject {
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser
     
+    var userId: String? {
+        Auth.auth().currentUser?.uid
+    }
+    
     func fetchData() {
         if (user != nil){
+            
             db.collection("conversations").whereField("participants", arrayContains: user!.uid).addSnapshotListener({( snapshot, error ) in
                 guard let documents = snapshot?.documents else {
                     print("users have no conversations")
@@ -29,5 +34,10 @@ class ConversationViewModel: ObservableObject {
             })
         }
     }
+    
+    func getUser(id: String) {
+        
+    }
+    
 }
 
