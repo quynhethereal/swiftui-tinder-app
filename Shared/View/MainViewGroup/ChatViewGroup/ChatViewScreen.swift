@@ -83,23 +83,21 @@ struct ChatViewScreen: View {
 
                     
                 }
-//                .rotationEffect(.degrees(180))
-                
-                
-                
+                .rotationEffect(.degrees(180))
             }
+            .rotationEffect(.degrees(180))
             Spacer()
             HStack {
                 Spacer()
-                Button {
-                    
-                } label: {
-                    Image(systemName: "photo.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(Color("lightRed"))
-                        .frame(width: 40)
-                }
+//                Button {
+//
+//                } label: {
+//                    Image(systemName: "photo.fill")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .foregroundColor(Color("lightRed"))
+//                        .frame(width: 40)
+//                }
                 TextField("Send Message...", text: $demotextfield)
                     .padding(.horizontal)
                     .frame(width: .infinity, height: 40)
@@ -107,8 +105,11 @@ struct ChatViewScreen: View {
                     .clipShape(Capsule())
                 Button {
                     //Send message
-                    conversationViewModel.sendMessage(messageContent: demotextfield, sender: conversationViewModel.currentChatUserID)
-                    demotextfield = ""
+                    if demotextfield != "" {
+                        conversationViewModel.sendMessage(messageContent: demotextfield, sender: conversationViewModel.currentChatUserID)
+                        demotextfield = ""
+                    }
+                    
                 } label: {
                     Image(systemName: "paperplane.fill")
                         .resizable()
@@ -155,8 +156,8 @@ private func view(for phase: AsyncImagePhase) -> some View {
                     .resizable()
                 
                 
-                Text(error.localizedDescription)
-                    .multilineTextAlignment(.center)
+//                Text(error.localizedDescription)
+//                    .multilineTextAlignment(.center)
             }
             .frame(width: 100,height: 150)
         @unknown default:

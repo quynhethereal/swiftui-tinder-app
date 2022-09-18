@@ -65,6 +65,7 @@
 		76CD379228C3212C004AEE97 /* ProfileRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD379028C3212C004AEE97 /* ProfileRegistrationViewModel.swift */; };
 		76CD379528C32421004AEE97 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD379428C32421004AEE97 /* SwiftExtensions.swift */; };
 		76CD379628C32421004AEE97 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD379428C32421004AEE97 /* SwiftExtensions.swift */; };
+		E0A1BBCA28D755E300CF2753 /* ChatBotViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1BBC928D755E300CF2753 /* ChatBotViewRow.swift */; };
 		E0A48CC928D07AB7007AFC83 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A48CC828D07AB7007AFC83 /* DiscoverView.swift */; };
 		E0A48CCB28D07AD9007AFC83 /* SeeWhoLikesYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A48CCA28D07AD9007AFC83 /* SeeWhoLikesYouView.swift */; };
 		E0A48CCD28D07AEA007AFC83 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A48CCC28D07AEA007AFC83 /* ChatView.swift */; };
@@ -137,6 +138,7 @@
 		76CD378D28C31FAC004AEE97 /* ProfileRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRegistrationView.swift; sourceTree = "<group>"; };
 		76CD379028C3212C004AEE97 /* ProfileRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRegistrationViewModel.swift; sourceTree = "<group>"; };
 		76CD379428C32421004AEE97 /* SwiftExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
+		E0A1BBC928D755E300CF2753 /* ChatBotViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotViewRow.swift; sourceTree = "<group>"; };
 		E0A48CC828D07AB7007AFC83 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		E0A48CCA28D07AD9007AFC83 /* SeeWhoLikesYouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeWhoLikesYouView.swift; sourceTree = "<group>"; };
 		E0A48CCC28D07AEA007AFC83 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				E0A48CDE28D08E43007AFC83 /* ChatViewScreen.swift */,
 				E0A48CE028D08E54007AFC83 /* CharBotViewScreen.swift */,
 				E0A48CE228D08E65007AFC83 /* BotResponse.swift */,
+				E0A1BBC928D755E300CF2753 /* ChatBotViewRow.swift */,
 			);
 			path = ChatViewGroup;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				E0A48CDA28D08702007AFC83 /* Card.swift in Sources */,
 				7601171828CD9B08000D2898 /* AddImageView.swift in Sources */,
 				76CD378E28C31FAC004AEE97 /* ProfileRegistrationView.swift in Sources */,
+				E0A1BBCA28D755E300CF2753 /* ChatBotViewRow.swift in Sources */,
 				E0CC6BB028CDD8CB009C76BA /* ChooseGenderView.swift in Sources */,
 				E0A48CDF28D08E43007AFC83 /* ChatViewScreen.swift in Sources */,
 				E0A48CF728D093E6007AFC83 /* GuideChild1.swift in Sources */,

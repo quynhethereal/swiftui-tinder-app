@@ -90,11 +90,11 @@ struct ChatView: View {
                     Spacer()
                 }
                 .offset(y: 15)
-//                NavigationLink {
-//                    ChatBotViewScreen(imgName: "tinderBot", name: "Love Witcher", online: "true")
-//                } label: {
-//                    ChatViewRow(imgName: "tinderBot", name: "Love Witcher", lastMessage: "Love Witcher is always here for you", online: "true")
-//                }
+                NavigationLink {
+                    ChatBotViewScreen(imgName: "tinderBot", name: "Love Witcher", online: "true")
+                } label: {
+                    ChatBotViewRow(imgName: "tinderBot", name: "Love Witcher", lastMessage: "Love Witcher is always here for you", online: "true")
+                }  
 
                 Spacer()
                 HStack {
