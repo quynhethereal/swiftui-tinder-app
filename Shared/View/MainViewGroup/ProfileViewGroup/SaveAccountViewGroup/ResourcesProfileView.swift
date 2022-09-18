@@ -15,6 +15,7 @@
 
 import SwiftUI
 
+// How to be safe on Matches view
 struct ResourcesProfileView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var guideActive: Bool

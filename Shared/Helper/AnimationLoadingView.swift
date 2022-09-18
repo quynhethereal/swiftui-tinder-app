@@ -17,13 +17,14 @@ import Lottie
 import SwiftUI
 import UIKit
 
+// Splash screen view
 struct AnimationLoadingLogoView: UIViewRepresentable {
     var nameAnimate: String
     typealias UIViewType = UIView
     func makeUIView(context: UIViewRepresentableContext<AnimationLoadingLogoView>) -> UIView {
         let view = UIView(frame: .zero)
         
-        //MARK: ADD ANIMATION
+        // Add Animation
         let animationView = AnimationView()
         animationView.animation = Animation.named(nameAnimate)
         animationView.contentMode = .scaleAspectFit
@@ -41,7 +42,6 @@ struct AnimationLoadingLogoView: UIViewRepresentable {
         return view
     }
     func updateUIView(_ uiView: UIView, context: Context) {
-        //MARK: DO NOTHING
     }
 }
 

@@ -14,6 +14,7 @@
 */
 import SwiftUI
 
+// These modifiers help us for reuse/do not clutter the main view code
 struct BackButtonModifier: ViewModifier {
   func body(content: Content) -> some View {
     content
@@ -35,7 +36,7 @@ struct ClosePresentViewButton: ViewModifier {
   }
 }
 
-//MARK: - BUTTON 'Xong'
+// Done button
 struct IgnoreButton: ViewModifier {
   func body(content: Content) -> some View {
     content
@@ -82,7 +83,7 @@ struct TopicDesign: ViewModifier {
     }
 }
 
-//MARK: - BUTTON NEXT MODIFIER
+// Next button
 struct ButtonNextEnable: ViewModifier {
   func body(content: Content) -> some View {
     content
@@ -106,7 +107,7 @@ struct ButtonNextDisable: ViewModifier {
   }
 }
 
-//MARK: - OUTLINE BUTTON OF SIGN UP GROUP VIEW
+// Outline button on enable
 struct OutlineButtonEnable: ViewModifier {
   func body(content: Content) -> some View {
     content

@@ -16,13 +16,12 @@
 import Foundation
 import Firebase
 
+// View Model to control the message of a message
 class MessageViewModel: ObservableObject{
     @Published var messages = [Message]()
     
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser
-    
-
     
     func fetchMessagesInAChatRoom(docId: String){
         if (user != nil){

@@ -23,21 +23,11 @@ struct ContentView: View {
     @StateObject var userProfile = ProfileRegistrationViewModel()
     
     var body: some View {
-        
-        
+        // if there is a user defaults value for user login, don't ask the user to login again
         if UserDefaults.standard.bool(forKey: "userlogin") {
-//            HomeView()
-//            ProfileRegistrationView().environmentObject(userAuth)
-//            AddImageView()
             PrivateView(userProfile: userProfile)
-//                .environmentObject(userProfile)
-            
+        // else, ask them to login in or sign up
         } else {
-//            SignInView().environmentObject(userAuth)
-//            AddImageView()
-//            MyFavouriteView().environmentObject(userAuth)
-//            SignInView().environmentObject(userAuth)
-//            PublicView().environmentObject(userAuth)
             RootView().environmentObject(userAuth)
         }
     }
@@ -49,13 +39,6 @@ struct ContentView_Previews: PreviewProvider {
     static let userAuth = UserSignInViewModel()
     
     static var previews: some View {
-        
-//        ContentView().environmentObject({
-//            () -> UserSignInViewModel in
-//            let userAuth = UserSignInViewModel()
-//            userAuth.loggedInSuccessfully = false
-//            return userAuth
-//        }() )
         
         ContentView(userAuth: userAuth)
     }

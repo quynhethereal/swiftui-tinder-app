@@ -33,6 +33,7 @@ struct RootView: View {
     }
 }
 
+// We show the Loading View on timer countdown
 struct LoadingView: View {
     
     let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()

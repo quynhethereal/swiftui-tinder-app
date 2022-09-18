@@ -16,6 +16,7 @@
 import SwiftUI
 import Firebase
 
+// View Model controls the conversations of a user
 class ConversationViewModel: ObservableObject {
     @Published var conversations = [Conversation]()
     private let db = Firestore.firestore()
@@ -29,36 +30,25 @@ class ConversationViewModel: ObservableObject {
         Auth.auth().currentUser?.uid
     }
     
-    
-    
-    
-    
-
-    
+    // on sending a message
     func sendMessage(messageContent: String, sender: String){
         if (user != nil ){
-            print("------------------------------ send mess")
-            print(self.conversationId)
             if self.conversationId != "" {
                 db.collection("conversations").document(self.conversationId).collection("messages").addDocument(data: [
                     "sentAt": Date(),
                     "content": messageContent,
                     "sender": sender
                 ])
-                
             }
-            
         }
     }
     
+    // get all messages in a conversation (or a chatroom)
     func fetchMessagesInAChatRoom() {
-        
         if self.conversationId != "" {
             
             if (user != nil){
                 db.collection("conversations").document(self.conversationId).collection("messages").order(by: "sentAt", descending: false).addSnapshotListener({(snapshot, error) in
-                    print("-----------------------")
-                    print(self.conversationId)
                     guard let documents = snapshot?.documents else {
                         print("There is no document")
                         return
@@ -75,13 +65,10 @@ class ConversationViewModel: ObservableObject {
                     }
                 })
             }
-        } else {
-            print("--------------- fetch message")
-            print(self.conversationId)
         }
-
     }
     
+    // fetch all data from conversations of a user
     func fetchData() async {
         if (user != nil){
             
@@ -92,7 +79,7 @@ class ConversationViewModel: ObservableObject {
                 }
                 
                 self.conversations = documents.map({ docSnapshot -> Conversation  in
-                    let data = docSnapshot.data()
+                    _ = docSnapshot.data()
                     let docId = docSnapshot.documentID
                     return Conversation(id: docId)
                 })
@@ -100,8 +87,8 @@ class ConversationViewModel: ObservableObject {
         }
     }
     
+    // get the auto-generated ID of the conversations
     func getConversationId(matcherID: String) async{
-        
         do {
             
             try self.currentChatUserID = await db.collection("user_profiles").document(userId!).getDocument().get("id") as! String

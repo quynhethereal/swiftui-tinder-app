@@ -15,6 +15,7 @@
 
 import SwiftUI
 
+// View to Choose Gender
 struct ChooseGenderView: View {
     @State private var isChooseMale: Bool = false
     @State private var isChooseFeMale: Bool = true
@@ -35,7 +36,7 @@ struct ChooseGenderView: View {
                     }
                     .padding(.top, 100)
                     Spacer().frame(height: 100)
-                    //MARK: - BUTTON NỮ
+                    // Female button
                     Button {
                         self.isChooseFeMale = true
                         self.isChooseMale = false
@@ -66,7 +67,7 @@ struct ChooseGenderView: View {
                     }
                     .padding(.horizontal, 30)
                     Spacer().frame(height: 15)
-                    //MARK: - BUTTON NAM
+                    // Male button
                     Button {
                         self.isChooseFeMale = false
                         self.isChooseMale = true
@@ -91,7 +92,7 @@ struct ChooseGenderView: View {
                     }
                     .padding(.horizontal, 30)
                     Spacer().frame(height: 15)
-                    //MARK: - BUTTON HIỂN THỊ THÊM
+                    // Display more button
                     Button {
                         self.isChooseFeMale = false
                         self.isChooseMale = false
@@ -118,7 +119,7 @@ struct ChooseGenderView: View {
                     .padding(.horizontal, 30)
                     Spacer()
                     NavigationLink(destination: MyFavouriteView(), tag: 1,selection: $selection) {
-                        //MARK: - BUTTON TIẾP TỤC
+                        // Continue button
                         Button {
                             if(isChooseMale) {
                                 userRegisterVM.addGender(gender: "men")

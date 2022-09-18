@@ -15,6 +15,7 @@
 
 import SwiftUI
 
+// Another guide view
 struct GuideChild2: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {

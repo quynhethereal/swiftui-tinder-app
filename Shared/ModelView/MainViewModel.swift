@@ -18,7 +18,7 @@ import Foundation
 import SwiftUI
 import Firebase
 
-
+// This is the View Model that keeps track of likes and dislikes of the current user (on swiping)
 class MainViewModel: ObservableObject {
     @Published var allUsers: [Matcher] = []
     @Published var userProfile = UserProfile()
@@ -57,11 +57,10 @@ class MainViewModel: ObservableObject {
         }
     }
     
+    // This function is to get the users that the users have interacted with (i.e like or dislike)
     func getAllInteractedUsers(completion: @escaping () -> Void) {
-//        var allInteractedUsers = [String]()
         
         let currentUserDocument = db.collection("user_profiles").document(self.userId!)
-        
         
         currentUserDocument.getDocument()  { (document, error) in
             if let document = document, document.exists {
@@ -78,18 +77,19 @@ class MainViewModel: ObservableObject {
                 }
                 
             }
+            // completion callback
             completion()
         }
     }
     
     func getAllUser() async {
-        
-      
-            
         getAllInteractedUsers {
             // callback
             
-            // filter by gender
+            // Filter by gender:
+                // if user is male, exclude male out of all users
+                // if user is female, exclude female out of all users
+                // is user is both, they can see everyone :)
             let genderFilterCondition = self.getOppositeGender(gender: self.userProfile.orientation.rawValue)
             
             var collectionReference = self.db.collection("user_profiles").whereField("orientation", isNotEqualTo: self.userProfile.orientation.rawValue)
@@ -97,42 +97,6 @@ class MainViewModel: ObservableObject {
             if (genderFilterCondition == "both" ){
                 collectionReference =  self.db.collection("user_profiles")
             }
-            
-//            collectionReference.addSnapshotListener { querySnapshot, error in
-//                guard let documents = querySnapshot?.documents else {
-//                            print("Error fetching documents: \(error!)")
-//                            return
-//                }
-//
-//
-//                for (_,document) in documents.enumerated() {
-//
-//                    if(document.documentID == self.userId) {
-//                        continue
-//                    }
-//
-//                    let id = document.get("id") as! String
-//
-//                    if (!self.interactedUsers.isEmpty){
-//
-//                        if (self.interactedUsers.contains(id)){
-//                            continue
-//                        }
-//                    }
-//
-//
-//                    var potentialMatcher = Matcher()
-//                    potentialMatcher.id = String(document["id"] as! String)
-//                    potentialMatcher.images = [String](document["images"] as! [String])
-//                    potentialMatcher.name = String(document["name"] as! String)
-//                    potentialMatcher.gender = String(document["orientation"] as! String)
-//                    potentialMatcher.preferredTopic = [String](document["preferredTopic"] as! [String])
-//                    potentialMatcher.age = Int(document["age"] as! Int)
-//                    self.allUsers.append(potentialMatcher)
-//
-//                }
-//            }
-            
                         
             collectionReference.getDocuments() { (querySnapshot, err) in
 
@@ -146,14 +110,16 @@ class MainViewModel: ObservableObject {
                         }
 
                         let id = document.get("id") as! String
-
+                        
+                        // if user has already liked or disliked sb
                         if (!self.interactedUsers.isEmpty){
 
                             if (self.interactedUsers.contains(id)){
                                 continue
                             }
                         }
-
+                        
+                        // create a Matcher object, then append this to all Users
                         var potentialMatcher = Matcher()
                         potentialMatcher.id = String(document["id"] as! String)
                         potentialMatcher.images = [String](document["images"] as! [String])
@@ -168,6 +134,7 @@ class MainViewModel: ObservableObject {
         }
     }
     
+    // helper function to filter genders
     func getOppositeGender(gender:String) -> String{
         switch gender {
         case "men":
@@ -183,7 +150,6 @@ class MainViewModel: ObservableObject {
 
     
     func addToDislikes(matcherId:String){
-        
         let currentUserDocument = db.collection("user_profiles").document(userId!)
         
         currentUserDocument.getDocument { (document, error) in
@@ -203,8 +169,6 @@ class MainViewModel: ObservableObject {
     func addToLikes(matcherId:String){
         let currentUserDocument = db.collection("user_profiles").document(userId!)
         let matcherDocument = db.collection("user_profiles").whereField("id", isEqualTo: "\(matcherId)")
-//        let conversations = db.collection("conversations")
-        
         currentUserDocument.getDocument { (document, error) in
             
             if document!.exists {
@@ -226,8 +190,7 @@ class MainViewModel: ObservableObject {
                                                         
                             let matcherLikes = matcherDoc.get("likes") as? [String] ?? ["error"]
                             
-                            
-                            // there is a match
+                            // run when there is a match
                             if matcherLikes.contains(currentUserID as! String){
                                 
                                 let currentUserRef = self.db.document(currentUserDocument.path)
@@ -245,7 +208,6 @@ class MainViewModel: ObservableObject {
                                     print("Cannot create conversations")
                                 }
 
-                                
                                 let ref = matcherDoc.reference
             
                                 ref.updateData([

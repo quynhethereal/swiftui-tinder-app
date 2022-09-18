@@ -15,6 +15,7 @@
 
 import SwiftUI
 
+// main Guide View 
 struct GuideView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var mainViewModel : MainViewModel

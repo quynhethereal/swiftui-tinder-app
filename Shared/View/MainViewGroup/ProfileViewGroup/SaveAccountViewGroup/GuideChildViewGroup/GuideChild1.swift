@@ -15,6 +15,7 @@
 
 import SwiftUI
 
+// Guide view (How to be safe on Matches)
 struct GuideChild1: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {

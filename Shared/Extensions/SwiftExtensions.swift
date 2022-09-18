@@ -32,6 +32,7 @@ extension View {
             .padding(10)
     }
  
+    // for some reason we can't change the placeholder's color so we have to extend it
     func placeholder<Content: View>(
             when shouldShow: Bool,
             alignment: Alignment = .leading,

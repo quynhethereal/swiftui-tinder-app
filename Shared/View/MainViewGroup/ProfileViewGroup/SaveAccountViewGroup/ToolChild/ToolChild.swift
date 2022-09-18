@@ -14,6 +14,7 @@
 */
 import SwiftUI
 
+// View to display dumb quotes
 struct ToolChild: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {

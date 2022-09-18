@@ -17,6 +17,7 @@ import Foundation
 import Combine
 import SwiftUI
 
+// This View Model controls the validation logic for signin
 class UserSignInViewModel : ObservableObject{
     @Published var username: String = ""
     @Published var password: String = ""
@@ -24,13 +25,10 @@ class UserSignInViewModel : ObservableObject{
     @Published var passwordError: String?
     @Published var isValid: Bool = false
     @Published var loggedInSuccessfully: Bool = false
-    
-//    @Published var isRegister: Bool = false
-    
+        
     
     private var cancellableSet: Set<AnyCancellable> = []
 
-    
     //Return Attributed String and Hyperlink
     func getAttributedString(_ string: String) -> AttributedString {
         var attributedString = AttributedString(string)

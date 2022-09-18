@@ -15,6 +15,7 @@
 
 import SwiftUI
 
+// Welcome view (Terms and Conditions bla bla)
 struct WelcomeView: View {
     @StateObject var welcomeVM = WelcomeViewModel()
 

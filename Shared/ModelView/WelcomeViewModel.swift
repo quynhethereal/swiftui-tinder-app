@@ -15,6 +15,7 @@
 
 import SwiftUI
 
+// Currently use Tinder's terms. But we will have our own soon ;)
 class WelcomeViewModel: ObservableObject {
     
     //Return Attributed String and Hyperlink

@@ -20,6 +20,7 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 import AVFAudio
 
+// View Model to handle register new profile flow
 class ProfileRegistrationViewModel : ObservableObject{
     @Published var userProfile = UserProfile()
     @Published var name = ""
@@ -36,7 +37,6 @@ class ProfileRegistrationViewModel : ObservableObject{
     }
     
     func addBithDay(date:Date) {
-
         userProfile.birthDate = date
     }
     
@@ -69,7 +69,7 @@ class ProfileRegistrationViewModel : ObservableObject{
     }
     
     
-    
+    // add a new UserProfile document to Firebase
     func createNewProfile(userProfile: UserProfile, completion: @escaping (Error?) -> ()) {
         do {
             try db.collection("user_profiles").document(userId!).setData(from: userProfile) { (error) in
@@ -80,7 +80,9 @@ class ProfileRegistrationViewModel : ObservableObject{
         }
           
     }
-
+    
+    // check if the user has set their profile. If already set their profile, redirect to home page screen.
+    // If not, they will need to input basic information first
     func fetchUserProfile(){
         let docRef = db.collection("user_profiles").document(userId!)
         docRef.getDocument { (document, error) in
