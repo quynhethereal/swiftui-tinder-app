@@ -37,8 +37,49 @@ struct ChatViewScreen: View {
                         .offset(x: 20)
                 }
                 Spacer()
-                AsyncImage(url: URL(string: matcher.images[0]), content: view)
-                
+                AsyncImage(url: URL(string: matcher.images[0])) { phase in
+                    
+                    switch phase {
+                    case .empty:
+                        HStack{
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .frame(width: 60, height: 60)
+                            .clipShape(Circle())
+                            .offset(x: 5)
+                        
+                    case .failure:
+                        
+                        //Call the AsynchImage 2nd time - when there is a failure. (I think you can also check NSURLErrorCancelled = -999)
+                        AsyncImage(url: URL(string: matcher.images[0])) { phase in
+                            if let image = phase.image {
+                                image
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(Circle())
+                                    .offset(x: 5)
+                            } else{
+                                HStack{
+                                    Spacer()
+                                    ProgressView()
+                                    Spacer()
+                                }
+                            }
+                        }.frame(width: 100,height: 150)
+                    @unknown default:
+                        HStack{
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                        
+                    }
+                }
                 if online == true {
                     Image(systemName: "circle.fill")
                         .offset(x: -20, y: 20)
@@ -62,7 +103,7 @@ struct ChatViewScreen: View {
                                 .font(.system(size: 14))
                                 .background(Color("lightRed"))
                                 .foregroundColor(Color.white)
-                                
+                            
                                 .clipShape(Capsule())
                                 .padding(.horizontal, 15)
                                 .padding(.vertical)
@@ -80,24 +121,25 @@ struct ChatViewScreen: View {
                             Spacer()
                         }
                     }
-
+                    
                     
                 }
                 .rotationEffect(.degrees(180))
+                
             }
             .rotationEffect(.degrees(180))
             Spacer()
             HStack {
                 Spacer()
-//                Button {
-//
-//                } label: {
-//                    Image(systemName: "photo.fill")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .foregroundColor(Color("lightRed"))
-//                        .frame(width: 40)
-//                }
+                //                Button {
+                //
+                //                } label: {
+                //                    Image(systemName: "photo.fill")
+                //                        .resizable()
+                //                        .scaledToFit()
+                //                        .foregroundColor(Color("lightRed"))
+                //                        .frame(width: 40)
+                //                }
                 TextField("Send Message...", text: $demotextfield)
                     .padding(.horizontal)
                     .frame(width: .infinity, height: 40)
@@ -127,44 +169,60 @@ struct ChatViewScreen: View {
         .task {
             
             await conversationViewModel.getConversationId(matcherID: matcher.id)
-//            await conversationViewModel.fetchMessagesInAChatRoom()
+            //            await conversationViewModel.fetchMessagesInAChatRoom()
         }
     }
 }
 
 
-@ViewBuilder
-private func view(for phase: AsyncImagePhase) -> some View {
-    switch phase {
-        case .empty:
-            HStack{
-                Spacer()
-                ProgressView()
-                Spacer()
-            }
-            
-        case .success(let image):
-            image
-                .resizable()
-                .frame(width: 60, height: 60)
-                .clipShape(Circle())
-                .offset(x: 5)
-            
-        case .failure(let error):
-            VStack(spacing: 16) {
-                Image(systemName: "xmark.octagon.fill")
-                    .resizable()
-                
-                
-//                Text(error.localizedDescription)
-//                    .multilineTextAlignment(.center)
-            }
-            .frame(width: 100,height: 150)
-        @unknown default:
-            Text("Unknown")
-                .foregroundColor(.gray)
-    }
-}
+//@ViewBuilder
+//private func view(for phase: AsyncImagePhase) -> some View {
+//    switch phase {
+//    case .empty:
+//        HStack{
+//            Spacer()
+//            ProgressView()
+//            Spacer()
+//        }
+//
+//    case .success(let image):
+//        image
+//            .resizable()
+//            .frame(width: 60, height: 60)
+//            .clipShape(Circle())
+//            .offset(x: 5)
+//
+//    case .failure(let error):
+//        VStack(spacing: 16) {
+//            Image(systemName: "xmark.octagon.fill")
+//                .resizable()
+//
+//            <<<<<<< HEAD
+//        case .failure(let error):
+//            VStack(spacing: 16) {
+//                Image(systemName: "xmark.octagon.fill")
+//                    .resizable()
+//
+//
+//                //                Text(error.localizedDescription)
+//                //                    .multilineTextAlignment(.center)
+//            }
+//            .frame(width: 100,height: 150)
+//        @unknown default:
+//            Text("Unknown")
+//                .foregroundColor(.gray)
+//            =======
+//
+//            Text(error.localizedDescription)
+//                .multilineTextAlignment(.center)
+//        }
+//        .frame(width: 100,height: 150)
+//    @unknown default:
+//        Text("Unknown")
+//            .foregroundColor(.gray)
+//        >>>>>>> b4051f6 (Fix AsyncImage)
+//    }
+//}
 
 //struct ChatViewScreen_Previews: PreviewProvider {
 //    static var previews: some View {

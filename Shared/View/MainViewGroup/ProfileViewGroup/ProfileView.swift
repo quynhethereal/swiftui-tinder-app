@@ -40,37 +40,56 @@ struct ProfileView: View {
                         .padding(.top, 22)
                         .zIndex(1.0)
                     Spacer().frame(height: 20)
+                    AsyncImage(url: URL(string: mainViewModel.userProfile.images[0])) { phase in
+                        
+                        switch phase {
+                        case .empty:
+                            HStack{
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }.frame(width: 200, height: 200)
+                                .clipShape(Circle())
+                                .background(
+                                    Circle().fill(Color.white).scaleEffect(3)
+                                )
+                        case .success(let image):
+                            image
+                                .frame(width: 200, height: 200)
+                                .clipShape(Circle())
+                                .background(
+                                    Circle().fill(Color.white).scaleEffect(3)
+                                )
+                            
+                        case .failure:
+                            
+                            //Call the AsynchImage 2nd time - when there is a failure. (I think you can also check NSURLErrorCancelled = -999)
+                            AsyncImage(url: URL(string: mainViewModel.userProfile.images[0])) { phase in
+                                if let image = phase.image {
+                                    image
+                                        .resizable()
+                                        .frame(width: 60, height: 60)
+                                        .clipShape(Circle())
+                                        .offset(x: 5)
+                                } else{
 
-                    AsyncImage(url: URL(string: mainViewModel.userProfile.images[0]), content: view)
-//                    AsyncImage(url: URL(string: mainViewModel.userProfile.images[0])) { image in
-//                        image
-//                            .resizable()
-//                            .frame(width: 200, height: 200)
-//                            .clipShape(Circle())
-//                            .background(
-//                                Circle().fill(Color.white).scaleEffect(3)
-//                            )
-//
-//
-//                    } placeholder: {
-//                        Image(systemName: "photo")
-//                            .resizable()
-//                            .frame(width: 200, height: 200)
-//                            .clipShape(Circle())
-//                            .background(
-//                                Circle().fill(Color.white).scaleEffect(3)
-//                            )
-//                    }
+                                    HStack{
+                                        Spacer()
+                                        ProgressView()
+                                        Spacer()
+                                    }
+                                }
+                            }.frame(width: 100,height: 150)
+                        @unknown default:
 
-
-                    
-//                    Image("vodka")
-//                        .resizable()
-//                        .frame(width: 200, height: 200)
-//                        .clipShape(Circle())
-//                        .background(
-//                            Circle().fill(Color.white).scaleEffect(3)
-//                        )
+                            HStack{
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }
+                            
+                        }
+                    }
                     HStack {
                         
                         Text("\(mainViewModel.userProfile.name), \(mainViewModel.userProfile.ageFromDB)")

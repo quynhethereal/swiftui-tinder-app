@@ -89,12 +89,55 @@ struct GuideView: View {
                                     .foregroundColor(.gray)
                             }
                             Spacer()
-                            AsyncImage(url: URL(string: mainViewModel.userProfile.images[0]), content: view)
-//                            Image("vodka")
-//                                .resizable()
-//                                .scaledToFill()
-//                                .frame(width: 40, height: 40)
-//                                .clipShape(Circle())
+
+                            AsyncImage(url: URL(string: mainViewModel.userProfile.images[0])) { phase in
+                                
+                                switch phase {
+                                case .empty:
+                                    HStack{
+                                        Spacer()
+                                        ProgressView()
+                                        Spacer()
+                                    }.scaledToFill()
+                                        .frame(width: 40, height: 40)
+                                        .clipShape(Circle())
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .frame(width: 60, height: 60)
+                                        .clipShape(Circle())
+                                        .offset(x: 5)
+                                    
+                                case .failure:
+                                    
+                                    //Call the AsynchImage 2nd time - when there is a failure. (I think you can also check NSURLErrorCancelled = -999)
+                                    AsyncImage(url: URL(string: mainViewModel.userProfile.images[0])) { phase in
+                                        if let image = phase.image {
+                                            image
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 40, height: 40)
+                                                .clipShape(Circle())
+                                        } else{
+
+                                            HStack{
+                                                Spacer()
+                                                ProgressView()
+                                                Spacer()
+                                            }
+                                        }
+                                    }.frame(width: 100,height: 150)
+                                @unknown default:
+
+                                    HStack{
+                                        Spacer()
+                                        ProgressView()
+                                        Spacer()
+                                    }
+                                    
+                                }
+                            }
+
                             Spacer()
                         }
                         .padding()
