@@ -23,6 +23,7 @@ class ConversationViewModel: ObservableObject {
     @Published var participant = Matcher()
     @Published var messages = [Message]()
     @Published var conversationId: String = String()
+    @Published var currentChatUserID: String = ""
     
     var userId: String? {
         Auth.auth().currentUser?.uid
@@ -30,7 +31,7 @@ class ConversationViewModel: ObservableObject {
     
     
     
-    var currentChatUserID: String = ""
+    
     
 
     

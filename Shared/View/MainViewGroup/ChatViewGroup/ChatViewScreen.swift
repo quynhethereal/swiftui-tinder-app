@@ -54,29 +54,33 @@ struct ChatViewScreen: View {
             
             ScrollView {
                 ForEach(conversationViewModel.messages, id: \.self) { message in
-                    // If the message contains [USER], that means it's us
-                    HStack {
-                        Spacer()
-                        Text(message.content)
-                            .padding()
-                            .font(.system(size: 14))
-                            .foregroundColor(Color.white)
-                            .background(Color("lightRed"))
-                            .clipShape(Capsule())
-                            .padding(.horizontal, 15)
-                            .padding(.vertical)
+                    if conversationViewModel.currentChatUserID == message.sender {
+                        HStack {
+                            Spacer()
+                            Text(message.content)
+                                .padding()
+                                .font(.system(size: 14))
+                                .background(Color("lightRed"))
+                                .foregroundColor(Color.white)
+                                
+                                .clipShape(Capsule())
+                                .padding(.horizontal, 15)
+                                .padding(.vertical)
+                        }
+                    } else {
+                        HStack {
+                            Text(message.content)
+                                .padding()
+                                .font(.system(size: 14))
+                                .foregroundColor(Color.white)
+                                .background(Color("quynhColor"))
+                                .clipShape(Capsule())
+                                .padding(.horizontal, 16)
+                                .padding(.bottom, 10)
+                            Spacer()
+                        }
                     }
-//                    HStack {
-//                        Text(message)
-//                            .padding()
-//                            .font(.system(size: 14))
-//                            .background(Color.white)
-//                            .foregroundColor(Color("lightRed"))
-//                            .clipShape(RoundedRectangle(cornerRadius: 25))
-//                            .padding(.horizontal, 16)
-//                            .padding(.bottom, 10)
-//                        Spacer()
-//                    }
+
                     
                 }
 //                .rotationEffect(.degrees(180))

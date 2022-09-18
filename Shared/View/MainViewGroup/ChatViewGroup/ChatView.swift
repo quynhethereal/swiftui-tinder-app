@@ -62,6 +62,7 @@ struct ChatView: View {
                     HStack(spacing: 10) {
                         //Image match
                         ForEach(chatViewModel.allMatches, id: \.self) { matcher in
+                            
                             NavigationLink {
                                 
                             } label: {
