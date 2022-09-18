@@ -36,17 +36,20 @@ struct CardView: View {
                         Text(matcher.name).font(.largeTitle).fontWeight(.bold)
                         Text(String(matcher.age)).font(.title)
                     }
+
                     HStack {
                         ForEach(matcher.preferredTopic.indices, id: \.self) { index in
+
                             Text(matcher.preferredTopic[index])
                                 .font(.system(size: 12))
+                                
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
                                 .modifier(TopicDesign())
-                           
+                            
                         }
-                        
                     }
+                    
                     .multilineTextAlignment(.leading)
                     
                     
