@@ -1,15 +1,23 @@
-//
-//  ChatView.swift
-//  Tinder-FE
-//
-//  Created by Gia Huy on 09/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Error Team
+     Duong Tuan Dat - s3636739
+     Le Trung Kim - s3634824
+     Le Dinh Ngoc Quynh - s3791159
+     Thuan Nguyen - s3517236
+  Created  date: 27/08/2022
+  Last modified: 18/09/2022
+  Acknowledgement: Acknowledge the resources that you use here.
+*/
 
 import SwiftUI
 
 struct ChatView: View {
     @EnvironmentObject var chatViewModel : ChatViewModel
-    @EnvironmentObject var conversationViewModel : ConversationViewModel
+//    @EnvironmentObject var conversationViewModel : ConversationViewModel
     let demoImageArray = ["rum", "vodka", "chianti", "gin", "tequila"]
     let listOfCurrentMess: [[String]] = [
         ["rum", "Rum", "I love you...", "false"],
@@ -74,18 +82,18 @@ struct ChatView: View {
                 }
                 Spacer().frame(height: 15)
                 HStack {
-                    Text("Trợ lý")
+                    Text("Assistant")
                         .fontWeight(.bold)
                         .foregroundColor(Color("lightRed"))
                         .padding()
                     Spacer()
                 }
                 .offset(y: 15)
-//                NavigationLink {
-//                    ChatBotViewScreen(imgName: "tinderBot", name: "Phù thuỷ tình iu", online: "true")
-//                } label: {
-//                    ChatViewRow(imgName: "tinderBot", name: "Phù thuỷ tình iu", lastMessage: "Tui là phù thuỷ tình yêu đây", online: "true")
-//                }
+                NavigationLink {
+                    ChatBotViewScreen(imgName: "tinderBot", name: "Love Witcher", online: "true")
+                } label: {
+                    ChatViewRow(imgName: "tinderBot", name: "Love Witcher", lastMessage: "Love Witcher is always here for you", online: "true")
+                }
 
                 Spacer()
                 HStack {
@@ -95,29 +103,17 @@ struct ChatView: View {
                         .padding()
                     Spacer()
                 }
-//                ScrollView {
-//                    
-//                    ForEach(conversationViewModel.conversations, id: \.self) { con in
-//                        ForEach(chatViewModel.allMatches, id:\.self) { user in
-//                            
-//                            if con.participants[0] == user.id {
-//                                NavigationLink {
-//                                    //ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
-//                                } label: {
-//                                    ChatViewRow(matcher: user)
-//                                }
-//                            } else if con.participants[1] == user.id {
-//                                NavigationLink {
-//                                    //ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
-//                                } label: {
-//                                    ChatViewRow(matcher: user)
-//                                }
-//                            }
-//                        }
-//
-//
-//                    }
-//                }
+                ScrollView {
+
+                    ForEach(chatViewModel.allMatches, id: \.self) { matcher in
+                        NavigationLink {
+                            ChatViewScreen(matcher: matcher)
+                                //.environmentObject(conversationViewModel)
+                        } label: {
+                            ChatViewRow(matcher: matcher)
+                        }
+                    }
+                }
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
@@ -127,7 +123,6 @@ struct ChatView: View {
         }
         .onAppear() {
             chatViewModel.getAllMatchesProfiles()
-            conversationViewModel.fetchData()
         }
 //        .task {
 //            await conversationViewModel.fetchData()

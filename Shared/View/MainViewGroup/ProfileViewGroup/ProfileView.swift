@@ -1,9 +1,17 @@
-//
-//  ProfileView.swift
-//  Tinder-FE
-//
-//  Created by Gia Huy on 09/09/2022.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 3
+  Author: Error Team
+     Duong Tuan Dat - s3636739
+     Le Trung Kim - s3634824
+     Le Dinh Ngoc Quynh - s3791159
+     Thuan Nguyen - s3517236
+  Created  date: 27/08/2022
+  Last modified: 18/09/2022
+  Acknowledgement: Acknowledge the resources that you use here.
+*/
 
 import SwiftUI
 struct ProfileView: View {
@@ -14,11 +22,11 @@ struct ProfileView: View {
     private let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     @State private var currentIndex = 0
     @State private var adds = [
-        "Đăng nhiều ảnh sexy để được match nhiều hơn",
-        "Hẹn hò an toàn, tình dục tự nguyện",
-        "Đang độc thân? Ăn bò nướng lá lost đi. Bạn sẽ vẫn độc thân nhưng mà nó ngon",
-        "Chú mèo đi HERE và những người bạn",
-        "Code còn lỏ quá, mấy tiền bối cho em xin lỗi"
+        "In love there are two things– bodies and words",
+        "Love makes your soul crawl out from its hiding place",
+        "Where there is love there is life",
+        "Whatever our souls are made of, his and mine are the same",
+        "There is always madness in love. But there is also always some reason in madness"
     ]
     var body: some View {
         ZStack {
