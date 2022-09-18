@@ -64,7 +64,7 @@ struct ChatView: View {
                         ForEach(chatViewModel.allMatches, id: \.self) { matcher in
                             
                             NavigationLink {
-                                
+                                ChatViewScreen(matcher: matcher)
                             } label: {
                                 VStack {
                                     AsyncImage(url: URL(string: matcher.images[0])) { phase in
