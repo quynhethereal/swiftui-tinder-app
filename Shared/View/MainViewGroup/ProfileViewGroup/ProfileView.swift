@@ -67,10 +67,11 @@ struct ProfileView: View {
                             AsyncImage(url: URL(string: mainViewModel.userProfile.images[0])) { phase in
                                 if let image = phase.image {
                                     image
-                                        .resizable()
-                                        .frame(width: 60, height: 60)
+                                        .frame(width: 200, height: 200)
                                         .clipShape(Circle())
-                                        .offset(x: 5)
+                                        .background(
+                                            Circle().fill(Color.white).scaleEffect(3)
+                                        )
                                 } else{
 
                                     HStack{
@@ -79,7 +80,7 @@ struct ProfileView: View {
                                         Spacer()
                                     }
                                 }
-                            }.frame(width: 100,height: 150)
+                            }
                         @unknown default:
 
                             HStack{
