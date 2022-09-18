@@ -64,6 +64,15 @@ struct ButtonOfFavoriteEnable: ViewModifier {
   }
 }
 
+struct TopicDesign: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(2)
+            .background(LinearGradient(gradient: Gradient(colors: [Color("lightPink"), Color("lightRed")]), startPoint: .leading, endPoint: .trailing))
+            .cornerRadius(20)
+            .modifier(ShadowModifier())
+    }
+}
 
 //MARK: - BUTTON NEXT MODIFIER
 struct ButtonNextEnable: ViewModifier {

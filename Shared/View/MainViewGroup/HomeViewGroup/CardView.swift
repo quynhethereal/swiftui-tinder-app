@@ -21,6 +21,7 @@ struct CardView: View {
                 Spacer()
                 AsyncImage(url: URL(string: matcher.images[0]), content: view)
                 Spacer()
+
             }
             .background(.white)
             
@@ -35,6 +36,19 @@ struct CardView: View {
                         Text(matcher.name).font(.largeTitle).fontWeight(.bold)
                         Text(String(matcher.age)).font(.title)
                     }
+                    HStack {
+                        ForEach(matcher.preferredTopic.indices, id: \.self) { index in
+                            Text(matcher.preferredTopic[index])
+                                .font(.system(size: 12))
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .modifier(TopicDesign())
+                           
+                        }
+                        
+                    }
+                    .multilineTextAlignment(.leading)
+                    
                     
                 }
                 .padding(.bottom, 100)
@@ -107,21 +121,22 @@ struct CardView: View {
                     Spacer()
                 }
             
-        case .success(let image):
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            case .success(let image):
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            
         case .failure(let error):
             VStack(spacing: 16) {
                 Image(systemName: "xmark.octagon.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(.red)
-                Text(error.localizedDescription)
-                    .multilineTextAlignment(.center)
+//                Text(error.localizedDescription)
+//                    .multilineTextAlignment(.center)
             }
         @unknown default:
-            Text("Unknown")
+            Text("NO USERS")
                 .foregroundColor(.gray)
         }
     }

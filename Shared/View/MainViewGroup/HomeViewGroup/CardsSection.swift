@@ -11,9 +11,15 @@ struct CardsSection: View {
     @EnvironmentObject var mainViewModel : MainViewModel
     var body: some View {
         ZStack{
-            ForEach(mainViewModel.allUsers) { matcher in
-                CardView(matcher: matcher)
+            if mainViewModel.allUsers.isEmpty {
+                Text("No Matching User")
+                    .multilineTextAlignment(.center)
+            } else {
+                ForEach(mainViewModel.allUsers) { matcher in
+                    CardView(matcher: matcher)
+                }
             }
+            
         }
         .padding(10)
         .zIndex(1.0)
