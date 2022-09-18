@@ -92,7 +92,7 @@ struct ChatView: View {
                 NavigationLink {
                     ChatBotViewScreen(imgName: "tinderBot", name: "Love Witcher", online: "true")
                 } label: {
-                    ChatViewRow(imgName: "tinderBot", name: "Love Witcher", lastMessage: "Tui là phù thuỷ tình yêu đây", online: "true")
+                    ChatViewRow(imgName: "tinderBot", name: "Love Witcher", lastMessage: "Love Witcher is always here for you", online: "true")
                 }
 
                 Spacer()
