@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     @EnvironmentObject var chatViewModel : ChatViewModel
+    @EnvironmentObject var conversationViewModel : ConversationViewModel
     let demoImageArray = ["rum", "vodka", "chianti", "gin", "tequila"]
     let listOfCurrentMess: [[String]] = [
         ["rum", "Rum", "I love you...", "false"],
@@ -80,11 +81,11 @@ struct ChatView: View {
                     Spacer()
                 }
                 .offset(y: 15)
-                NavigationLink {
-                    ChatBotViewScreen(imgName: "tinderBot", name: "Phù thuỷ tình iu", online: "true")
-                } label: {
-                    ChatViewRow(imgName: "tinderBot", name: "Phù thuỷ tình iu", lastMessage: "Tui là phù thuỷ tình yêu đây", online: "true")
-                }
+//                NavigationLink {
+//                    ChatBotViewScreen(imgName: "tinderBot", name: "Phù thuỷ tình iu", online: "true")
+//                } label: {
+//                    ChatViewRow(imgName: "tinderBot", name: "Phù thuỷ tình iu", lastMessage: "Tui là phù thuỷ tình yêu đây", online: "true")
+//                }
 
                 Spacer()
                 HStack {
@@ -95,12 +96,25 @@ struct ChatView: View {
                     Spacer()
                 }
                 ScrollView {
-                    ForEach(listOfCurrentMess, id: \.self) { user in
-                        NavigationLink {
-                            ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
-                        } label: {
-                            ChatViewRow(imgName: user[0], name: user[1], lastMessage: user[2], online: user[3])
+                    
+                    ForEach(conversationViewModel.conversations, id: \.self) { con in
+                        ForEach(chatViewModel.allMatches, id:\.self) { user in
+                            
+                            if con.participants[0] == user.id {
+                                NavigationLink {
+                                    //ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
+                                } label: {
+                                    ChatViewRow(matcher: user)
+                                }
+                            } else if con.participants[1] == user.id {
+                                NavigationLink {
+                                    //ChatViewScreen(imgName: user[0], name: user[1], online: user[3])
+                                } label: {
+                                    ChatViewRow(matcher: user)
+                                }
+                            }
                         }
+
 
                     }
                 }
@@ -113,7 +127,11 @@ struct ChatView: View {
         }
         .onAppear() {
             chatViewModel.getAllMatchesProfiles()
+            conversationViewModel.fetchData()
         }
+//        .task {
+//            await conversationViewModel.fetchData()
+//        }
     }
         
         

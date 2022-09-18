@@ -35,7 +35,7 @@ class MainViewModel: ObservableObject {
         let docRef = db.collection("user_profiles").document(userId!)
         docRef.getDocument { [self] (document, error) in
             if document!.exists {
-                userProfile.id = UUID(uuidString: document?["id"] as! String)!
+                userProfile.id = UUID(uuidString: document? ["id"] as! String)!
                 userProfile.images = [String](document?["images"] as! [String])
                 userProfile.name = String(document?["name"] as! String)
                 userProfile.orientation = Orientation(rawValue: document?["orientation"] as! String)!
@@ -225,6 +225,7 @@ class MainViewModel: ObservableObject {
                                 self.db.collection("conversations").document(self.userId!).setData([
                                     "participants":  FieldValue.arrayUnion([currentUserID as! String, matcherId])
                                 ]) { (error) in
+                                    print(error)
                                     print("Cannot create conversations")
                                 }
 
