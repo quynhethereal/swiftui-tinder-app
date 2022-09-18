@@ -17,9 +17,9 @@ struct MainView: View {
             HomeView().environmentObject(mainViewModel)
                 .tabItem {
                     if selectedTab == 0 {
-                        Image("homeEnable")
+                        Image("TinderIconColorful")
                     } else {
-                        Image("homeDisable")
+                        Image("TinderIconDisable")
                     }
                 }
                 .tag(0)
