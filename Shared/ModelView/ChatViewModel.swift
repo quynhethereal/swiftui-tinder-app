@@ -16,9 +16,7 @@ class ChatViewModel: ObservableObject {
     var userId: String? {
         Auth.auth().currentUser?.uid
     }
-    
-    var NO_MATCHES = [Matcher]()
-    
+        
 //    func allImage() -> [String] {
 //        
 //    }
@@ -53,7 +51,6 @@ class ChatViewModel: ObservableObject {
                             }
                         }
                     }
-                    
                 }
             }
         }

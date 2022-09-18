@@ -223,7 +223,6 @@ class MainViewModel: ObservableObject {
                             if matcherLikes.contains(currentUserID as! String){
                                 
                                 self.db.collection("conversations").document(self.userId!).setData([
-                                    "conversationCode": currentUserID as! String + matcherId,
                                     "participants":  FieldValue.arrayUnion([currentUserID as! String, matcherId])
                                 ]) { (error) in }
 

@@ -15,17 +15,16 @@ class ConversationViewModel: ObservableObject {
     
     func fetchData() {
         if (user != nil){
-            db.collection("no conversations").whereField("users", arrayContains: user!.uid).addSnapshotListener({( snapshot, error ) in
+            db.collection("conversations").whereField("participants", arrayContains: user!.uid).addSnapshotListener({( snapshot, error ) in
                 guard let documents = snapshot?.documents else {
                     print("users have no conversations")
-                    
                     return
                 }
                 
                 self.conversations = documents.map({ docSnapshot -> Conversation  in
                     let data = docSnapshot.data()
                     let docId = docSnapshot.documentID
-                    let conversationCode = data["conversationCode"] as? String ?? ""
+//                    let conversationCode = data["conversationCode"] as? String ?? ""
                     return Conversation(id: docId, conversationCode: conversationCode)
                 })
             })
