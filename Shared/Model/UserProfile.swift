@@ -15,6 +15,7 @@
 
 import Foundation
 
+// This model contains the under information
 struct UserProfile: Identifiable, Codable {
     var id = UUID()
     var name: String = ""

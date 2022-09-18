@@ -16,11 +16,12 @@
 import Foundation
 import UIKit
 
+// This model is the people who are the potential matchers. Technically, it is the same
+// with the UserProfile but we want to make it explicit
 struct Matcher: Identifiable, Codable, Hashable {
     var id: String = ""
     var name: String = ""
 //    var birthDate: Date! =  Date(timeIntervalSinceReferenceDate: -123456789.0)
-
     var preferredTopic :[String] = [String]()
     var gender = String()
     var age = Int()
@@ -44,21 +45,14 @@ struct Matcher: Identifiable, Codable, Hashable {
     private enum CodingKeys: String, CodingKey {
         case id
         case name
-//        case birthDate
         case preferredTopic
         case gender
         case age
         case images
     }
     
-    var dictionary: [String: Any] {
-        let data = (try? JSONEncoder().encode(self)) ?? Data()
-        return (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]) ?? [:]
-    }
     
-    init() {
-        
-    }
+    // manual decoder and encoder since not all the fields are sent
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -69,6 +63,15 @@ struct Matcher: Identifiable, Codable, Hashable {
         images = try values.decode(Array.self, forKey: .images)
         age = try values.decode(Int.self, forKey: .age)
     }
+    
+    var dictionary: [String: Any] {
+        let data = (try? JSONEncoder().encode(self)) ?? Data()
+        return (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]) ?? [:]
+    }
+    
+    init() {
+    }
+    
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -82,7 +85,3 @@ struct Matcher: Identifiable, Codable, Hashable {
     
     
 }
-
-//public enum Gender: String, Codable, CaseIterable{
-//    case men, women, both
-//}

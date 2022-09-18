@@ -16,13 +16,14 @@
 import Foundation
 import UIKit
 
+// This Model is for development purposes only
 struct Card: Identifiable {
     let id = UUID()
     let name: String
     let imageName: String
     let age: Int
     let state: String
-    let activeStatus: [String] = ["Có hoạt động gần đây", "hoạt động ngoại tuyến"]
+    let activeStatus: [String] = ["recent Activity", "offline activity"]
     /// Card x position
     var x: CGFloat = 0.0
     /// Card y position

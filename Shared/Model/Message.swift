@@ -15,6 +15,7 @@
 
 import Foundation
 
+// This model is the user's messages
 class Message: Codable, Identifiable, Hashable{
     var id: String = ""
     var content: String = ""
@@ -28,6 +29,7 @@ class Message: Codable, Identifiable, Hashable{
         self.timestamp = timestamp
     }
     
+    // to conform with Hashable
     public func hash(into hasher: inout Hasher) {
         return hasher.combine(id)
     }
